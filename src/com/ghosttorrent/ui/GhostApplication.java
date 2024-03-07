@@ -3,6 +3,7 @@ package com.ghosttorrent.ui;
 import com.ghosttorrent.ui.utils.inter.Application;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class GhostApplication extends Application {
 
@@ -26,6 +27,8 @@ public class GhostApplication extends Application {
 
     private JMenuBar createMenuBar(){
         JMenuBar menu = new JMenuBar();
+        menu.setBackground(R.colors.get("background-shimmer"));
+        menu.setBorder(new EmptyBorder(0, 0, 0, 0));
 
         menu.add(createMenu("File", new String[]{
                 "Open",
@@ -70,8 +73,11 @@ public class GhostApplication extends Application {
 
     private JMenu createMenu(String title, String[] options){
         JMenu menu = new JMenu(title);
+        menu.setForeground(R.colors.get("text-primary"));
+
         for(String option : options){
-            menu.add(new JMenuItem(option));
+            JMenuItem item = new JMenuItem(option);
+            menu.add(item);
         }
         return menu;
     }
