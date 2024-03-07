@@ -4,6 +4,7 @@ import com.ghosttorrent.ui.utils.inter.Application;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public class GhostApplication extends Application {
 
@@ -11,6 +12,7 @@ public class GhostApplication extends Application {
     public void onCreate(){
         frame.setTitle("Ghost Torrent");
         frame.setSize(500, 750);
+        frame.setMinimumSize(new Dimension(500, 750));
         frame.setJMenuBar(createMenuBar());
 
         try{
