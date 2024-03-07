@@ -9,7 +9,10 @@ import com.ghosttorrent.ui.utils.layouts.RelativeLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.text.CharacterIterator;
@@ -105,6 +108,63 @@ public class MainActivity extends Activity {
             }
         });
 
+        scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI(){
+            @Override
+            protected void paintThumb(Graphics g, JComponent c, Rectangle r){
+                Graphics2D graphics = (Graphics2D) g;
+                graphics.setColor(R.colors.get("secondary"));
+                graphics.fillRoundRect(r.width-11, r.y, 10, r.height, 10, 10);
+            }
+
+            @Override
+            protected void paintTrack(Graphics g, JComponent c, Rectangle r){
+                Graphics2D graphics = (Graphics2D) g;
+                graphics.setColor(R.colors.get("background"));
+                graphics.fillRect(r.x, r.y, r.width, r.height);
+            }
+
+            @Override
+            protected JButton createDecreaseButton(int orientation){
+                return createZeroButton();
+            }
+
+            @Override
+            protected JButton createIncreaseButton(int orientation){
+                return createZeroButton();
+            }
+
+            private JButton createZeroButton(){
+                JButton jbutton = new JButton();
+                jbutton.setPreferredSize(new Dimension(0, 0));
+                jbutton.setMinimumSize(new Dimension(0, 0));
+                jbutton.setMaximumSize(new Dimension(0, 0));
+                return jbutton;
+            }
+        });
+
+        int increment = 30;
+        scrollPane.getVerticalScrollBar().setUnitIncrement(increment);
+        KeyStroke kUp = KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0);
+        KeyStroke kDown = KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0);
+        scrollPane.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(kUp, "actionWhenKeyUp");
+        scrollPane.getActionMap().put("actionWhenKeyUp", new AbstractAction("keyUpAction") {
+
+            public void actionPerformed(ActionEvent e) {
+                final JScrollBar bar = scrollPane.getVerticalScrollBar();
+                int currentValue = bar.getValue();
+                bar.setValue(currentValue - increment);
+            }
+        });
+        scrollPane.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(kDown, "actionWhenKeyDown");
+        scrollPane.getActionMap().put("actionWhenKeyDown", new AbstractAction("keyDownAction") {
+
+            public void actionPerformed(ActionEvent e) {
+                final JScrollBar bar = scrollPane.getVerticalScrollBar();
+                int currentValue = bar.getValue();
+                bar.setValue(currentValue + increment);
+            }
+        });
+
         return pane;
     }
 
@@ -133,7 +193,7 @@ public class MainActivity extends Activity {
             pane.setLayout(new RelativeLayout());//new FlowLayout(FlowLayout.LEFT));
             pane.setBorder(new MatteBorder(0, 0, 1, 0, R.colors.get("background-shimmer")));
             //pane.setBackground(Color.red);
-            pane.setPreferredSize(new Dimension(480, 80));
+            pane.setPreferredSize(new Dimension(480, 110));
             //pane.setOpaque(true);
 
 
@@ -156,12 +216,13 @@ public class MainActivity extends Activity {
             constraints.gridy = 0;
 
             JLabel title = new JLabel(torrent.getTitle());
-            title.setFont(new Font(Font.MONOSPACED, Font.BOLD, 14));
+            title.setFont(new Font("Ariel", Font.BOLD, 14));
             content.add(title, constraints);
 
             JLabel description = new JLabel(humanReadableByteCountBin(torrent.getObtained())+" of "+humanReadableByteCountBin(torrent.getTotal())+" (0.0%)");
-            description.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+            description.setFont(new Font("Ariel", Font.PLAIN, 12));
             constraints.gridy = 1;
+            constraints.insets = new Insets(5, 0, 5, 0);
             content.add(description, constraints);
 
             JProgressBar progress = new JProgressBar();
@@ -175,8 +236,9 @@ public class MainActivity extends Activity {
 
             //PROGRESS BAR
             JLabel details = new JLabel("Downloading from "+torrent.getPeers()+" peers");
-            details.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+            details.setFont(new Font("Ariel", Font.PLAIN, 12));
             constraints.gridy = 3;
+            constraints.insets = new Insets(5, 0, 0, 0);
             content.add(details, constraints);
 
 
@@ -197,7 +259,7 @@ public class MainActivity extends Activity {
                 content.setBackground(R.colors.get("background"));
             }
 
-            pane.add(content, new RelativeConstraints().setHeight(60).centerVertically().toRightOf(icon).alignParentRight().setMarginLeft(10).setMarginRight(10));
+            pane.add(content, new RelativeConstraints().setHeight(90).centerVertically().toRightOf(icon).alignParentRight().setMarginLeft(10).setMarginRight(10));
 
 
             return pane;

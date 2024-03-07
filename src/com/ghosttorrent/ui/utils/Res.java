@@ -27,7 +27,7 @@ public class Res {
         colors = new HashMap<>();
 
         colors.put("primary", Color.decode("#24f262"));
-        colors.put("secondary", Color.decode("#4ef27f"));
+        colors.put("secondary", Color.decode("#1abd4b"));
         colors.put("accent", Color.decode("#9939bf"));
 
         colors.put("background", Color.decode("#080d2b"));
