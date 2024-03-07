@@ -1,9 +1,7 @@
 package com.ghosttorrent;
 
 import com.ghosttorrent.ui.GhostApplication;
-import com.ghosttorrent.ui.utils.Application;
-
-import java.net.InetAddress;
+import com.ghosttorrent.ui.utils.inter.Application;
 
 public class Main {
 

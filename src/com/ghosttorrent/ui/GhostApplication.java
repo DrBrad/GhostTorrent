@@ -1,16 +1,15 @@
 package com.ghosttorrent.ui;
 
-import com.ghosttorrent.ui.utils.Application;
+import com.ghosttorrent.ui.utils.inter.Application;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class GhostApplication extends Application {
 
     @Override
     public void onCreate(){
-        setTitle("Ghost Torrent");
-        setSize(500, 750);
+        frame.setTitle("Ghost Torrent");
+        frame.setSize(500, 750);
         frame.setJMenuBar(createMenuBar());
 
         try{

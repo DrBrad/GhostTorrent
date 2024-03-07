@@ -1,12 +1,12 @@
 package com.ghosttorrent.ui;
 
 import com.ghosttorrent.torrent.Torrent;
-import com.ghosttorrent.ui.utils.Activity;
-import com.ghosttorrent.ui.utils.Bundle;
+import com.ghosttorrent.ui.utils.inter.Activity;
 import com.ghosttorrent.ui.utils.Intent;
+import com.ghosttorrent.ui.utils.layouts.RelativeConstraints;
+import com.ghosttorrent.ui.utils.layouts.RelativeLayout;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.text.CharacterIterator;
@@ -106,11 +106,18 @@ public class MainActivity extends Activity {
             Torrent torrent = (Torrent) value;
 
             JPanel pane = new JPanel();
-            pane.setLayout(new GridBagLayout());//new FlowLayout(FlowLayout.LEFT));
+            pane.setLayout(new RelativeLayout());//new FlowLayout(FlowLayout.LEFT));
             pane.setBorder(new MatteBorder(0, 0, 1, 0, Color.decode("#cccccc")));
+            //pane.setBackground();
+            //pane.setBackground(Color.red);
+            pane.setPreferredSize(new Dimension(480, 80));
+            //pane.setOpaque(true);
+
 
 
             //IMAGE - 60 x 60?
+            JLabel icon = new JLabel(R.images.get("ic_folder"));
+            pane.add(icon, new RelativeConstraints().setWidth(48).setHeight(48).centerVertically().setMargins(new Insets(10, 10, 10, 10)));
 
             JPanel content = new JPanel();
             //content.setBackground(Color.black);
@@ -146,16 +153,8 @@ public class MainActivity extends Activity {
             constraints.gridy = 3;
             content.add(details, constraints);
 
+            pane.add(content, new RelativeConstraints().setHeight(60).centerVertically().toRightOf(icon).alignParentRight().setMarginLeft(10).setMarginRight(10));
 
-            constraints = new GridBagConstraints();
-            constraints.insets = new Insets(10, 10, 10, 10);
-            constraints.fill = GridBagConstraints.HORIZONTAL;
-            constraints.weightx = 1;
-            constraints.weighty = 1;
-            constraints.gridx = 0;
-            constraints.gridy = 0;
-
-            pane.add(content, constraints);
 
             return pane;
         }

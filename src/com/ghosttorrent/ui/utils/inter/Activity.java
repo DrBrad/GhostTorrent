@@ -1,19 +1,15 @@
-package com.ghosttorrent.ui.utils;
+package com.ghosttorrent.ui.utils.inter;
+
+import com.ghosttorrent.ui.utils.Intent;
+import com.ghosttorrent.ui.utils.Res;
 
 import javax.swing.*;
 
 public abstract class Activity {
 
     private Application application;
+    protected Res R;
     private JPanel root;
-
-    private void setApplication(Application application){
-        this.application = application;
-    }
-
-    private void setRoot(JPanel root){
-        this.root = root;
-    }
 
     public abstract void onCreate(Intent intent);
 
