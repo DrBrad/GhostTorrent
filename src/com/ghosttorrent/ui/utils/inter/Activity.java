@@ -1,14 +1,18 @@
 package com.ghosttorrent.ui.utils.inter;
 
+import com.ghosttorrent.ui.res.loader.Resources;
 import com.ghosttorrent.ui.utils.Bundle;
 import generated.R;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class Activity {
 
     private Application application;
     protected R R;
+    private Resources resources;
     private JPanel root;
 
     public void onCreate(Bundle bundle){
@@ -39,5 +43,13 @@ public abstract class Activity {
 
     public JComponent findViewById(String id){
         return null;
+    }
+
+    public Color findColorById(int id){
+        return (Color) resources.findById("color", id);
+    }
+
+    public BufferedImage findImageById(int id){
+        return (BufferedImage) resources.findById("image", id);
     }
 }

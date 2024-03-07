@@ -1,9 +1,9 @@
-package com.ghosttorrent.ui.build;
+package com.ghosttorrent.ui.res.build;
 
-import com.ghosttorrent.ui.build.assets.Asset;
-import com.ghosttorrent.ui.build.assets.Colors;
-import com.ghosttorrent.ui.build.assets.Images;
-import com.ghosttorrent.ui.build.assets.Res;
+import com.ghosttorrent.ui.res.build.assets.Asset;
+import com.ghosttorrent.ui.res.build.assets.Colors;
+import com.ghosttorrent.ui.res.build.assets.Images;
+import com.ghosttorrent.ui.res.build.assets.Res;
 
 import java.io.FileWriter;
 import java.io.IOException;

@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
 
     private JComponent createStatusBar(){
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        //pane.setBackground(Color.decode(R.color.background_secondary));
+        pane.setBackground(findColorById(R.color.background_secondary));
         pane.setPreferredSize(new Dimension(48, 48));
         JButton open = new JButton();//R.images.get("ic_play"));
         pane.add(open);
@@ -57,9 +57,9 @@ public class MainActivity extends Activity {
 
     private JComponent createFilterBar(){
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        //pane.setBackground(Color.decode(R.color.background_secondary));
+        pane.setBackground(findColorById(R.color.background_secondary));
         JLabel label = new JLabel("Show");
-        //label.setForeground(R.colors.get("text-primary"));
+        label.setForeground(findColorById(R.color.text_primary));
         pane.add(label);
         //MENU (TYPE OF TORRENT)
         //MENU (TRACKER)
@@ -97,7 +97,7 @@ public class MainActivity extends Activity {
         //list.setCellRenderer(new SideCellRenderer());
         //list.setModel(sideModel);
         JScrollPane scrollPane = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        //scrollPane.setBorder(new MatteBorder(1, 0, 0, 0, R.colors.get("background-shimmer")));
+        scrollPane.setBorder(new MatteBorder(1, 0, 0, 0, findColorById(R.color.background_shimmer)));
 
         /*
         for(int i = 0; i < 100; i++){
@@ -127,14 +127,14 @@ public class MainActivity extends Activity {
             @Override
             protected void paintThumb(Graphics g, JComponent c, Rectangle r){
                 Graphics2D graphics = (Graphics2D) g;
-                //graphics.setColor(R.colors.get("secondary"));
+                graphics.setColor(findColorById(R.color.secondary));
                 graphics.fillRoundRect(r.width-11, r.y, 10, r.height, 10, 10);
             }
 
             @Override
             protected void paintTrack(Graphics g, JComponent c, Rectangle r){
                 Graphics2D graphics = (Graphics2D) g;
-                //graphics.setColor(R.colors.get("background"));
+                graphics.setColor(findColorById(R.color.background));
                 graphics.fillRect(r.x, r.y, r.width, r.height);
             }
 
@@ -206,7 +206,7 @@ public class MainActivity extends Activity {
 
             JPanel pane = new JPanel();
             pane.setLayout(new RelativeLayout());//new FlowLayout(FlowLayout.LEFT));
-            //pane.setBorder(new MatteBorder(0, 0, 1, 0, R.colors.get("background-shimmer")));
+            pane.setBorder(new MatteBorder(0, 0, 1, 0, findColorById(R.color.background_shimmer)));
             //pane.setBackground(Color.red);
             pane.setPreferredSize(new Dimension(480, 110));
             //pane.setOpaque(true);
@@ -242,8 +242,8 @@ public class MainActivity extends Activity {
 
             JProgressBar progress = new JProgressBar();
             progress.setBorder(new EmptyBorder(0, 0, 0, 0));
-            //progress.setForeground(R.colors.get("primary"));
-            //progress.setBackground(R.colors.get("background-shimmer"));
+            progress.setForeground(findColorById(R.color.primary));
+            progress.setBackground(findColorById(R.color.background_shimmer));
             progress.setValue(10);
             //progress.setMaximum(100);
             constraints.gridy = 2;
@@ -258,20 +258,20 @@ public class MainActivity extends Activity {
 
 
             if(selected){
-                //title.setForeground(R.colors.get("background"));
-                //description.setForeground(R.colors.get("background"));
-                //details.setForeground(R.colors.get("background"));
+                title.setForeground(findColorById(R.color.background));
+                description.setForeground(findColorById(R.color.background));
+                details.setForeground(findColorById(R.color.background));
 
-                //pane.setBackground(R.colors.get("secondary"));
-                //content.setBackground(R.colors.get("secondary"));
+                pane.setBackground(findColorById(R.color.secondary));
+                content.setBackground(findColorById(R.color.secondary));
 
             }else{
-                //title.setForeground(R.colors.get("text-primary"));
-                //description.setForeground(R.colors.get("text-secondary"));
-                //details.setForeground(R.colors.get("text-secondary"));
+                title.setForeground(findColorById(R.color.text_primary));
+                description.setForeground(findColorById(R.color.text_secondary));
+                details.setForeground(findColorById(R.color.text_secondary));
 
-                //pane.setBackground(R.colors.get("background"));
-                //content.setBackground(R.colors.get("background"));
+                pane.setBackground(findColorById(R.color.background));
+                content.setBackground(findColorById(R.color.background));
             }
 
             pane.add(content, new RelativeConstraints().setHeight(90).centerVertically().toRightOf(icon).alignParentRight().setMarginLeft(10).setMarginRight(10));

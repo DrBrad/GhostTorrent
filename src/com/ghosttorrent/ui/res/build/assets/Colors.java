@@ -1,6 +1,5 @@
-package com.ghosttorrent.ui.build.assets;
+package com.ghosttorrent.ui.res.build.assets;
 
-import com.ghosttorrent.ui.build.Variable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -8,10 +7,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Colors extends Asset {
 
@@ -36,7 +32,7 @@ public class Colors extends Asset {
 
             for(int i = 0; i < nodeList.getLength(); i++){
                 Element element = (Element) nodeList.item(i);
-                variables.put(element.getAttribute("id"), 1);//new Variable(, element.getAttribute("value")));
+                variables.put(element.getAttribute("id"), i);//new Variable(, element.getAttribute("value")));
             }
 
         }catch(Exception e){

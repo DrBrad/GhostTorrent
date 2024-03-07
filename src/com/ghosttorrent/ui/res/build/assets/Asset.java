@@ -1,4 +1,4 @@
-package com.ghosttorrent.ui.build.assets;
+package com.ghosttorrent.ui.res.build.assets;
 
 import java.util.Map;
 

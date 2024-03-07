@@ -1,11 +1,6 @@
-package com.ghosttorrent.ui.build.assets;
+package com.ghosttorrent.ui.res.build.assets;
 
-import com.ghosttorrent.ui.build.Variable;
-import com.ghosttorrent.ui.build.assets.Asset;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Res extends Asset {
 
