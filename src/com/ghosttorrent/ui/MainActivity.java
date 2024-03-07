@@ -11,10 +11,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
+import java.io.File;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
@@ -32,11 +30,23 @@ public class MainActivity extends Activity {
     private JComponent createStatusBar(){
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
         pane.setBackground(R.colors.get("background-secondary"));
-        pane.add(new JButton("Open"));
+        JButton open = new JButton("Open");
+        pane.add(open);
         pane.add(new JButton("Run"));
         //pane.add(new JButton("Pause")); //WE COULD COMBINE THIS WITH RUN...
         pane.add(new JButton("Remove"));
         pane.add(new JButton("Properties"));
+
+        open.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                FileDialog dialog = new FileDialog((Frame) null);
+                dialog.setVisible(true);
+
+                File file = new File(dialog.getDirectory()+"/"+dialog.getFile());
+                System.out.println(file.getPath());
+            }
+        });
         return pane;
     }
 
