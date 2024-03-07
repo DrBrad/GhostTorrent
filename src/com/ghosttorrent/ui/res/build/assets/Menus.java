@@ -7,15 +7,19 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.HashMap;
 
 public class Menus extends Asset {
 
     //public static final String COLOR_ROOT_TAG = "colors", COLOR_TAG = "color";
 
     public Menus(){
-        variables = new HashMap<>();
+        File dir = new File(getClass().getResource("/menu").getFile());
 
+        int i = 0;
+        for(File file : dir.listFiles()){
+            variables.put(file.getName().split("\\.")[0], i);
+            i++;
+        }
 
 
         /*

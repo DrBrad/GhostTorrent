@@ -7,15 +7,12 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.HashMap;
 
 public class Colors extends Asset {
 
     public static final String COLOR_ROOT_TAG = "colors", COLOR_TAG = "color";
 
     public Colors(){
-        variables = new HashMap<>();
-
         File file = new File(getClass().getResource("/style/colors.xml").getFile());
 
         try{
