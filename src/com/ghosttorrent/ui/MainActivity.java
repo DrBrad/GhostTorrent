@@ -247,8 +247,8 @@ public class MainActivity extends Activity {
                 description.setForeground(R.colors.get("background"));
                 details.setForeground(R.colors.get("background"));
 
-                pane.setBackground(R.colors.get("primary"));
-                content.setBackground(R.colors.get("primary"));
+                pane.setBackground(R.colors.get("secondary"));
+                content.setBackground(R.colors.get("secondary"));
 
             }else{
                 title.setForeground(R.colors.get("text-primary"));
