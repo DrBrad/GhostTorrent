@@ -10,7 +10,7 @@
                 id="open_url"
                 title="Open URL" />
         <option
-                id="new"
+                id="new_torrent"
                 title="New" />
         <option
                 id="start_all"

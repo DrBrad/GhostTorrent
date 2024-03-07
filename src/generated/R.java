@@ -7,4 +7,5 @@ public class R {
 
     public Images image = new Images();
     public Colors color = new Colors();
+    public Menus menu = new Menus();
 }

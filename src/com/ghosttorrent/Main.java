@@ -13,6 +13,13 @@ public class Main {
         //application.launch();
         //R R = new R();
 
+        //LOAD MENU
+
+
+        R R = new R();
+        //inflateMenu(R.menu.toolbar)
+        //inflate will get menu from file
+        //Resources
 
         new Builder();
 

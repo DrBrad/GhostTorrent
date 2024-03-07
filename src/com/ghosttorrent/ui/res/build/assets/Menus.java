@@ -15,9 +15,18 @@ public class Menus extends Asset {
     public Menus(){
         File dir = new File(getClass().getResource("/menu").getFile());
 
+        //GENERATE MENUS DIR
+        //GENERATE ANOTHER FILE...
+
         int i = 0;
         for(File file : dir.listFiles()){
             variables.put(file.getName().split("\\.")[0], i);
+
+            //DECODE FILE
+            new Views(file).generate();
+
+
+
             i++;
         }
 

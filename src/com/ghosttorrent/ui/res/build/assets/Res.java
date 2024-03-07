@@ -6,8 +6,9 @@ public class Res extends Asset {
 
     public Res(){
         variables = new HashMap<>();
-        variables.put("color", "Colors");//new Variable("color", "Colors", Variable.Escape.ESCAPE));
-        variables.put("image", "Images");//new Variable("image", "Images", Variable.Escape.ESCAPE));
+        variables.put("color", "Colors");
+        variables.put("image", "Images");
+        variables.put("menu", "Menus");
     }
 
     @Override
