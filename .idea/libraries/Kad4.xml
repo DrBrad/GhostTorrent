@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Kad4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Kad4/out/artifacts/Kad4_jar/Kad4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
