@@ -1,6 +1,8 @@
 package com.ghosttorrent.ui;
 
 import com.ghosttorrent.ui.utils.inter.Application;
+import com.ghosttorrent.ui.utils.res.menus.MenuItem;
+import com.ghosttorrent.ui.utils.res.menus.MenuOption;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -29,57 +31,24 @@ public class GhostApplication extends Application {
 
     private JMenuBar createMenuBar(){
         JMenuBar menu = new JMenuBar();
-        menu.setBackground(R.colors.get("background-shimmer"));
+        //menu.setBackground(R.colors.background_shimmer);
         menu.setBorder(new EmptyBorder(0, 0, 0, 0));
 
-        menu.add(createMenu("File", new String[]{
-                "Open",
-                "Open URL",
-                "New",
-                "Start All",
-                "Pause All",
-                "Quit"
-        }));
-
-        menu.add(createMenu("Edit", new String[]{
-                "Select All",
-                "Deselect All",
-                "Preferences"
-        }));
-
-        menu.add(createMenu("Torrent", new String[]{
-                "Properties",
-                "Open Folder",
-                "Start"
-                //ECT...
-        }));
-
-        menu.add(createMenu("View", new String[]{
-                "Compact View",
-                "Toolbar",
-                "Filterbar",
-                "Statusbar"
-                //ECT...
-        }));
-
-        menu.add(createMenu("Help", new String[]{
-                "Message Log",
-                "Statistics",
-                "Donate",
-                "Contents",
-                "About"
-        }));
+        /*
+        for(MenuItem item : R.menus.get("menu").getAllItems()){
+            menu.add(createMenu(item));
+        }*/
 
         return menu;
     }
 
-    private JMenu createMenu(String title, String[] options){
-        JMenu menu = new JMenu(title);
-        menu.setForeground(R.colors.get("text-primary"));
+    private JMenu createMenu(MenuItem item){
+        JMenu menu = new JMenu(item.getTitle());
+        //menu.setForeground(R.colors.get("text-primary"));
 
-        for(String option : options){
-            JMenuItem item = new JMenuItem(option);
-            menu.add(item);
+        for(MenuOption option : item.getAllOptions()){
+            JMenuItem i = new JMenuItem(option.getTitle());
+            menu.add(i);
         }
         return menu;
     }

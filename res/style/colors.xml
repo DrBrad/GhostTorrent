@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<colors>
+    <color id="primary" value="#24f262" />
+    <color id="secondary" value="#1abd4b" />
+    <color id="accent" value="#9939bf" />
+
+    <color id="background" value="#080d2b" />
+    <color id="background_secondary" value="#0c1133" />
+    <color id="background_shimmer" value="#161c45" />
+
+    <color id="text_primary" value="#ffffff" />
+    <color id="text_secondary" value="#cccccc" />
+</colors>

@@ -1,6 +1,7 @@
 package com.ghosttorrent.ui;
 
 import com.ghosttorrent.torrent.Torrent;
+import com.ghosttorrent.ui.utils.Bundle;
 import com.ghosttorrent.ui.utils.inter.Activity;
 import com.ghosttorrent.ui.utils.Intent;
 import com.ghosttorrent.ui.utils.layouts.RelativeConstraints;
@@ -19,18 +20,24 @@ import java.text.StringCharacterIterator;
 public class MainActivity extends Activity {
 
     @Override
-    public void onCreate(Intent intent){
+    public void onCreate(Bundle bundle){
+        super.onCreate(bundle);
+        //setContentView(R.layout.)
+
+        /*
         getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
         getRoot().add(createStatusBar());
         getRoot().add(createFilterBar());
 
         getRoot().add(createList());
+        */
     }
 
     private JComponent createStatusBar(){
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        pane.setBackground(R.colors.get("background-secondary"));
-        JButton open = new JButton("Open");
+        //pane.setBackground(R.colors.get("background-secondary"));
+        pane.setPreferredSize(new Dimension(48, 48));
+        JButton open = new JButton();//R.images.get("ic_play"));
         pane.add(open);
         pane.add(new JButton("Run"));
         //pane.add(new JButton("Pause")); //WE COULD COMBINE THIS WITH RUN...
@@ -52,9 +59,9 @@ public class MainActivity extends Activity {
 
     private JComponent createFilterBar(){
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        pane.setBackground(R.colors.get("background-secondary"));
+        //pane.setBackground(R.colors.get("background-secondary"));
         JLabel label = new JLabel("Show");
-        label.setForeground(R.colors.get("text-primary"));
+        //label.setForeground(R.colors.get("text-primary"));
         pane.add(label);
         //MENU (TYPE OF TORRENT)
         //MENU (TRACKER)
@@ -92,7 +99,7 @@ public class MainActivity extends Activity {
         //list.setCellRenderer(new SideCellRenderer());
         //list.setModel(sideModel);
         JScrollPane scrollPane = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBorder(new MatteBorder(1, 0, 0, 0, R.colors.get("background-shimmer")));
+        //scrollPane.setBorder(new MatteBorder(1, 0, 0, 0, R.colors.get("background-shimmer")));
 
         /*
         for(int i = 0; i < 100; i++){
@@ -122,14 +129,14 @@ public class MainActivity extends Activity {
             @Override
             protected void paintThumb(Graphics g, JComponent c, Rectangle r){
                 Graphics2D graphics = (Graphics2D) g;
-                graphics.setColor(R.colors.get("secondary"));
+                //graphics.setColor(R.colors.get("secondary"));
                 graphics.fillRoundRect(r.width-11, r.y, 10, r.height, 10, 10);
             }
 
             @Override
             protected void paintTrack(Graphics g, JComponent c, Rectangle r){
                 Graphics2D graphics = (Graphics2D) g;
-                graphics.setColor(R.colors.get("background"));
+                //graphics.setColor(R.colors.get("background"));
                 graphics.fillRect(r.x, r.y, r.width, r.height);
             }
 
@@ -201,7 +208,7 @@ public class MainActivity extends Activity {
 
             JPanel pane = new JPanel();
             pane.setLayout(new RelativeLayout());//new FlowLayout(FlowLayout.LEFT));
-            pane.setBorder(new MatteBorder(0, 0, 1, 0, R.colors.get("background-shimmer")));
+            //pane.setBorder(new MatteBorder(0, 0, 1, 0, R.colors.get("background-shimmer")));
             //pane.setBackground(Color.red);
             pane.setPreferredSize(new Dimension(480, 110));
             //pane.setOpaque(true);
@@ -209,7 +216,7 @@ public class MainActivity extends Activity {
 
 
             //IMAGE - 60 x 60?
-            JLabel icon = new JLabel(R.images.get("ic_folder"));
+            JLabel icon = new JLabel();//R.images.get("ic_folder"));
             pane.add(icon, new RelativeConstraints().setWidth(48).setHeight(48).centerVertically().setMargins(new Insets(10, 10, 10, 10)));
 
             JPanel content = new JPanel();
@@ -237,8 +244,8 @@ public class MainActivity extends Activity {
 
             JProgressBar progress = new JProgressBar();
             progress.setBorder(new EmptyBorder(0, 0, 0, 0));
-            progress.setForeground(R.colors.get("primary"));
-            progress.setBackground(R.colors.get("background-shimmer"));
+            //progress.setForeground(R.colors.get("primary"));
+            //progress.setBackground(R.colors.get("background-shimmer"));
             progress.setValue(10);
             //progress.setMaximum(100);
             constraints.gridy = 2;
@@ -253,20 +260,20 @@ public class MainActivity extends Activity {
 
 
             if(selected){
-                title.setForeground(R.colors.get("background"));
-                description.setForeground(R.colors.get("background"));
-                details.setForeground(R.colors.get("background"));
+                //title.setForeground(R.colors.get("background"));
+                //description.setForeground(R.colors.get("background"));
+                //details.setForeground(R.colors.get("background"));
 
-                pane.setBackground(R.colors.get("secondary"));
-                content.setBackground(R.colors.get("secondary"));
+                //pane.setBackground(R.colors.get("secondary"));
+                //content.setBackground(R.colors.get("secondary"));
 
             }else{
-                title.setForeground(R.colors.get("text-primary"));
-                description.setForeground(R.colors.get("text-secondary"));
-                details.setForeground(R.colors.get("text-secondary"));
+                //title.setForeground(R.colors.get("text-primary"));
+                //description.setForeground(R.colors.get("text-secondary"));
+                //details.setForeground(R.colors.get("text-secondary"));
 
-                pane.setBackground(R.colors.get("background"));
-                content.setBackground(R.colors.get("background"));
+                //pane.setBackground(R.colors.get("background"));
+                //content.setBackground(R.colors.get("background"));
             }
 
             pane.add(content, new RelativeConstraints().setHeight(90).centerVertically().toRightOf(icon).alignParentRight().setMarginLeft(10).setMarginRight(10));

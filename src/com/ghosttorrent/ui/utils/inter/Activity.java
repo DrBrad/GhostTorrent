@@ -1,17 +1,20 @@
 package com.ghosttorrent.ui.utils.inter;
 
+import com.ghosttorrent.ui.utils.Bundle;
 import com.ghosttorrent.ui.utils.Intent;
 import com.ghosttorrent.ui.utils.Res;
+import generated.R;
 
 import javax.swing.*;
 
 public abstract class Activity {
 
     private Application application;
-    protected Res R;
+    protected R R;
     private JPanel root;
 
-    public abstract void onCreate(Intent intent);
+    public void onCreate(Bundle bundle){
+    }
 
     public void onResume(){
 
@@ -31,5 +34,12 @@ public abstract class Activity {
 
     public JPanel getRoot(){
         return root;
+    }
+
+    public void setContentView(){
+    }
+
+    public JComponent findViewById(String id){
+        return null;
     }
 }

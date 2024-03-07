@@ -1,7 +1,7 @@
 package com.ghosttorrent.ui.utils.inter;
 
 import com.ghosttorrent.ui.utils.Intent;
-import com.ghosttorrent.ui.utils.Res;
+import generated.R;
 
 import javax.swing.*;
 import java.lang.reflect.Field;
@@ -10,10 +10,10 @@ import java.lang.reflect.InvocationTargetException;
 public abstract class Application {
 
     protected JFrame frame;
-    protected Res R;
+    protected R R;
 
     public Application(){
-        R = new Res();
+        R = new R();
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -47,7 +47,7 @@ public abstract class Application {
         f.setAccessible(true);
         f.set(activity, root);
 
-        activity.onCreate(intent);
+        //activity.onCreate(intent);
     }
 
     public JFrame getFrame(){

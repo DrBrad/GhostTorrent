@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+    <item
+            id="file"
+            title="File">
+        <option
+                id="open"
+                title="Open" />
+        <option
+                id="open_url"
+                title="Open URL" />
+        <option
+                id="new"
+                title="New" />
+        <option
+                id="start_all"
+                title="Start All" />
+        <option
+                id="pause_all"
+                title="Pause All" />
+        <option
+                id="quit"
+                title="Quit" />
+    </item>
+    <item
+            id="torrent"
+            title="Torrent">
+        <option
+                id="properties"
+                title="Properties" />
+        <option
+                id="open_folder"
+                title="Open Folder" />
+        <option
+                id="start"
+                title="Start" />
+    </item>
+    <item
+            id="view"
+            title="View">
+        <option
+                id="compact_view"
+                title="Compact View" />
+        <option
+                id="toolbar"
+                title="Toolbar" />
+        <option
+                id="statusbar"
+                title="Statusbar" />
+        <option
+                id="filterbar"
+                title="Filterbar" />
+    </item>
+    <item
+            id="help"
+            title="Help">
+        <option
+                id="help"
+                title="Message Log" />
+        <option
+                id="statistics"
+                title="Statistics" />
+        <option
+                id="donate"
+                title="Donate" />
+        <option
+                id="about"
+                title="About" />
+    </item>
+</menu>
