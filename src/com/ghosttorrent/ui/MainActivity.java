@@ -35,13 +35,25 @@ public class MainActivity extends Activity {
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
         pane.setBackground(findColorById(R.color.background_secondary));
         pane.setPreferredSize(new Dimension(48, 48));
-        JButton open = new JButton("Open");
-        pane.add(open);
-        pane.add(new JButton(new ImageIcon(findImageById(R.image.ic_play))));
-        //pane.add(new JButton("Pause")); //WE COULD COMBINE THIS WITH RUN...
-        pane.add(new JButton(new ImageIcon(findImageById(R.image.ic_delete))));
-        pane.add(new JButton(new ImageIcon(findImageById(R.image.ic_settings))));//"Properties"));
+        pane.add(new JButton("Open"));
 
+        ImageIcon[] icons = new ImageIcon[]{
+                new ImageIcon(findImageById(R.image.ic_play)),
+                new ImageIcon(findImageById(R.image.ic_delete)),
+                new ImageIcon(findImageById(R.image.ic_settings))
+        };
+
+        for(ImageIcon icon : icons){
+            JButton button = new JButton(icon);
+            button.setOpaque(false);
+            button.setContentAreaFilled(false);
+            button.setBorderPainted(false);
+            button.setBorder(null);
+            pane.add(button);
+        }
+        //pane.add(new JButton(new ImageIcon(findImageById(R.image.ic_settings))));//"Properties"));
+
+        /*
         open.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -52,6 +64,7 @@ public class MainActivity extends Activity {
                 System.out.println(file.getPath());
             }
         });
+        */
         return pane;
     }
 
@@ -214,7 +227,7 @@ public class MainActivity extends Activity {
 
 
             //IMAGE - 60 x 60?
-            JLabel icon = new JLabel();//R.images.get("ic_folder"));
+            JLabel icon = new JLabel(new ImageIcon(findImageById(R.image.ic_folder)));
             pane.add(icon, new RelativeConstraints().setWidth(48).setHeight(48).centerVertically().setMargins(new Insets(10, 10, 10, 10)));
 
             JPanel content = new JPanel();
@@ -241,7 +254,8 @@ public class MainActivity extends Activity {
             content.add(description, constraints);
 
             JProgressBar progress = new JProgressBar();
-            progress.setBorder(new EmptyBorder(0, 0, 0, 0));
+            progress.setBorderPainted(false);
+            progress.setBorder(null);
             progress.setForeground(findColorById(R.color.primary));
             progress.setBackground(findColorById(R.color.background_shimmer));
             progress.setValue(10);

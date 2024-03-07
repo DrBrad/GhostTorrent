@@ -1,16 +1,13 @@
-package com.ghosttorrent.ui.utils.res.menus;
+package com.ghosttorrent.ui.utils.OLD.menus;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import static com.ghosttorrent.ui.utils.res.menus.MenuItem.MENU_ITEM_TAG;
+import static com.ghosttorrent.ui.utils.OLD.menus.MenuItem.MENU_ITEM_TAG;
 
 public class Menu {
 
