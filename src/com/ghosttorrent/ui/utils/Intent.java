@@ -5,4 +5,8 @@ public class Intent {
     public Intent(){
 
     }
+
+    public Bundle getBundle(){
+        return null;
+    }
 }

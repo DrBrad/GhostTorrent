@@ -3,6 +3,7 @@ package com.ghosttorrent.ui.build;
 import com.ghosttorrent.ui.build.assets.Asset;
 import com.ghosttorrent.ui.build.assets.Colors;
 import com.ghosttorrent.ui.build.assets.Images;
+import com.ghosttorrent.ui.build.assets.Res;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class Builder {
         }
     }
 
-    private void generate(String name, List<Variable> variables){
+    private void generate(String name, Map<String, Object> variables){
         try{
             System.out.println(packagePath+"/"+name);
             FileWriter writer = new FileWriter(packagePath+"/"+name+".java");
@@ -38,8 +39,13 @@ public class Builder {
             writer.write("/*********************************/\n");
             writer.write("public class "+name+" {\n\n");
 
-            for(Variable variable : variables){
-                writer.write("    public "+variable.getClassName()+" "+variable.getName()+" = "+variable.getValueString()+";\n");
+            for(String key : variables.keySet()){
+                if(variables.get(key) instanceof Number){
+                    writer.write("    public int "+key+" = "+variables.get(key)+";\n");
+                    continue;
+                }
+
+                writer.write("    public "+variables.get(key)+" "+key+" = new "+variables.get(key)+"();\n");
             }
 
             writer.write("}\n");

@@ -1,8 +1,6 @@
 package com.ghosttorrent.ui.utils.inter;
 
 import com.ghosttorrent.ui.utils.Bundle;
-import com.ghosttorrent.ui.utils.Intent;
-import com.ghosttorrent.ui.utils.Res;
 import generated.R;
 
 import javax.swing.*;

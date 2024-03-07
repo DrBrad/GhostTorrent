@@ -5,12 +5,12 @@ package generated;
 /*********************************/
 public class Colors {
 
-    public String primary = "#24f262";
-    public String secondary = "#1abd4b";
-    public String accent = "#9939bf";
-    public String background = "#080d2b";
-    public String background_secondary = "#0c1133";
-    public String background_shimmer = "#161c45";
-    public String text_primary = "#ffffff";
-    public String text_secondary = "#cccccc";
+    public int secondary = 1;
+    public int text_primary = 1;
+    public int background = 1;
+    public int background_secondary = 1;
+    public int accent = 1;
+    public int background_shimmer = 1;
+    public int text_secondary = 1;
+    public int primary = 1;
 }

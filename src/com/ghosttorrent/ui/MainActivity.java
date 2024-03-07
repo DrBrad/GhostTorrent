@@ -24,18 +24,16 @@ public class MainActivity extends Activity {
         super.onCreate(bundle);
         //setContentView(R.layout.)
 
-        /*
         getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
         getRoot().add(createStatusBar());
         getRoot().add(createFilterBar());
 
         getRoot().add(createList());
-        */
     }
 
     private JComponent createStatusBar(){
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        //pane.setBackground(R.colors.get("background-secondary"));
+        //pane.setBackground(Color.decode(R.color.background_secondary));
         pane.setPreferredSize(new Dimension(48, 48));
         JButton open = new JButton();//R.images.get("ic_play"));
         pane.add(open);
@@ -59,7 +57,7 @@ public class MainActivity extends Activity {
 
     private JComponent createFilterBar(){
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        //pane.setBackground(R.colors.get("background-secondary"));
+        //pane.setBackground(Color.decode(R.color.background_secondary));
         JLabel label = new JLabel("Show");
         //label.setForeground(R.colors.get("text-primary"));
         pane.add(label);

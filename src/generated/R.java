@@ -5,6 +5,6 @@ package generated;
 /*********************************/
 public class R {
 
-    public Colors color = new Colors();
     public Images image = new Images();
+    public Colors color = new Colors();
 }

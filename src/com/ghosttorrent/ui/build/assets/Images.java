@@ -4,24 +4,19 @@ import com.ghosttorrent.ui.build.Variable;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Images extends Asset {
 
-    private List<Variable> variables;
-
     public Images(){
-        variables = new ArrayList<>();
+        variables = new HashMap<>();
         File dir = new File(getClass().getResource("/image/48").getFile());
 
         for(File file : dir.listFiles()){
-            variables.add(new Variable(file.getName().split("\\.")[0], 0));
+            variables.put(file.getName().split("\\.")[0], 0);//new Variable(file.getName().split("\\.")[0], 0));
         }
-    }
-
-    @Override
-    public List<Variable> getVariables(){
-        return variables;
     }
 
     @Override

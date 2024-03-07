@@ -1,12 +1,14 @@
 package com.ghosttorrent.ui.build.assets;
 
-import com.ghosttorrent.ui.build.Variable;
-
-import java.util.List;
+import java.util.Map;
 
 public abstract class Asset {
 
-    public abstract List<Variable> getVariables();
+    protected Map<String, Object> variables;
+
+    public Map<String, Object> getVariables(){
+        return variables;
+    }
 
     public abstract String getName();
 }

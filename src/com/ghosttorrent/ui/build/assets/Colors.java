@@ -9,15 +9,16 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Colors extends Asset {
 
     public static final String COLOR_ROOT_TAG = "colors", COLOR_TAG = "color";
-    private List<Variable> variables;
 
     public Colors(){
-        variables = new ArrayList<>();
+        variables = new HashMap<>();
 
         File file = new File(getClass().getResource("/style/colors.xml").getFile());
 
@@ -35,17 +36,12 @@ public class Colors extends Asset {
 
             for(int i = 0; i < nodeList.getLength(); i++){
                 Element element = (Element) nodeList.item(i);
-                variables.add(new Variable(element.getAttribute("id"), element.getAttribute("value")));
+                variables.put(element.getAttribute("id"), 1);//new Variable(, element.getAttribute("value")));
             }
 
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public List<Variable> getVariables(){
-        return variables;
     }
 
     @Override

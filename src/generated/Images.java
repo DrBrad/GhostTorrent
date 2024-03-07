@@ -5,9 +5,9 @@ package generated;
 /*********************************/
 public class Images {
 
-    public Integer ic_delete = 0;
-    public Integer ic_play = 0;
-    public Integer ic_pause = 0;
-    public Integer ic_folder = 0;
-    public Integer ic_settings = 0;
+    public int ic_folder = 0;
+    public int ic_settings = 0;
+    public int ic_play = 0;
+    public int ic_pause = 0;
+    public int ic_delete = 0;
 }
