@@ -55,7 +55,7 @@
             id="help"
             title="Help">
         <option
-                id="help"
+                id="message_log"
                 title="Message Log" />
         <option
                 id="statistics"

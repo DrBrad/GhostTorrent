@@ -5,7 +5,8 @@ package generated;
 /*********************************/
 public class R {
 
-    public Images image = new Images();
     public Colors color = new Colors();
+    public Images image = new Images();
     public Menus menu = new Menus();
+    public Ids id;
 }

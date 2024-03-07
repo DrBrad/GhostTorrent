@@ -5,24 +5,25 @@ package generated.menu;
 /*********************************/
 public class toolbar {
 
-    public int new_torrent = 5;
-    public int torrent = 3;
-    public int start = 5;
-    public int about = 7;
+    public int file = 1;
+    public int open = 1;
     public int open_url = 3;
+    public int new_torrent = 5;
+    public int start_all = 7;
     public int pause_all = 9;
-    public int filterbar = 7;
+    public int quit = 11;
+    public int torrent = 3;
+    public int properties = 1;
+    public int open_folder = 3;
+    public int start = 5;
+    public int view = 5;
     public int compact_view = 1;
     public int toolbar = 3;
-    public int help = 1;
-    public int view = 5;
-    public int file = 1;
-    public int quit = 11;
-    public int open_folder = 3;
     public int statusbar = 5;
-    public int donate = 5;
-    public int open = 1;
-    public int start_all = 7;
-    public int properties = 1;
+    public int filterbar = 7;
+    public int help = 7;
+    public int message_log = 1;
     public int statistics = 3;
+    public int donate = 5;
+    public int about = 7;
 }

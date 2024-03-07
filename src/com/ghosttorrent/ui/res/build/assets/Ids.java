@@ -9,12 +9,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
-public class Views extends Asset {
+public class Ids extends Asset {
 
-    private String name;
+    private String name, type;
 
-    public Views(File file){
-        this.name = file.getName().split("\\.")[0];
+    public Ids(File file, String type){
+        name = file.getName().split("\\.")[0];
+        this.type = type;
 
         try{
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -22,17 +23,6 @@ public class Views extends Asset {
             Document doc = builder.parse(file);
 
             recursive(doc.getDocumentElement());
-
-            //if(!root.getTagName().equals(COLOR_ROOT_TAG)){
-            //    throw new IllegalArgumentException("Colors couldn't load, '"+COLOR_ROOT_TAG+"' is not root element");
-            //}
-            /*
-            NodeList nodeList = root.getElementsByTagName("menu");
-
-            for(int i = 0; i < nodeList.getLength(); i++){
-                Element element = (Element) nodeList.item(i);
-                variables.put(element.getAttribute("id"), i);//new Variable(, element.getAttribute("value")));
-            }*/
 
         }catch(Exception e){
             e.printStackTrace();
@@ -52,14 +42,14 @@ public class Views extends Asset {
                 continue;
             }
             Element element = (Element) nodeList.item(i);
-            variables.put(element.getAttribute("id"), i);
+            variables.add(new Variable(element.getAttribute("id"), i, "int"));
             recursive(element);
         }
     }
 
     @Override
     public String getPackage(){
-        return super.getPackage()+".menu";
+        return super.getPackage()+"."+type;
     }
 
     @Override

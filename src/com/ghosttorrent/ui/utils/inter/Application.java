@@ -28,9 +28,11 @@ public abstract class Application {
         frame.setVisible(true);
     }
 
-    public abstract void onCreate();
+    public void onCreate(){
+    }
 
-    public abstract void onDestroy();
+    public void onDestroy(){
+    }
 
     public void startActivity(Activity activity)throws NoSuchFieldException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
         startActivity(activity, new Intent());
@@ -61,6 +63,10 @@ public abstract class Application {
 
     public JFrame getFrame(){
         return frame;
+    }
+
+    public void setToolbar(int id){
+        resources.inflate("menu", id);
     }
 
     public Color findColorById(int id){

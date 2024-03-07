@@ -29,7 +29,7 @@ public class Colors extends Asset {
 
             for(int i = 0; i < nodeList.getLength(); i++){
                 Element element = (Element) nodeList.item(i);
-                variables.put(element.getAttribute("id"), i);//new Variable(, element.getAttribute("value")));
+                variables.add(new Variable(element.getAttribute("id"), i, "int"));//new Variable(, element.getAttribute("value")));
             }
 
         }catch(Exception e){

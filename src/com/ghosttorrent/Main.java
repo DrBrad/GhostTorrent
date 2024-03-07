@@ -9,14 +9,14 @@ import generated.R;
 public class Main {
 
     public static void main(String[] args){
-        //Application application = new GhostApplication();
-        //application.launch();
+        Application application = new GhostApplication();
+        application.launch();
         //R R = new R();
 
         //LOAD MENU
 
 
-        R R = new R();
+        //R R = new R();
         //inflateMenu(R.menu.toolbar)
         //inflate will get menu from file
         //Resources

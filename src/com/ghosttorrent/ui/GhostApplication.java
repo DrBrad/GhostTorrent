@@ -12,13 +12,16 @@ public class GhostApplication extends Application {
 
     @Override
     public void onCreate(){
+        super.onCreate();
+        setToolbar(R.menu.toolbar);
+
         frame.setTitle("Ghost Torrent");
         frame.setSize(500, 750);
         frame.setMinimumSize(new Dimension(500, 750));
         frame.setJMenuBar(createMenuBar());
 
         try{
-            startActivity(new MainActivity());
+            //startActivity(new MainActivity());
         }catch(Exception e){
             e.printStackTrace();
         }

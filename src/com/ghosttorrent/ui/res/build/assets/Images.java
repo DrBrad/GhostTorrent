@@ -9,7 +9,7 @@ public class Images extends Asset {
 
         int i = 0;
         for(File file : dir.listFiles()){
-            variables.put(file.getName().split("\\.")[0], i);
+            variables.add(new Variable(file.getName().split("\\.")[0], i, "int"));
             i++;
         }
     }

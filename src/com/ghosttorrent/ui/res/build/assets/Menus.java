@@ -1,11 +1,5 @@
 package com.ghosttorrent.ui.res.build.assets;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
 public class Menus extends Asset {
@@ -20,10 +14,10 @@ public class Menus extends Asset {
 
         int i = 0;
         for(File file : dir.listFiles()){
-            variables.put(file.getName().split("\\.")[0], i);
+            variables.add(new Variable(file.getName().split("\\.")[0], i, "int"));
 
             //DECODE FILE
-            new Views(file).generate();
+            new Ids(file, "menu").generate();
 
 
 

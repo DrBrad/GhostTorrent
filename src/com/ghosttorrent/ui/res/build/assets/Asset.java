@@ -3,18 +3,20 @@ package com.ghosttorrent.ui.res.build.assets;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class Asset {
 
     private String packageName, packagePath;
-    protected Map<String, Object> variables;
+    protected List<Variable> variables;
 
     public Asset(){
         packageName = "generated";
         packagePath = System.getProperty("user.dir")+"/src/";
-        variables = new HashMap<>();
+        variables = new ArrayList<>();
     }
 
     public abstract String getName();
@@ -42,13 +44,15 @@ public abstract class Asset {
             writer.write("/*********************************/\n");
             writer.write("public class "+getName()+" {\n\n");
 
-            for(String key : variables.keySet()){
-                if(variables.get(key) instanceof Number){
-                    writer.write("    public int "+key+" = "+variables.get(key)+";\n");
+            for(Variable variable : variables){
+                if(variable.getValue() == null){
+                    writer.write("    public "+variable.getType()+" "+variable.getKey()+";\n");
                     continue;
                 }
 
-                writer.write("    public "+variables.get(key)+" "+key+" = new "+variables.get(key)+"();\n");
+                writer.write("    public "+variable.getType()+" "+variable.getKey()+" = "+variable.getValue()+";\n");
+
+                //writer.write("    public "+variables.get(key)+" "+key+" = new "+variables.get(key)+"();\n");
             }
 
             writer.write("}\n");
@@ -58,6 +62,30 @@ public abstract class Asset {
 
         }catch(IOException e){
             e.printStackTrace();
+        }
+    }
+
+    public class Variable {
+
+        private String key, type;
+        private Object value;
+
+        public Variable(String key, Object value, String type){
+            this.key = key;
+            this.value = value;
+            this.type = type;
+        }
+
+        public String getKey(){
+            return key;
+        }
+
+        public Object getValue(){
+            return value;
+        }
+
+        public String getType(){
+            return type;
         }
     }
 }
