@@ -35,12 +35,12 @@ public class MainActivity extends Activity {
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
         pane.setBackground(findColorById(R.color.background_secondary));
         pane.setPreferredSize(new Dimension(48, 48));
-        JButton open = new JButton();//R.images.get("ic_play"));
+        JButton open = new JButton("Open");
         pane.add(open);
-        pane.add(new JButton("Run"));
+        pane.add(new JButton(new ImageIcon(findImageById(R.image.ic_play))));
         //pane.add(new JButton("Pause")); //WE COULD COMBINE THIS WITH RUN...
-        pane.add(new JButton("Remove"));
-        pane.add(new JButton("Properties"));
+        pane.add(new JButton(new ImageIcon(findImageById(R.image.ic_delete))));
+        pane.add(new JButton(new ImageIcon(findImageById(R.image.ic_settings))));//"Properties"));
 
         open.addActionListener(new ActionListener(){
             @Override
