@@ -22,8 +22,10 @@ import java.util.Map;
 public class Resources {
 
     public Map<String, Asset> assets;
+    private R R;
 
     public Resources(R R){
+        this.R = R;
         assets = new HashMap<>();
         assets.put("color", new Colors(R.color));
         assets.put("image", new Images(R.image));
@@ -66,14 +68,12 @@ public class Resources {
             }
         }
 
+        if(root.hasAttribute("text-color")){
+            component.setForeground(resolveColor(root.getAttribute("text-color")));
+        }
+
         if(root.hasAttribute("background")){
-            String color = root.getAttribute("background");
-            if(color.startsWith("@color/")){
-                //color.replaceFirst("@color/", "")
-                //component.setBackground((Color) assets.get("color").get());
-            }else{
-                component.setBackground(Color.decode(color));
-            }
+            component.setBackground(resolveColor(root.getAttribute("background")));
         }
 
         if(root.hasChildNodes()){
@@ -88,5 +88,21 @@ public class Resources {
         }
 
         return component;
+    }
+
+    private Color resolveColor(String color){
+        if(color.startsWith("@color/")){
+            try{
+                int id = (int) R.color.getClass().getField(color.replaceFirst("@color/", "")).get(R.color);
+                return (Color) assets.get("color").get(id);
+
+            }catch(NoSuchFieldException | IllegalAccessException e){
+                e.printStackTrace();
+            }
+            return null;
+
+        }else{
+            return Color.decode(color);
+        }
     }
 }

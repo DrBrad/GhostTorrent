@@ -7,6 +7,8 @@ import generated.R;
 
 public class Main {
 
+    //HONESTLY WE COULD JUST MAKE OUR OWN COMPONENTS AND FILL WITH REFLECT - TODO
+
     public static void main(String[] args){
         Application application = new GhostApplication();
         application.launch();

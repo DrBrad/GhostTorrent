@@ -21,6 +21,8 @@ public class GhostApplication extends Application {
         //menu.setBorder(new EmptyBorder(0, 0, 0, 0));
         //menu.setBackground(R.colors.background_shimmer);
 
+        //menu.setForeground(R.colors.get("text-primary"));
+
         try{
             startActivity(new MainActivity());
         }catch(Exception e){
