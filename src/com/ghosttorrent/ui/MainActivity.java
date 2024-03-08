@@ -74,6 +74,7 @@ public class MainActivity extends Activity {
         //scrollPane.setBorder(new MatteBorder(1, 0, 0, 0, findColorById(R.color.background_shimmer)));
         scrollPane.getViewport().putClientProperty("EnableWindowBlit", Boolean.TRUE);
         scrollPane.getViewport().setScrollMode(JViewport.BACKINGSTORE_SCROLL_MODE);
+        scrollPane.setBackground(UIManager.getColor("Panel.background").darker());
 
         list.addMouseMotionListener(new MouseMotionListener(){
             @Override
