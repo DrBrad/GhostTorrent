@@ -7,6 +7,9 @@ import com.ghosttorrent.ui.utils.OLD.menus.MenuOption;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
 public class GhostApplication extends Application {
 
@@ -25,6 +28,24 @@ public class GhostApplication extends Application {
 
         //JMenuItem item = (JMenuItem) findViewById(R.id.menu_item_open);
         //item.setText("HELLO WORLD");
+
+        ((JMenuItem) findViewById(R.id.menu_item_open)).addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                FileDialog dialog = new FileDialog((Frame) null);
+                dialog.setVisible(true);
+
+                File file = new File(dialog.getDirectory()+"/"+dialog.getFile());
+                System.out.println(file.getPath());
+            }
+        });
+
+        ((JMenuItem) findViewById(R.id.menu_item_quit)).addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                System.exit(0);
+            }
+        });
 
 
         try{

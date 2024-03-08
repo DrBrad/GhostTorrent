@@ -166,6 +166,7 @@ public class MainActivity extends Activity {
             contentLayout.setConstraints(description, constraints);
 
             JProgressBar progress = (JProgressBar) content.findViewById(R.id.torrent_item_progress);
+            progress.setPreferredSize(new Dimension(100, 8));
             progress.setValue(10);
             constraints.gridy = 2;
             contentLayout.setConstraints(progress, constraints);
@@ -176,8 +177,24 @@ public class MainActivity extends Activity {
             constraints.insets = new Insets(5, 0, 0, 0);
             contentLayout.setConstraints(details, constraints);
 
-            pane.setBackground(UIManager.getColor("Panel.background").darker());
-            content.setBackground(UIManager.getColor("Panel.background").darker());
+            if(selected){
+                title.setForeground(UIManager.getColor("MenuItem.selectionForeground"));
+                description.setForeground(UIManager.getColor("MenuItem.selectionForeground"));
+                details.setForeground(UIManager.getColor("MenuItem.selectionForeground"));
+
+                //progress.setStringPainted(true);
+                //progress.setForeground(Color.RED);//UIManager.getColor("Panel.background").darker());
+                //progress.setBackground(Color.BLUE);//UIManager.getColor("MenuItem.selectionBackground").darker());
+
+                pane.setBackground(UIManager.getColor("MenuItem.selectionBackground"));
+                content.setBackground(UIManager.getColor("MenuItem.selectionBackground"));
+
+            }else{
+                pane.setBackground(UIManager.getColor("Panel.background").darker());
+                content.setBackground(UIManager.getColor("Panel.background").darker());
+            }
+
+
             /*
             if(selected){
                 title.setForeground(findColorById(R.color.background));
