@@ -72,6 +72,8 @@ public class MainActivity extends Activity {
         //list.setModel(sideModel);
         JScrollPane scrollPane = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         //scrollPane.setBorder(new MatteBorder(1, 0, 0, 0, findColorById(R.color.background_shimmer)));
+        scrollPane.getViewport().putClientProperty("EnableWindowBlit", Boolean.TRUE);
+        scrollPane.getViewport().setScrollMode(JViewport.BACKINGSTORE_SCROLL_MODE);
 
         list.addMouseMotionListener(new MouseMotionListener(){
             @Override
@@ -89,7 +91,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        int increment = 30;
+        int increment = 16;
         scrollPane.getVerticalScrollBar().setUnitIncrement(increment);
         KeyStroke kUp = KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0);
         KeyStroke kDown = KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0);

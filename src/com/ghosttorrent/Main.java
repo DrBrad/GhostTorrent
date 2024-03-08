@@ -20,6 +20,7 @@ public class Main {
     //WHY IS THEIR A RANDOM NULL ID...
 
     public static void main(String[] args)throws Exception {
+        System.setProperty("sun.java2d.opengl", "true");
         //new Builder();
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         Application application = new GhostApplication();
