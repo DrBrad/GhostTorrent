@@ -1,7 +1,6 @@
 package com.ghosttorrent;
 
 import com.ghosttorrent.ui.GhostApplication;
-import com.ghosttorrent.ui.res.build.Builder;
 import com.ghosttorrent.ui.utils.inter.Application;
 
 import javax.swing.*;
@@ -23,6 +22,12 @@ public class Main {
                 }
             }
         }
+
+        //CHECK CONFIG
+        //Settings.TORRENT_DIR = System.getProperty("user.home");
+
+        //String home = System.getProperty("user.home");
+        //System.out.println(home);
 
         //new Builder();
 
