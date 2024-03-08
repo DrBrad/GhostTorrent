@@ -12,31 +12,26 @@ public class Main {
     //TORRENT I/O STREAM SHOULD BE MADE...
 
     public static void main(String[] args)throws Exception {
-        System.setProperty("sun.java2d.opengl", "true");
+        boolean gui = true;
 
-        //System.out.println(Main.class.getPackage());
+        if(args.length > 0){
+            for(String arg : args){
+                switch(arg){
+                    case "--no-gui":
+                        gui = false;
+                        break;
+                }
+            }
+        }
+
         //new Builder();
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        Application application = new GhostApplication();
-        application.launch();
 
-        //R R = new R();
+        if(gui){
+            System.setProperty("sun.java2d.opengl", "true");
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-
-        //LOAD MENU
-
-
-        //R R = new R();
-        //inflateMenu(R.menu.toolbar)
-        //inflate will get menu from file
-        //Resources
-
-
-        //Res r = new Res();
-        //System.out.println(r.menus.get("menu").get("file").get("open").getTitle());
-
-        //Kademlia kad = new Kademlia();
-        //kad.join(6881, InetAddress.getByName("router.bittorrent.com"), 6881);
-
+            Application application = new GhostApplication();
+            application.launch();
+        }
     }
 }
