@@ -18,10 +18,11 @@ public class GhostApplication extends Application {
         frame.setTitle("Ghost Torrent");
         frame.setSize(500, 750);
         frame.setMinimumSize(new Dimension(500, 750));
-        frame.setJMenuBar(createMenuBar());
+        //menu.setBorder(new EmptyBorder(0, 0, 0, 0));
+        //menu.setBackground(R.colors.background_shimmer);
 
         try{
-            //startActivity(new MainActivity());
+            startActivity(new MainActivity());
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -30,29 +31,5 @@ public class GhostApplication extends Application {
     @Override
     public void onDestroy(){
 
-    }
-
-    private JMenuBar createMenuBar(){
-        JMenuBar menu = new JMenuBar();
-        //menu.setBackground(R.colors.background_shimmer);
-        menu.setBorder(new EmptyBorder(0, 0, 0, 0));
-
-        /*
-        for(MenuItem item : R.menus.get("menu").getAllItems()){
-            menu.add(createMenu(item));
-        }*/
-
-        return menu;
-    }
-
-    private JMenu createMenu(MenuItem item){
-        JMenu menu = new JMenu(item.getTitle());
-        //menu.setForeground(R.colors.get("text-primary"));
-
-        for(MenuOption option : item.getAllOptions()){
-            JMenuItem i = new JMenuItem(option.getTitle());
-            menu.add(i);
-        }
-        return menu;
     }
 }

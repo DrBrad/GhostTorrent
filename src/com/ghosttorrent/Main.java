@@ -2,18 +2,15 @@ package com.ghosttorrent;
 
 import com.ghosttorrent.ui.GhostApplication;
 import com.ghosttorrent.ui.res.build.Builder;
-import com.ghosttorrent.ui.res.loader.Resources;
 import com.ghosttorrent.ui.utils.inter.Application;
 import generated.R;
-import generated.menu.toolbar;
 
 public class Main {
 
     public static void main(String[] args){
         Application application = new GhostApplication();
         application.launch();
-        R R = new R();
-        R.id = new toolbar();
+        //R R = new R();
 
 
         //LOAD MENU

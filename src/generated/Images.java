@@ -5,9 +5,9 @@ package generated;
 /*********************************/
 public class Images {
 
-    public int ic_delete = 0;
-    public int ic_play = 1;
-    public int ic_pause = 2;
-    public int ic_folder = 3;
-    public int ic_settings = 4;
+    public int ic_play = 1624069945;
+    public int ic_folder = 1374878515;
+    public int ic_settings = 451150424;
+    public int ic_pause = 1193747823;
+    public int ic_delete = 1308386416;
 }

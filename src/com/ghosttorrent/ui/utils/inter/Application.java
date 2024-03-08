@@ -66,7 +66,7 @@ public abstract class Application {
     }
 
     public void setToolbar(int id){
-        resources.inflate("menu", id);
+        frame.setJMenuBar((JMenuBar) resources.inflate("menu", id));
     }
 
     public Color findColorById(int id){

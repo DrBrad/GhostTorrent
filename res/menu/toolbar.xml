@@ -1,70 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<menu>
-    <item
+<javax.swing.JMenuBar
+        background="#ff0000">
+    <javax.swing.JMenu
             id="file"
             title="File">
-        <option
+        <javax.swing.JMenuItem
                 id="open"
                 title="Open" />
-        <option
+        <javax.swing.JMenuItem
                 id="open_url"
                 title="Open URL" />
-        <option
+        <javax.swing.JMenuItem
                 id="new_torrent"
                 title="New" />
-        <option
+        <javax.swing.JMenuItem
                 id="start_all"
                 title="Start All" />
-        <option
+        <javax.swing.JMenuItem
                 id="pause_all"
                 title="Pause All" />
-        <option
+        <javax.swing.JMenuItem
                 id="quit"
                 title="Quit" />
-    </item>
-    <item
+    </javax.swing.JMenu>
+    <javax.swing.JMenu
             id="torrent"
             title="Torrent">
-        <option
+        <javax.swing.JMenuItem
                 id="properties"
                 title="Properties" />
-        <option
+        <javax.swing.JMenuItem
                 id="open_folder"
                 title="Open Folder" />
-        <option
+        <javax.swing.JMenuItem
                 id="start"
                 title="Start" />
-    </item>
-    <item
+    </javax.swing.JMenu>
+    <javax.swing.JMenu
             id="view"
             title="View">
-        <option
+        <javax.swing.JMenuItem
                 id="compact_view"
                 title="Compact View" />
-        <option
+        <javax.swing.JMenuItem
                 id="toolbar"
                 title="Toolbar" />
-        <option
+        <javax.swing.JMenuItem
                 id="statusbar"
                 title="Statusbar" />
-        <option
+        <javax.swing.JMenuItem
                 id="filterbar"
                 title="Filterbar" />
-    </item>
-    <item
+    </javax.swing.JMenu>
+    <javax.swing.JMenu
             id="help"
             title="Help">
-        <option
+        <javax.swing.JMenuItem
                 id="message_log"
                 title="Message Log" />
-        <option
+        <javax.swing.JMenuItem
                 id="statistics"
                 title="Statistics" />
-        <option
+        <javax.swing.JMenuItem
                 id="donate"
                 title="Donate" />
-        <option
+        <javax.swing.JMenuItem
                 id="about"
                 title="About" />
-    </item>
-</menu>
+    </javax.swing.JMenu>
+</javax.swing.JMenuBar>

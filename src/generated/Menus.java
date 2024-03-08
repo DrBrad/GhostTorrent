@@ -5,5 +5,5 @@ package generated;
 /*********************************/
 public class Menus {
 
-    public int toolbar = 0;
+    public int toolbar = 1140094085;
 }

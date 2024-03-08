@@ -7,10 +7,9 @@ public class Images extends Asset {
     public Images(){
         File dir = new File(getClass().getResource("/image/48").getFile());
 
-        int i = 0;
         for(File file : dir.listFiles()){
-            variables.add(new Variable(file.getName().split("\\.")[0], i, "int"));
-            i++;
+            String name = file.getName().split("\\.")[0];
+            variables.add(new Variable(name, Math.abs(name.hashCode()), "int"));
         }
     }
 

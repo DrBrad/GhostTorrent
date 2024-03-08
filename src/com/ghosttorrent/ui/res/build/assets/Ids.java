@@ -11,28 +11,22 @@ import java.io.File;
 
 public class Ids extends Asset {
 
-    private String name, type;
-
-    public Ids(File file, String type){
-        name = file.getName().split("\\.")[0];
-        this.type = type;
-
+    public void parse(File file){
         try{
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(file);
 
-            recursive(doc.getDocumentElement());
+            recursive(doc.getDocumentElement(), 0);
 
         }catch(Exception e){
             e.printStackTrace();
         }
-
     }
 
-    private void recursive(Element root){
+    private int recursive(Element root, int x){
         if(!root.hasChildNodes()){
-            return;
+            return x;
         }
 
         NodeList nodeList = root.getChildNodes();
@@ -42,23 +36,16 @@ public class Ids extends Asset {
                 continue;
             }
             Element element = (Element) nodeList.item(i);
-            variables.add(new Variable(element.getAttribute("id"), i, "int"));
-            recursive(element);
+            String name = element.getAttribute("id");
+            variables.add(new Variable(name, Math.abs(name.hashCode()), "int"));
+            x++;
+            recursive(element, x);
         }
-    }
-
-    @Override
-    public String getImplements(){
-        return "com.ghosttorrent.ui.res.Ids";
-    }
-
-    @Override
-    public String getPackage(){
-        return super.getPackage()+"."+type;
+        return x;
     }
 
     @Override
     public String getName(){
-        return name;
+        return "Ids";
     }
 }
