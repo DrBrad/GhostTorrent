@@ -5,13 +5,16 @@ import com.ghosttorrent.ui.res.build.Builder;
 import com.ghosttorrent.ui.res.loader.Resources;
 import com.ghosttorrent.ui.utils.inter.Application;
 import generated.R;
+import generated.menu.toolbar;
 
 public class Main {
 
     public static void main(String[] args){
         Application application = new GhostApplication();
         application.launch();
-        //R R = new R();
+        R R = new R();
+        R.id = new toolbar();
+
 
         //LOAD MENU
 
@@ -21,7 +24,7 @@ public class Main {
         //inflate will get menu from file
         //Resources
 
-        new Builder();
+        //new Builder();
 
         //Res r = new Res();
         //System.out.println(r.menus.get("menu").get("file").get("open").getTitle());

@@ -6,7 +6,7 @@ public class Res extends Asset {
         variables.add(new Variable("color", "new Colors()", "Colors"));
         variables.add(new Variable("image", "new Images()", "Images"));
         variables.add(new Variable("menu", "new Menus()", "Menus"));
-        variables.add(new Variable("id", null, "Ids"));
+        variables.add(new Variable("id", null, "com.ghosttorrent.ui.res.Ids"));
     }
 
     @Override

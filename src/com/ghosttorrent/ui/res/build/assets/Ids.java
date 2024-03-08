@@ -48,6 +48,11 @@ public class Ids extends Asset {
     }
 
     @Override
+    public String getImplements(){
+        return "com.ghosttorrent.ui.res.Ids";
+    }
+
+    @Override
     public String getPackage(){
         return super.getPackage()+"."+type;
     }
