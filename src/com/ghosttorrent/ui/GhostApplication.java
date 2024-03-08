@@ -18,16 +18,12 @@ public class GhostApplication extends Application {
         super.onCreate();
         setToolbar(R.menu.toolbar);
 
-        frame.setTitle("Ghost Torrent");
         frame.setSize(500, 750);
         frame.setMinimumSize(new Dimension(500, 750));
         //menu.setBorder(new EmptyBorder(0, 0, 0, 0));
         //menu.setBackground(R.colors.background_shimmer);
 
         //menu.setForeground(R.colors.get("text-primary"));
-
-        //JMenuItem item = (JMenuItem) findViewById(R.id.menu_item_open);
-        //item.setText("HELLO WORLD");
 
         ((JMenuItem) findViewById(R.id.menu_item_open)).addActionListener(new ActionListener(){
             @Override

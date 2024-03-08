@@ -6,6 +6,7 @@ package generated;
 public class R {
 
     public Colors color = new Colors();
+    public Strings string = new Strings();
     public Images image = new Images();
     public Menus menu = new Menus();
     public Layouts layout = new Layouts();

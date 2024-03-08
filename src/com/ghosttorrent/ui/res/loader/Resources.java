@@ -31,11 +31,10 @@ public class Resources {
         this.R = R;
         assets = new HashMap<>();
         assets.put("color", new Colors(R.color));
+        assets.put("string", new Strings(R.string));
         assets.put("image", new Images(R.image));
         assets.put("menu", new Menus(R.menu));
         assets.put("layout", new Layouts(R.layout));
-        //assets.put("id", new Ids());
-        //assets.put("id", );
     }
 
     public Object findById(String asset, int id){
@@ -103,7 +102,7 @@ public class Resources {
 
                 default:
                     param = String.class;
-                    value = root.getAttributes().item(i).getNodeValue();
+                    value = resolveString(root.getAttributes().item(i).getNodeValue());
                     break;
             }
 
@@ -130,7 +129,6 @@ public class Resources {
         return component;
     }
 
-    /*
     public String resolveString(String string){
         if(string.startsWith("@string/")){
             try{
@@ -146,7 +144,6 @@ public class Resources {
 
         return string;
     }
-    */
 
     private Color resolveColor(String color){
         if(color.startsWith("@color/")){

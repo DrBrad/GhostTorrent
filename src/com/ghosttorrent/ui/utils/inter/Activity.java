@@ -54,6 +54,10 @@ public abstract class Activity {
         //return (JComponent) application.resources.findById("id", id);
     }
 
+    public String findStringById(int id){
+        return (String) application.resources.findById("string", id);
+    }
+
     public Color findColorById(int id){
         return (Color) application.resources.findById("color", id);
     }

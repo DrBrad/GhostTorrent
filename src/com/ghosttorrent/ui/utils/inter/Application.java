@@ -23,6 +23,7 @@ public abstract class Application {
         R = new R();
         resources = new Resources(R);
         frame = new JFrame();
+        frame.setTitle(findStringById(R.string.app_name));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
@@ -75,6 +76,10 @@ public abstract class Application {
 
     public Color findColorById(int id){
         return (Color) resources.findById("color", id);
+    }
+
+    public String findStringById(int id){
+        return (String) resources.findById("string", id);
     }
 
     public BufferedImage findImageById(int id){

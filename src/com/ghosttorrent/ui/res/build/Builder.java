@@ -15,6 +15,7 @@ public class Builder {
         Assets[] assets = new Assets[]{
                 new Res(),
                 new Colors(),
+                new Strings(),
                 new Images(),
                 new Menus(this),
                 new Layouts(this)
