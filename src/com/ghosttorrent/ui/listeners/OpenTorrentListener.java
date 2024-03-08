@@ -14,12 +14,16 @@ public class OpenTorrentListener implements ActionListener {
         FileDialog dialog = new FileDialog((Frame) null);
         dialog.setVisible(true);
 
-        File file = new File(dialog.getDirectory()+"/"+dialog.getFile());
-        if(file != null){
-            Torrent torrent = new Torrent(file);
-            System.out.println(torrent.getAnnounce());
-            System.out.println(torrent.getComment());
-            System.out.println(torrent.getCreatedBy());
+        if(dialog.getDirectory() == null ||
+                dialog.getFile() == null){
+            return;
         }
+
+        File file = new File(dialog.getDirectory()+"/"+dialog.getFile());
+        Torrent torrent = new Torrent(file);
+        System.out.println(torrent.getAnnounce());
+        System.out.println(torrent.getComment());
+        System.out.println(torrent.getCreatedBy());
+        System.out.println(torrent.getFiles().get(0).getPath().get(0));
     }
 }
