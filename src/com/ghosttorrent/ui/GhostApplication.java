@@ -1,11 +1,8 @@
 package com.ghosttorrent.ui;
 
 import com.ghosttorrent.ui.utils.inter.Application;
-import com.ghosttorrent.ui.utils.OLD.menus.MenuItem;
-import com.ghosttorrent.ui.utils.OLD.menus.MenuOption;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
