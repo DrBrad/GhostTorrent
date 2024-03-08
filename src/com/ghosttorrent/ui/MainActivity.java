@@ -26,9 +26,19 @@ public class MainActivity extends Activity {
         ((FlowLayout) findViewById(R.id.statusbar).getLayout()).setAlignment(FlowLayout.LEFT);
         ((FlowLayout) findViewById(R.id.filterbar).getLayout()).setAlignment(FlowLayout.LEFT);
 
-        findViewById(R.id.statusbar_play).setPreferredSize(new Dimension(48, 48));
-        findViewById(R.id.statusbar_remove).setPreferredSize(new Dimension(48, 48));
-        findViewById(R.id.statusbar_settings).setPreferredSize(new Dimension(48, 48));
+        JButton[] buttons = new JButton[]{
+                (JButton) findViewById(R.id.statusbar_play),
+                (JButton) findViewById(R.id.statusbar_remove),
+                (JButton) findViewById(R.id.statusbar_settings)
+        };
+
+        for(JButton button : buttons){
+            button.setPreferredSize(new Dimension(48, 48));
+            button.setOpaque(false);
+            button.setContentAreaFilled(false);
+            button.setBorderPainted(false);
+            button.setBorder(null);
+        }
 
         findViewById(R.id.content).setBackground(UIManager.getColor("Panel.background").darker());
         findViewById(R.id.content).add(createList());
