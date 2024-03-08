@@ -9,7 +9,7 @@ public class Images extends Assets {
 
         for(File file : dir.listFiles()){
             String name = file.getName().split("\\.")[0];
-            variables.add(new Variable(name, Math.abs(name.hashCode()), "int"));
+            variables.add(new Variable(name, name.hashCode(), "int"));
         }
     }
 

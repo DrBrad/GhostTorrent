@@ -37,7 +37,7 @@ public class Ids extends Assets {
             }
             Element element = (Element) nodeList.item(i);
             String name = element.getAttribute("id");
-            variables.add(new Variable(name, Math.abs(name.hashCode()), "int"));
+            variables.add(new Variable(name, name.hashCode(), "int"));
             x++;
             recursive(element, x);
         }

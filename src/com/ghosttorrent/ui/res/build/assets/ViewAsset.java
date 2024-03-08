@@ -13,7 +13,7 @@ public class ViewAsset extends Assets {
 
         for(File file : dir.listFiles()){
             String name = file.getName().split("\\.")[0];
-            variables.add(new Assets.Variable(name, Math.abs(name.hashCode()), "int"));
+            variables.add(new Assets.Variable(name, name.hashCode(), "int"));
             builder.ids.parse(file);
         }
     }

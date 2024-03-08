@@ -87,8 +87,8 @@ public class Resources {
                     break;
 
                 case "layout":
-                    param = Class.forName(root.getAttributes().item(i).getNodeValue());
-                    value = param.getDeclaredConstructor().newInstance();
+                    param = LayoutManager.class;
+                    value = Class.forName(root.getAttributes().item(i).getNodeValue()).getDeclaredConstructor().newInstance();
                     break;
 
                 case "foreground":
@@ -108,6 +108,7 @@ public class Resources {
                 Method method = component.getClass().getMethod(name, param);
                 method.invoke(component, value);
             }catch(Exception e){
+                e.printStackTrace();
             }
         }
 

@@ -22,15 +22,21 @@
 
     </javax.swing.JPanel>
     <javax.swing.JPanel
-            id="filterbar">
+            id="filterbar"
+            layout="java.awt.FlowLayout">
 
-        <javax.swing.JButton
+        <javax.swing.JLabel
                 id="filterbar_show"
                 text="Show" />
 
     </javax.swing.JPanel>
     <javax.swing.JPanel
-            id="root">
+            id="content"
+            layout="java.awt.BorderLayout">
+
+        <javax.swing.JLabel
+                id="filterbar_test"
+                text="test" />
 
     </javax.swing.JPanel>
 </javax.swing.JPanel>

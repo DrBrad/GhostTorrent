@@ -27,10 +27,18 @@ public class MainActivity extends Activity {
         getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
 
         ((FlowLayout) findViewById(R.id.statusbar).getLayout()).setAlignment(FlowLayout.LEFT);
+        ((FlowLayout) findViewById(R.id.filterbar).getLayout()).setAlignment(FlowLayout.LEFT);
 
         findViewById(R.id.statusbar_play).setPreferredSize(new Dimension(48, 48));
         findViewById(R.id.statusbar_remove).setPreferredSize(new Dimension(48, 48));
         findViewById(R.id.statusbar_settings).setPreferredSize(new Dimension(48, 48));
+
+        System.out.println(findViewById(R.id.statusbar).getLayout());
+        System.out.println(findViewById(R.id.filterbar).getLayout());
+        System.out.println(findViewById(R.id.content).getLayout());
+        System.out.println(findViewById(R.id.content).getBackground());
+
+        findViewById(R.id.content).setBackground(UIManager.getColor("Panel.background").darker());
 
         //getRoot().revalidate();
         //getRoot().repaint();
