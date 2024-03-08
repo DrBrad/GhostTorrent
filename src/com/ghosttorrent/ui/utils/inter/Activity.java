@@ -43,8 +43,8 @@ public abstract class Activity {
         application.frame.add(root);
     }
 
-    public JComponent findViewById(String id){
-        return null;
+    public JComponent findViewById(int id){
+        return (JComponent) application.resources.findById("id", id);
     }
 
     public Color findColorById(int id){

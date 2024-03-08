@@ -20,4 +20,12 @@
                 src="@image/ic_settings" />
 
     </javax.swing.JPanel>
+    <javax.swing.JPanel
+            id="filterbar">
+
+        <javax.swing.JLabel
+                id="filterbar_show"
+                title="Show" />
+
+    </javax.swing.JPanel>
 </javax.swing.JPanel>

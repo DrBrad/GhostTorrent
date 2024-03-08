@@ -35,4 +35,6 @@ public class Ids {
     public int statusbar_play = 1012459054;
     public int statusbar_remove = 2035570594;
     public int statusbar_settings = 374289471;
+    public int filterbar = 881369701;
+    public int filterbar_show = 2020966623;
 }
