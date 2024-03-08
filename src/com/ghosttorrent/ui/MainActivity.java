@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
 
         ((FlowLayout) findViewById(R.id.statusbar).getLayout()).setAlignment(FlowLayout.LEFT);
         ((FlowLayout) findViewById(R.id.filterbar).getLayout()).setAlignment(FlowLayout.LEFT);
+        ((FlowLayout) findViewById(R.id.bottombar).getLayout()).setAlignment(FlowLayout.LEFT);
 
         ((JButton) findViewById(R.id.statusbar_open)).addActionListener(new OpenTorrentListener());
 
@@ -49,9 +50,11 @@ public class MainActivity extends Activity {
 
     private JComponent createList(){
         JList list = new JList();
+        list.setBackground(UIManager.getColor("Panel.background").darker());
 
         DefaultListModel model = new DefaultListModel();
 
+        /*
         for(int i = 0; i < 10; i++){
             Torrentz torrent = new Torrentz();
             torrent.setTitle("Breaking Bad");
@@ -60,6 +63,7 @@ public class MainActivity extends Activity {
             torrent.setPeers(20);
             model.addElement(torrent);
         }
+        */
 
         list.setCellRenderer(new CellRenderer());
         list.setModel(model);
@@ -79,6 +83,7 @@ public class MainActivity extends Activity {
         scrollPane.getViewport().setScrollMode(JViewport.BACKINGSTORE_SCROLL_MODE);
         scrollPane.setBackground(UIManager.getColor("Panel.background").darker());
 
+        /*
         list.addMouseMotionListener(new MouseMotionListener(){
             @Override
             public void mouseDragged(MouseEvent e){
@@ -94,6 +99,7 @@ public class MainActivity extends Activity {
                 }
             }
         });
+        */
 
         int increment = 16;
         scrollPane.getVerticalScrollBar().setUnitIncrement(increment);

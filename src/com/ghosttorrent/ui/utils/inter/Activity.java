@@ -13,7 +13,6 @@ public abstract class Activity {
 
     private Application application;
     protected R R;
-    //private Resources resources;
     private Panel root;
 
     public void onCreate(Bundle bundle){
