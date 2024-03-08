@@ -1,75 +1,83 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<javax.swing.JMenuBar
-        background="@color/background_shimmer">
+<javax.swing.JMenuBar>
     <javax.swing.JMenu
-            id="file"
-            title="File"
-            text-color="@color/text_primary">
+            id="menu_file"
+            title="File">
         <javax.swing.JMenuItem
-                id="open"
+                id="menu_item_open"
                 title="Open" />
         <javax.swing.JMenuItem
-                id="open_url"
+                id="menu_item_open_url"
                 title="Open URL" />
         <javax.swing.JMenuItem
-                id="new_torrent"
+                id="menu_item_new_torrent"
                 title="New" />
         <javax.swing.JMenuItem
-                id="start_all"
+                id="menu_item_start_all"
                 title="Start All" />
         <javax.swing.JMenuItem
-                id="pause_all"
+                id="menu_item_pause_all"
                 title="Pause All" />
         <javax.swing.JMenuItem
-                id="quit"
+                id="menu_item_quit"
                 title="Quit" />
     </javax.swing.JMenu>
     <javax.swing.JMenu
-            id="torrent"
-            title="Torrent"
-            text-color="@color/text_primary">
+            id="menu_edit"
+            title="Edit">
         <javax.swing.JMenuItem
-                id="properties"
+                id="menu_item_select_all"
+                title="Select All" />
+        <javax.swing.JMenuItem
+                id="menu_item_deselect_all"
+                title="Deselect All" />
+        <javax.swing.JMenuItem
+                id="menu_item_preferences"
+                title="Preferences" />
+    </javax.swing.JMenu>
+    <javax.swing.JMenu
+            id="menu_torrent"
+            title="Torrent">
+        <javax.swing.JMenuItem
+                id="menu_item_properties"
                 title="Properties" />
         <javax.swing.JMenuItem
-                id="open_folder"
+                id="menu_item_open_folder"
                 title="Open Folder" />
         <javax.swing.JMenuItem
-                id="start"
+                id="menu_item_start"
                 title="Start" />
     </javax.swing.JMenu>
     <javax.swing.JMenu
-            id="view"
-            title="View"
-            text-color="@color/text_primary">
+            id="menu_view"
+            title="View">
         <javax.swing.JMenuItem
-                id="compact_view"
+                id="menu_item_compact_view"
                 title="Compact View" />
         <javax.swing.JMenuItem
-                id="toolbar"
+                id="menu_item_toolbar"
                 title="Toolbar" />
         <javax.swing.JMenuItem
-                id="statusbar"
+                id="menu_item_statusbar"
                 title="Statusbar" />
         <javax.swing.JMenuItem
-                id="filterbar"
+                id="menu_item_filterbar"
                 title="Filterbar" />
     </javax.swing.JMenu>
     <javax.swing.JMenu
-            id="help"
-            title="Help"
-            text-color="@color/text_primary">
+            id="menu_help"
+            title="Help">
         <javax.swing.JMenuItem
-                id="message_log"
+                id="menu_item_message_log"
                 title="Message Log" />
         <javax.swing.JMenuItem
-                id="statistics"
+                id="menu_item_statistics"
                 title="Statistics" />
         <javax.swing.JMenuItem
-                id="donate"
+                id="menu_item_donate"
                 title="Donate" />
         <javax.swing.JMenuItem
-                id="about"
+                id="menu_item_about"
                 title="About" />
     </javax.swing.JMenu>
 </javax.swing.JMenuBar>

@@ -2,14 +2,14 @@ package com.ghosttorrent.ui.res.build.assets;
 
 import com.ghosttorrent.ui.res.build.Builder;
 
-public class Menus extends ViewAsset {
+public class Layouts extends ViewAsset {
 
-    public Menus(Builder builder){
-        super(builder, "menu");
+    public Layouts(Builder builder){
+        super(builder, "layout");
     }
 
     @Override
     public String getName(){
-        return "Menu";
+        return "Layouts";
     }
 }

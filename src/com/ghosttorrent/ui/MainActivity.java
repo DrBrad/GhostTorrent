@@ -22,18 +22,18 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
-        //setContentView(R.layout.)
+        setContentView(R.layout.main_activity);
 
-        getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
-        getRoot().add(createStatusBar());
-        getRoot().add(createFilterBar());
+        //getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
+        //getRoot().add(createStatusBar());
+        //getRoot().add(createFilterBar());
 
-        getRoot().add(createList());
+        //getRoot().add(createList());
     }
 
     private JComponent createStatusBar(){
         JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        pane.setBackground(findColorById(R.color.background_secondary));
+        //pane.setBackground(findColorById(R.color.background_secondary));
         pane.setPreferredSize(new Dimension(48, 48));
         pane.add(new JButton("Open"));
 

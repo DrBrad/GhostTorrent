@@ -1,8 +1,10 @@
 package com.ghosttorrent.ui.res.loader.assets;
 
-public class Ids extends Asset {
+import javax.swing.*;
 
-    public Ids(){
+public class Ids extends Assets {
 
+    public void add(int key, JComponent component){
+        variables.put(key, component);
     }
 }

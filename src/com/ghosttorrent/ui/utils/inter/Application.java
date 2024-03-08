@@ -14,7 +14,7 @@ public abstract class Application {
 
     protected JFrame frame;
     protected R R;
-    private Resources resources;
+    protected Resources resources;
 
     public Application(){
         R = new R();
@@ -47,16 +47,12 @@ public abstract class Application {
         f.setAccessible(true);
         f.set(activity, R);
 
-        f = Activity.class.getDeclaredField("resources");
-        f.setAccessible(true);
-        f.set(activity, resources);
-
         JPanel root = new JPanel();
         frame.setContentPane(root);
 
-        f = Activity.class.getDeclaredField("root");
-        f.setAccessible(true);
-        f.set(activity, root);
+        //f = Activity.class.getDeclaredField("root");
+        //f.setAccessible(true);
+        //f.set(activity, root);
 
         activity.onCreate(intent.getBundle());
     }
@@ -67,6 +63,10 @@ public abstract class Application {
 
     public void setToolbar(int id){
         frame.setJMenuBar((JMenuBar) resources.inflate("menu", id));
+    }
+
+    public JComponent findViewById(int id){
+        return (JComponent) resources.findById("id", id);
     }
 
     public Color findColorById(int id){

@@ -2,7 +2,7 @@ package com.ghosttorrent.ui.res.build.assets;
 
 import java.io.File;
 
-public class Images extends Asset {
+public class Images extends Assets {
 
     public Images(){
         File dir = new File(getClass().getResource("/image/48").getFile());

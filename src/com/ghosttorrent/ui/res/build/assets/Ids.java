@@ -9,7 +9,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
-public class Ids extends Asset {
+public class Ids extends Assets {
 
     public void parse(File file){
         try{

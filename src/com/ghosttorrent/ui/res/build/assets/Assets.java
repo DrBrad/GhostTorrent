@@ -1,19 +1,14 @@
 package com.ghosttorrent.ui.res.build.assets;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public abstract class Asset {
+public abstract class Assets {
 
     private String packageName, packagePath;
     protected List<Variable> variables;
 
-    public Asset(){
+    public Assets(){
         packageName = "generated";
         packagePath = System.getProperty("user.dir")+"/src/";
         variables = new ArrayList<>();

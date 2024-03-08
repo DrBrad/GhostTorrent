@@ -3,11 +3,11 @@ package com.ghosttorrent.ui.res.loader.assets;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Asset {
+public class Assets {
 
     protected Map<Integer, Object> variables;
 
-    public Asset(){
+    public Assets(){
         variables = new HashMap<>();
     }
 

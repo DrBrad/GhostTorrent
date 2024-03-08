@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<layout>
+<javax.swing.JPanel>
+    <javax.swing.JPanel
+            id="statusbar">
 
-</layout>
+        <javax.swing.JButton
+                id="statusbar_open"
+                title="Open" />
+
+        <javax.swing.JButton
+                id="statusbar_play"
+                src="@image/ic_play" />
+
+        <javax.swing.JButton
+                id="statusbar_remove"
+                src="@image/ic_remove" />
+
+        <javax.swing.JButton
+                id="statusbar_settings"
+                src="@image/ic_settings" />
+
+    </javax.swing.JPanel>
+</javax.swing.JPanel>

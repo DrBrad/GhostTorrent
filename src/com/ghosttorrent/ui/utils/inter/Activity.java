@@ -12,7 +12,7 @@ public abstract class Activity {
 
     private Application application;
     protected R R;
-    private Resources resources;
+    //private Resources resources;
     private JPanel root;
 
     public void onCreate(Bundle bundle){
@@ -38,7 +38,9 @@ public abstract class Activity {
         return root;
     }
 
-    public void setContentView(){
+    public void setContentView(int id){
+        root = (JPanel) application.resources.inflate("layout", id);
+        application.frame.add(root);
     }
 
     public JComponent findViewById(String id){
@@ -46,10 +48,10 @@ public abstract class Activity {
     }
 
     public Color findColorById(int id){
-        return (Color) resources.findById("color", id);
+        return (Color) application.resources.findById("color", id);
     }
 
     public BufferedImage findImageById(int id){
-        return (BufferedImage) resources.findById("image", id);
+        return (BufferedImage) application.resources.findById("image", id);
     }
 }

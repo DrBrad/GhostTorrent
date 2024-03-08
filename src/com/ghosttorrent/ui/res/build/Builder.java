@@ -5,29 +5,34 @@ import com.ghosttorrent.ui.res.build.assets.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 
 public class Builder {
 
+    public Ids ids;
+
     public Builder(){
-        Asset[] assets = new Asset[]{
+        ids = new Ids();
+        Assets[] assets = new Assets[]{
                 new Res(),
                 new Colors(),
                 new Images(),
-                new Menus()
+                new Menus(this),
+                new Layouts(this)
         };
 
-        for(Asset asset : assets){
+        for(Assets asset : assets){
             generate(asset);
 
-            if(asset instanceof Menus){
-                generate(((Menus) asset).getIds());
-            }
+            //if(asset instanceof ViewAsset){
+            //    generate(((ViewAsset) asset).getIds());
+            //}
             //asset.generate();
         }
+
+        generate(ids);
     }
 
-    public void generate(Asset asset){
+    public void generate(Assets asset){
         try{
             File file = new File(asset.getPackagePath());
             if(!file.getParentFile().exists()){
@@ -45,7 +50,7 @@ public class Builder {
             writer.write("/*********************************/\n");
             writer.write("public class "+asset.getName()+extend+implement+" {\n\n");
 
-            for(Asset.Variable variable : asset.getVariables()){
+            for(Assets.Variable variable : asset.getVariables()){
                 if(variable.getValue() == null){
                     writer.write("    public "+variable.getType()+" "+variable.getKey()+";\n");
                     continue;

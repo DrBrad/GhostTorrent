@@ -8,7 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
-public class Colors extends Asset {
+public class Colors extends Assets {
 
     public static final String COLOR_ROOT_TAG = "colors", COLOR_TAG = "color";
 

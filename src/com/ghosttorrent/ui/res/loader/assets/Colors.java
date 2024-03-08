@@ -1,6 +1,5 @@
 package com.ghosttorrent.ui.res.loader.assets;
 
-import generated.R;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -10,7 +9,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.awt.*;
 import java.io.File;
 
-public class Colors extends Asset {
+public class Colors extends Assets {
 
     public static final String COLOR_ROOT_TAG = "colors", COLOR_TAG = "color";
 

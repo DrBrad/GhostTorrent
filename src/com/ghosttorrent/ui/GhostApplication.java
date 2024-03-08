@@ -23,6 +23,10 @@ public class GhostApplication extends Application {
 
         //menu.setForeground(R.colors.get("text-primary"));
 
+        //JMenuItem item = (JMenuItem) findViewById(R.id.menu_item_open);
+        //item.setText("HELLO WORLD");
+
+
         try{
             startActivity(new MainActivity());
         }catch(Exception e){
