@@ -33,75 +33,11 @@ public class MainActivity extends Activity {
         findViewById(R.id.statusbar_remove).setPreferredSize(new Dimension(48, 48));
         findViewById(R.id.statusbar_settings).setPreferredSize(new Dimension(48, 48));
 
-        System.out.println(findViewById(R.id.statusbar).getLayout());
-        System.out.println(findViewById(R.id.filterbar).getLayout());
-        System.out.println(findViewById(R.id.content).getLayout());
-        System.out.println(findViewById(R.id.content).getBackground());
-
         findViewById(R.id.content).setBackground(UIManager.getColor("Panel.background").darker());
-
-        //getRoot().revalidate();
-        //getRoot().repaint();
-        //getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
-        //getRoot().add(createStatusBar());
-        //getRoot().add(createFilterBar());
-
-        //getRoot().add(createList());
-    }
-
-    private JComponent createStatusBar(){
-        JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        //pane.setBackground(findColorById(R.color.background_secondary));
-        pane.setPreferredSize(new Dimension(48, 48));
-        pane.add(new JButton("Open"));
-
-        ImageIcon[] icons = new ImageIcon[]{
-                new ImageIcon(findImageById(R.image.ic_play)),
-                new ImageIcon(findImageById(R.image.ic_remove)),
-                new ImageIcon(findImageById(R.image.ic_settings))
-        };
-
-        for(ImageIcon icon : icons){
-            JButton button = new JButton(icon);
-            button.setOpaque(false);
-            button.setContentAreaFilled(false);
-            button.setBorderPainted(false);
-            button.setBorder(null);
-            pane.add(button);
-        }
-        //pane.add(new JButton(new ImageIcon(findImageById(R.image.ic_settings))));//"Properties"));
-
-        /*
-        open.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                FileDialog dialog = new FileDialog((Frame) null);
-                dialog.setVisible(true);
-
-                File file = new File(dialog.getDirectory()+"/"+dialog.getFile());
-                System.out.println(file.getPath());
-            }
-        });
-        */
-        return pane;
-    }
-
-    private JComponent createFilterBar(){
-        JPanel pane = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        pane.setBackground(findColorById(R.color.background_secondary));
-        JLabel label = new JLabel("Show");
-        label.setForeground(findColorById(R.color.text_primary));
-        pane.add(label);
-        //MENU (TYPE OF TORRENT)
-        //MENU (TRACKER)
-        //SEARCH BY NAME
-        return pane;
+        findViewById(R.id.content).add(createList());
     }
 
     private JComponent createList(){
-        JPanel pane = new JPanel();
-        pane.setLayout(new BorderLayout());
-
         JList list = new JList();
 
         DefaultListModel model = new DefaultListModel();
@@ -128,15 +64,7 @@ public class MainActivity extends Activity {
         //list.setCellRenderer(new SideCellRenderer());
         //list.setModel(sideModel);
         JScrollPane scrollPane = new JScrollPane(list, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setBorder(new MatteBorder(1, 0, 0, 0, findColorById(R.color.background_shimmer)));
-
-        /*
-        for(int i = 0; i < 100; i++){
-            list.add("hello "+i);
-        }
-        */
-
-        pane.add(scrollPane);
+        //scrollPane.setBorder(new MatteBorder(1, 0, 0, 0, findColorById(R.color.background_shimmer)));
 
         list.addMouseMotionListener(new MouseMotionListener(){
             @Override
@@ -151,40 +79,6 @@ public class MainActivity extends Activity {
                 }else{
                     list.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                 }
-            }
-        });
-
-        scrollPane.getVerticalScrollBar().setUI(new BasicScrollBarUI(){
-            @Override
-            protected void paintThumb(Graphics g, JComponent c, Rectangle r){
-                Graphics2D graphics = (Graphics2D) g;
-                graphics.setColor(findColorById(R.color.secondary));
-                graphics.fillRoundRect(r.width-11, r.y, 10, r.height, 10, 10);
-            }
-
-            @Override
-            protected void paintTrack(Graphics g, JComponent c, Rectangle r){
-                Graphics2D graphics = (Graphics2D) g;
-                graphics.setColor(findColorById(R.color.background));
-                graphics.fillRect(r.x, r.y, r.width, r.height);
-            }
-
-            @Override
-            protected JButton createDecreaseButton(int orientation){
-                return createZeroButton();
-            }
-
-            @Override
-            protected JButton createIncreaseButton(int orientation){
-                return createZeroButton();
-            }
-
-            private JButton createZeroButton(){
-                JButton jbutton = new JButton();
-                jbutton.setPreferredSize(new Dimension(0, 0));
-                jbutton.setMinimumSize(new Dimension(0, 0));
-                jbutton.setMaximumSize(new Dimension(0, 0));
-                return jbutton;
             }
         });
 
@@ -211,7 +105,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        return pane;
+        return scrollPane;
     }
 
     public String humanReadableByteCountBin(long bytes){
@@ -237,7 +131,7 @@ public class MainActivity extends Activity {
 
             JPanel pane = new JPanel();
             pane.setLayout(new RelativeLayout());//new FlowLayout(FlowLayout.LEFT));
-            pane.setBorder(new MatteBorder(0, 0, 1, 0, findColorById(R.color.background_shimmer)));
+            pane.setBorder(new MatteBorder(0, 0, 1, 0, UIManager.getColor("Panel.background")));
             //pane.setBackground(Color.red);
             pane.setPreferredSize(new Dimension(480, 110));
             //pane.setOpaque(true);
@@ -274,8 +168,8 @@ public class MainActivity extends Activity {
             JProgressBar progress = new JProgressBar();
             progress.setBorderPainted(false);
             progress.setBorder(null);
-            progress.setForeground(findColorById(R.color.primary));
-            progress.setBackground(findColorById(R.color.background_shimmer));
+            //progress.setForeground(findColorById(R.color.primary));
+            //progress.setBackground(findColorById(R.color.background_shimmer));
             progress.setValue(10);
             //progress.setMaximum(100);
             constraints.gridy = 2;
@@ -289,6 +183,7 @@ public class MainActivity extends Activity {
             content.add(details, constraints);
 
 
+            /*
             if(selected){
                 title.setForeground(findColorById(R.color.background));
                 description.setForeground(findColorById(R.color.background));
@@ -305,6 +200,9 @@ public class MainActivity extends Activity {
                 pane.setBackground(findColorById(R.color.background));
                 content.setBackground(findColorById(R.color.background));
             }
+            */
+            pane.setBackground(UIManager.getColor("Panel.background").darker());
+            content.setBackground(UIManager.getColor("Panel.background").darker());
 
             pane.add(content, new RelativeConstraints().setHeight(90).centerVertically().toRightOf(icon).alignParentRight().setMarginLeft(10).setMarginRight(10));
 
