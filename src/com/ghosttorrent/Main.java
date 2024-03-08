@@ -12,6 +12,7 @@ public class Main {
     //HONESTLY WE COULD JUST MAKE OUR OWN COMPONENTS AND FILL WITH REFLECT - TODO
 
     public static void main(String[] args)throws Exception {
+        //new Builder();
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         Application application = new GhostApplication();
         application.launch();
@@ -26,7 +27,6 @@ public class Main {
         //inflate will get menu from file
         //Resources
 
-        //new Builder();
 
         //Res r = new Res();
         //System.out.println(r.menus.get("menu").get("file").get("open").getTitle());

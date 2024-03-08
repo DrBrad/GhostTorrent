@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 
         ImageIcon[] icons = new ImageIcon[]{
                 new ImageIcon(findImageById(R.image.ic_play)),
-                new ImageIcon(findImageById(R.image.ic_delete)),
+                new ImageIcon(findImageById(R.image.ic_remove)),
                 new ImageIcon(findImageById(R.image.ic_settings))
         };
 

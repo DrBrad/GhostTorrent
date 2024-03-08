@@ -109,7 +109,7 @@ public class Resources {
                     }
 
                     if(component instanceof JButton){
-                        //((JButton) component).setIcon(new ImageIcon(resolveImage(root.getAttributes().item(i).getNodeValue())));
+                        ((JButton) component).setIcon(new ImageIcon(resolveImage(root.getAttributes().item(i).getNodeValue())));
                     }
                     break;
             /*
@@ -177,6 +177,7 @@ public class Resources {
     private BufferedImage resolveImage(String image){
         if(image.startsWith("@image/")){
             try{
+                System.out.println(image.replaceFirst("@image/", ""));
                 int id = (int) R.image.getClass().getField(image.replaceFirst("@image/", "")).get(R.image);
                 return (BufferedImage) assets.get("image").get(id);
 

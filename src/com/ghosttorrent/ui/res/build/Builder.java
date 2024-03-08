@@ -22,11 +22,6 @@ public class Builder {
 
         for(Assets asset : assets){
             generate(asset);
-
-            //if(asset instanceof ViewAsset){
-            //    generate(((ViewAsset) asset).getIds());
-            //}
-            //asset.generate();
         }
 
         generate(ids);
