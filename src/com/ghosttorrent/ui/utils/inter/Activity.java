@@ -40,7 +40,7 @@ public abstract class Activity {
 
     public void setContentView(int id){
         root = (JPanel) application.resources.inflate("layout", id);
-        application.frame.add(root);
+        application.frame.setContentPane(root);
     }
 
     public JComponent findViewById(int id){

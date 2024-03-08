@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <javax.swing.JPanel>
     <javax.swing.JPanel
-            id="statusbar">
+            id="statusbar"
+            layout="java.awt.FlowLayout">
 
         <javax.swing.JButton
                 id="statusbar_open"
-                title="Open" />
+                text="Open" />
 
         <javax.swing.JButton
                 id="statusbar_play"
-                src="@image/ic_play" />
+                icon="@image/ic_play" />
 
         <javax.swing.JButton
                 id="statusbar_remove"
-                src="@image/ic_remove" />
+                icon="@image/ic_remove" />
 
         <javax.swing.JButton
                 id="statusbar_settings"
-                src="@image/ic_settings" />
+                icon="@image/ic_settings" />
 
     </javax.swing.JPanel>
     <javax.swing.JPanel
             id="filterbar">
 
-        <javax.swing.JLabel
+        <javax.swing.JButton
                 id="filterbar_show"
-                title="Show" />
+                text="Show" />
+
+    </javax.swing.JPanel>
+    <javax.swing.JPanel
+            id="root">
 
     </javax.swing.JPanel>
 </javax.swing.JPanel>

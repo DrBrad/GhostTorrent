@@ -15,7 +15,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,67 +64,50 @@ public class Resources {
         Class<?> c = Class.forName(root.getTagName());
         JComponent component = (JComponent) c.getDeclaredConstructor().newInstance();
 
+
         try{
             int id = (int) R.id.getClass().getField(root.getAttribute("id")).get(R.id);
             ((Ids) assets.get("id")).add(id, component);
         }catch(NoSuchFieldException e){
         }
 
-        /*
-        if(!root.hasAttribute("border")){
-            switch(root.getTagName()){
-                case "javax.swing.JMenuBar":
-                    ((JMenuBar) component).setBorderPainted(false);
+        for(int i = 0; i < root.getAttributes().getLength(); i++){
+            String name = root.getAttributes().item(i).getNodeName();
+            if(name.equals("id")){// || name.equals("layout")){
+                continue;
+            }
+
+            Object value;
+            Class<?> param;
+
+            switch(name){
+                case "icon":
+                    param = Icon.class;
+                    value = new ImageIcon(resolveImage(root.getAttributes().item(i).getNodeValue()));
                     break;
 
-                case "javax.swing.JButton":
-                    ((JButton) component).setBorderPainted(false);
+                case "layout":
+                    param = Class.forName(root.getAttributes().item(i).getNodeValue());
+                    value = param.getDeclaredConstructor().newInstance();
                     break;
 
-                case "javax.swing.JProgressBar":
-                    ((JProgressBar) component).setBorderPainted(false);
+                case "foreground":
+                case "background":
+                    param = Color.class;
+                    value = resolveColor(root.getAttributes().item(i).getNodeValue());
+                    break;
+
+                default:
+                    param = String.class;
+                    value = root.getAttributes().item(i).getNodeValue();
                     break;
             }
-            component.setBorder(null);
-        }
-        */
 
-        for(int i = 0; i < root.getAttributes().getLength(); i++){
-            switch(root.getAttributes().item(i).getNodeName()){
-                case "title":
-                    if(component instanceof AbstractButton){
-                        ((AbstractButton) component).setText(root.getAttributes().item(i).getNodeValue());
-                    }
-                    break;
-
-                case "text-color":
-                    component.setForeground(resolveColor(root.getAttributes().item(i).getNodeValue()));
-                    break;
-
-                case "background":
-                    component.setBackground(resolveColor(root.getAttributes().item(i).getNodeValue()));
-                    break;
-
-                case "src":
-                    if(component instanceof JLabel){
-                        ((JLabel) component).setIcon(new ImageIcon(resolveImage(root.getAttributes().item(i).getNodeValue())));
-                    }
-
-                    if(component instanceof JButton){
-                        ((JButton) component).setIcon(new ImageIcon(resolveImage(root.getAttributes().item(i).getNodeValue())));
-                    }
-                    break;
-            /*
-                case "border":
-                    String[] dimensions = root.getAttributes().item(i).getNodeValue().split(" ");
-                    component.setBorder(new MatteBorder(
-                            Integer.parseInt(dimensions[0]),
-                            Integer.parseInt(dimensions[1]),
-                            Integer.parseInt(dimensions[2]),
-                            Integer.parseInt(dimensions[3]),
-                            root.hasAttribute("border-color") ? resolveColor(root.getAttribute("border-color")) : Color.WHITE));
-                    break;
-            */
+            try{
+                name = "set"+(name.charAt(0)+"").toUpperCase()+name.substring(1);
+                Method method = component.getClass().getMethod(name, param);
+                method.invoke(component, value);
+            }catch(Exception e){
             }
         }
 

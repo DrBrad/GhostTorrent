@@ -26,11 +26,14 @@ public class MainActivity extends Activity {
 
         getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
 
-        findViewById(R.id.statusbar).setLayout(new FlowLayout(FlowLayout.LEFT));
+        ((FlowLayout) findViewById(R.id.statusbar).getLayout()).setAlignment(FlowLayout.LEFT);
+
         findViewById(R.id.statusbar_play).setPreferredSize(new Dimension(48, 48));
         findViewById(R.id.statusbar_remove).setPreferredSize(new Dimension(48, 48));
         findViewById(R.id.statusbar_settings).setPreferredSize(new Dimension(48, 48));
 
+        //getRoot().revalidate();
+        //getRoot().repaint();
         //getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
         //getRoot().add(createStatusBar());
         //getRoot().add(createFilterBar());
