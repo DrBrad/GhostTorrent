@@ -1,6 +1,7 @@
 package com.ghosttorrent.ui;
 
-import com.ghosttorrent.torrent.Torrent;
+import com.ghosttorrent.torrent.Torrentz;
+import com.ghosttorrent.ui.listeners.OpenTorrentListener;
 import com.ghosttorrent.ui.utils.Bundle;
 import com.ghosttorrent.ui.utils.inter.Activity;
 import com.ghosttorrent.ui.res.views.Panel;
@@ -26,6 +27,8 @@ public class MainActivity extends Activity {
         ((FlowLayout) findViewById(R.id.statusbar).getLayout()).setAlignment(FlowLayout.LEFT);
         ((FlowLayout) findViewById(R.id.filterbar).getLayout()).setAlignment(FlowLayout.LEFT);
 
+        ((JButton) findViewById(R.id.statusbar_open)).addActionListener(new OpenTorrentListener());
+
         JButton[] buttons = new JButton[]{
                 (JButton) findViewById(R.id.statusbar_play),
                 (JButton) findViewById(R.id.statusbar_remove),
@@ -50,7 +53,7 @@ public class MainActivity extends Activity {
         DefaultListModel model = new DefaultListModel();
 
         for(int i = 0; i < 10; i++){
-            Torrent torrent = new Torrent();
+            Torrentz torrent = new Torrentz();
             torrent.setTitle("Breaking Bad");
             torrent.setObtained(10000);
             torrent.setTotal(30000);
@@ -137,7 +140,7 @@ public class MainActivity extends Activity {
 
         @Override
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean selected, boolean expanded){
-            Torrent torrent = (Torrent) value;
+            Torrentz torrent = (Torrentz) value;
 
             Panel pane = (Panel) inflateLayout(R.layout.torrent_item);
             pane.setBorder(new MatteBorder(0, 0, 1, 0, UIManager.getColor("Panel.background")));

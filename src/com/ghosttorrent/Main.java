@@ -9,8 +9,7 @@ import javax.swing.*;
 public class Main {
 
     //HONESTLY WE COULD JUST MAKE OUR OWN COMPONENTS AND FILL WITH REFLECT - TODO
-    //DONT ABS HASHCODES...
-    //WHY IS THEIR A RANDOM NULL ID...
+    //TORRENT I/O STREAM SHOULD BE MADE...
 
     public static void main(String[] args)throws Exception {
         System.setProperty("sun.java2d.opengl", "true");
