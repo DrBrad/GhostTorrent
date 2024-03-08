@@ -1,6 +1,7 @@
 package com.ghosttorrent.ui.res.loader;
 
 import com.ghosttorrent.ui.res.loader.assets.*;
+import com.ghosttorrent.ui.res.views.View;
 import generated.R;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -33,7 +34,7 @@ public class Resources {
         assets.put("image", new Images(R.image));
         assets.put("menu", new Menus(R.menu));
         assets.put("layout", new Layouts(R.layout));
-        assets.put("id", new Ids());
+        //assets.put("id", new Ids());
         //assets.put("id", );
     }
 
@@ -41,7 +42,7 @@ public class Resources {
         return assets.get(asset).get(id);
     }
 
-    public JComponent inflate(String asset, int id){
+    public View inflate(String asset, int id){
         String name = (String) assets.get(asset).get(id);
 
         File file = new File(getClass().getResource("/"+asset+"/"+name+".xml").getFile());
@@ -51,7 +52,7 @@ public class Resources {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(file);
 
-            return inflate(doc.getDocumentElement());
+            return (View) inflateLayout(null, doc.getDocumentElement());
 
         }catch(Exception e){
             e.printStackTrace();
@@ -60,15 +61,18 @@ public class Resources {
         return null;
     }
 
-    private JComponent inflate(Element root)throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    private JComponent inflateLayout(View parent, Element root)throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Class<?> c = Class.forName(root.getTagName());
         JComponent component = (JComponent) c.getDeclaredConstructor().newInstance();
 
 
-        try{
-            int id = (int) R.id.getClass().getField(root.getAttribute("id")).get(R.id);
-            ((Ids) assets.get("id")).add(id, component);
-        }catch(NoSuchFieldException e){
+        if(parent != null){
+            try{
+                int id = (int) R.id.getClass().getField(root.getAttribute("id")).get(R.id);
+                parent.addView(id, component);
+                //((Ids) assets.get("id")).add(id, component);
+            }catch(NoSuchFieldException e){
+            }
         }
 
         for(int i = 0; i < root.getAttributes().getLength(); i++){
@@ -119,7 +123,7 @@ public class Resources {
                 if(nodeList.item(i).getNodeType() != Node.ELEMENT_NODE){
                     continue;
                 }
-                component.add(inflate((Element) nodeList.item(i)));
+                inflateLayout((View) component, (Element) nodeList.item(i));
             }
         }
 

@@ -3,17 +3,14 @@ package com.ghosttorrent.ui;
 import com.ghosttorrent.torrent.Torrent;
 import com.ghosttorrent.ui.utils.Bundle;
 import com.ghosttorrent.ui.utils.inter.Activity;
-import com.ghosttorrent.ui.utils.Intent;
+import com.ghosttorrent.ui.res.views.Panel;
 import com.ghosttorrent.ui.utils.layouts.RelativeConstraints;
 import com.ghosttorrent.ui.utils.layouts.RelativeLayout;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
-import javax.swing.plaf.basic.BasicScrollBarUI;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 
@@ -87,18 +84,18 @@ public class MainActivity extends Activity {
         KeyStroke kUp = KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0);
         KeyStroke kDown = KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0);
         scrollPane.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(kUp, "actionWhenKeyUp");
-        scrollPane.getActionMap().put("actionWhenKeyUp", new AbstractAction("keyUpAction") {
+        scrollPane.getActionMap().put("actionWhenKeyUp", new AbstractAction("keyUpAction"){
 
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 final JScrollBar bar = scrollPane.getVerticalScrollBar();
                 int currentValue = bar.getValue();
                 bar.setValue(currentValue - increment);
             }
         });
         scrollPane.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(kDown, "actionWhenKeyDown");
-        scrollPane.getActionMap().put("actionWhenKeyDown", new AbstractAction("keyDownAction") {
+        scrollPane.getActionMap().put("actionWhenKeyDown", new AbstractAction("keyDownAction"){
 
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e){
                 final JScrollBar bar = scrollPane.getVerticalScrollBar();
                 int currentValue = bar.getValue();
                 bar.setValue(currentValue + increment);
@@ -129,60 +126,48 @@ public class MainActivity extends Activity {
         public Component getListCellRendererComponent(JList list, Object value, int index, boolean selected, boolean expanded){
             Torrent torrent = (Torrent) value;
 
-            JPanel pane = new JPanel();
-            pane.setLayout(new RelativeLayout());//new FlowLayout(FlowLayout.LEFT));
+            Panel pane = (Panel) inflateLayout(R.layout.torrent_item);
             pane.setBorder(new MatteBorder(0, 0, 1, 0, UIManager.getColor("Panel.background")));
-            //pane.setBackground(Color.red);
-            pane.setPreferredSize(new Dimension(480, 110));
-            //pane.setOpaque(true);
+            pane.setPreferredSize(new Dimension(480, 120));
 
+            JLabel icon = (JLabel) pane.findViewById(R.id.torrent_item_icon);
+            ((RelativeLayout) pane.getLayout()).setConstraints(icon, new RelativeConstraints().setWidth(48).setHeight(48).centerVertically().setMargins(new Insets(10, 10, 10, 10)));
 
+            Panel content = (Panel) pane.findViewById(R.id.torrent_item_content);
+            ((RelativeLayout) pane.getLayout()).setConstraints(content, new RelativeConstraints().setHeight(100).centerVertically().toRightOf(icon).alignParentRight().setMarginLeft(10).setMarginRight(10));
 
-            //IMAGE - 60 x 60?
-            JLabel icon = new JLabel(new ImageIcon(findImageById(R.image.ic_folder)));
-            pane.add(icon, new RelativeConstraints().setWidth(48).setHeight(48).centerVertically().setMargins(new Insets(10, 10, 10, 10)));
-
-            JPanel content = new JPanel();
-            //content.setBackground(Color.black);
-            content.setOpaque(true);
-            content.setLayout(new GridBagLayout());
+            GridBagLayout contentLayout = (GridBagLayout) content.getLayout();
 
             GridBagConstraints constraints = new GridBagConstraints();
-            //constraints.insets = new Insets(0, 80, 0, 0);
             constraints.fill = GridBagConstraints.HORIZONTAL;
             constraints.weightx = 1;
             constraints.weighty = 1;
             constraints.gridx = 0;
             constraints.gridy = 0;
 
-            JLabel title = new JLabel(torrent.getTitle());
-            title.setFont(new Font("Ariel", Font.BOLD, 14));
-            content.add(title, constraints);
+            JLabel title = (JLabel) content.findViewById(R.id.torrent_item_title);
+            title.setText("Breaking Bad");
+            contentLayout.setConstraints(title, constraints);
 
-            JLabel description = new JLabel(humanReadableByteCountBin(torrent.getObtained())+" of "+humanReadableByteCountBin(torrent.getTotal())+" (0.0%)");
-            description.setFont(new Font("Ariel", Font.PLAIN, 12));
+            JLabel description = (JLabel) content.findViewById(R.id.torrent_item_description);
+            description.setText(humanReadableByteCountBin(torrent.getObtained())+" of "+humanReadableByteCountBin(torrent.getTotal())+" (0.0%)");
             constraints.gridy = 1;
             constraints.insets = new Insets(5, 0, 5, 0);
-            content.add(description, constraints);
+            contentLayout.setConstraints(description, constraints);
 
-            JProgressBar progress = new JProgressBar();
-            progress.setBorderPainted(false);
-            progress.setBorder(null);
-            //progress.setForeground(findColorById(R.color.primary));
-            //progress.setBackground(findColorById(R.color.background_shimmer));
+            JProgressBar progress = (JProgressBar) content.findViewById(R.id.torrent_item_progress);
             progress.setValue(10);
-            //progress.setMaximum(100);
             constraints.gridy = 2;
-            content.add(progress, constraints);
+            contentLayout.setConstraints(progress, constraints);
 
-            //PROGRESS BAR
-            JLabel details = new JLabel("Downloading from "+torrent.getPeers()+" peers");
-            details.setFont(new Font("Ariel", Font.PLAIN, 12));
+            JLabel details = (JLabel) content.findViewById(R.id.torrent_item_details);
+            details.setText("Downloading from "+torrent.getPeers()+" peers");
             constraints.gridy = 3;
             constraints.insets = new Insets(5, 0, 0, 0);
-            content.add(details, constraints);
+            contentLayout.setConstraints(details, constraints);
 
-
+            pane.setBackground(UIManager.getColor("Panel.background").darker());
+            content.setBackground(UIManager.getColor("Panel.background").darker());
             /*
             if(selected){
                 title.setForeground(findColorById(R.color.background));
@@ -201,11 +186,6 @@ public class MainActivity extends Activity {
                 content.setBackground(findColorById(R.color.background));
             }
             */
-            pane.setBackground(UIManager.getColor("Panel.background").darker());
-            content.setBackground(UIManager.getColor("Panel.background").darker());
-
-            pane.add(content, new RelativeConstraints().setHeight(90).centerVertically().toRightOf(icon).alignParentRight().setMarginLeft(10).setMarginRight(10));
-
 
             return pane;
         }

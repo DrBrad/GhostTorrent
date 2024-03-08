@@ -1,6 +1,8 @@
 package com.ghosttorrent.ui.utils.inter;
 
 import com.ghosttorrent.ui.res.loader.Resources;
+import com.ghosttorrent.ui.res.views.Menu;
+import com.ghosttorrent.ui.res.views.MenuBar;
 import com.ghosttorrent.ui.utils.Intent;
 import generated.R;
 
@@ -13,6 +15,7 @@ import java.lang.reflect.InvocationTargetException;
 public abstract class Application {
 
     protected JFrame frame;
+    protected MenuBar menu;
     protected R R;
     protected Resources resources;
 
@@ -62,11 +65,12 @@ public abstract class Application {
     }
 
     public void setToolbar(int id){
-        frame.setJMenuBar((JMenuBar) resources.inflate("menu", id));
+        menu = (MenuBar) resources.inflate("menu", id);
+        frame.setJMenuBar(menu);
     }
 
     public JComponent findViewById(int id){
-        return (JComponent) resources.findById("id", id);
+        return menu.findViewById(id);
     }
 
     public Color findColorById(int id){

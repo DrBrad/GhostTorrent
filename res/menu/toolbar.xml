@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<javax.swing.JMenuBar>
-    <javax.swing.JMenu
+<com.ghosttorrent.ui.res.views.MenuBar>
+    <com.ghosttorrent.ui.res.views.Menu
             id="menu_file"
             text="File">
         <javax.swing.JMenuItem
@@ -21,8 +21,8 @@
         <javax.swing.JMenuItem
                 id="menu_item_quit"
                 text="Quit" />
-    </javax.swing.JMenu>
-    <javax.swing.JMenu
+    </com.ghosttorrent.ui.res.views.Menu>
+    <com.ghosttorrent.ui.res.views.Menu
             id="menu_edit"
             text="Edit">
         <javax.swing.JMenuItem
@@ -34,8 +34,8 @@
         <javax.swing.JMenuItem
                 id="menu_item_preferences"
                 text="Preferences" />
-    </javax.swing.JMenu>
-    <javax.swing.JMenu
+    </com.ghosttorrent.ui.res.views.Menu>
+    <com.ghosttorrent.ui.res.views.Menu
             id="menu_torrent"
             text="Torrent">
         <javax.swing.JMenuItem
@@ -47,8 +47,8 @@
         <javax.swing.JMenuItem
                 id="menu_item_start"
                 text="Start" />
-    </javax.swing.JMenu>
-    <javax.swing.JMenu
+    </com.ghosttorrent.ui.res.views.Menu>
+    <com.ghosttorrent.ui.res.views.Menu
             id="menu_view"
             text="View">
         <javax.swing.JMenuItem
@@ -63,8 +63,8 @@
         <javax.swing.JMenuItem
                 id="menu_item_filterbar"
                 text="Filterbar" />
-    </javax.swing.JMenu>
-    <javax.swing.JMenu
+    </com.ghosttorrent.ui.res.views.Menu>
+    <com.ghosttorrent.ui.res.views.Menu
             id="menu_help"
             text="Help">
         <javax.swing.JMenuItem
@@ -79,5 +79,5 @@
         <javax.swing.JMenuItem
                 id="menu_item_about"
                 text="About" />
-    </javax.swing.JMenu>
-</javax.swing.JMenuBar>
+    </com.ghosttorrent.ui.res.views.Menu>
+</com.ghosttorrent.ui.res.views.MenuBar>

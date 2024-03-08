@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<javax.swing.JPanel>
-    <javax.swing.JPanel
+<com.ghosttorrent.ui.res.views.Panel>
+    <com.ghosttorrent.ui.res.views.Panel
             id="statusbar"
             layout="java.awt.FlowLayout">
 
@@ -20,8 +20,8 @@
                 id="statusbar_settings"
                 icon="@image/ic_settings" />
 
-    </javax.swing.JPanel>
-    <javax.swing.JPanel
+    </com.ghosttorrent.ui.res.views.Panel>
+    <com.ghosttorrent.ui.res.views.Panel
             id="filterbar"
             layout="java.awt.FlowLayout">
 
@@ -29,8 +29,8 @@
                 id="filterbar_show"
                 text="Show" />
 
-    </javax.swing.JPanel>
-    <javax.swing.JPanel
+    </com.ghosttorrent.ui.res.views.Panel>
+    <com.ghosttorrent.ui.res.views.Panel
             id="content"
             layout="java.awt.BorderLayout">
 
@@ -38,5 +38,5 @@
                 id="filterbar_test"
                 text="test" />
 
-    </javax.swing.JPanel>
-</javax.swing.JPanel>
+    </com.ghosttorrent.ui.res.views.Panel>
+</com.ghosttorrent.ui.res.views.Panel>

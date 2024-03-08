@@ -17,6 +17,7 @@ public class Main {
 
     //HONESTLY WE COULD JUST MAKE OUR OWN COMPONENTS AND FILL WITH REFLECT - TODO
     //DONT ABS HASHCODES...
+    //WHY IS THEIR A RANDOM NULL ID...
 
     public static void main(String[] args)throws Exception {
         //new Builder();

@@ -1,11 +1,13 @@
 package com.ghosttorrent.ui.utils.layouts;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.Map;
 
 public class RelativeLayout implements LayoutManager2 {
 
-    private HashMap<Component, RelativeConstraints> constraintsMap;
+    private Map<Component, RelativeConstraints> constraintsMap;
 
     public RelativeLayout(){
         constraintsMap = new HashMap<>();
@@ -400,5 +402,13 @@ public class RelativeLayout implements LayoutManager2 {
                 component.setBounds(insets.top, insets.left, component.getMinimumSize().width, component.getMinimumSize().height);
             }
         }
+    }
+
+    public void setConstraints(Component component, RelativeConstraints constraints){
+        constraintsMap.put(component, constraints);
+    }
+
+    public RelativeConstraints getConstraints(Component component){
+        return constraintsMap.get(component);
     }
 }

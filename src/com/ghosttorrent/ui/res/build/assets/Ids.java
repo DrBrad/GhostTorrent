@@ -36,6 +36,10 @@ public class Ids extends Assets {
                 continue;
             }
             Element element = (Element) nodeList.item(i);
+            if(!element.hasAttribute("id")){
+                continue;
+            }
+
             String name = element.getAttribute("id");
             variables.add(new Variable(name, name.hashCode(), "int"));
             x++;

@@ -1,8 +1,10 @@
 package com.ghosttorrent.ui.utils.inter;
 
 import com.ghosttorrent.ui.res.loader.Resources;
+import com.ghosttorrent.ui.res.views.View;
 import com.ghosttorrent.ui.utils.Bundle;
 import generated.R;
+import com.ghosttorrent.ui.res.views.Panel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +15,7 @@ public abstract class Activity {
     private Application application;
     protected R R;
     //private Resources resources;
-    private JPanel root;
+    private Panel root;
 
     public void onCreate(Bundle bundle){
     }
@@ -34,17 +36,22 @@ public abstract class Activity {
         return application.getFrame();
     }
 
-    public JPanel getRoot(){
+    public Panel getRoot(){
         return root;
     }
 
     public void setContentView(int id){
-        root = (JPanel) application.resources.inflate("layout", id);
+        root = (Panel) application.resources.inflate("layout", id);
         application.frame.setContentPane(root);
     }
 
+    public View inflateLayout(int id){
+        return application.resources.inflate("layout", id);
+    }
+
     public JComponent findViewById(int id){
-        return (JComponent) application.resources.findById("id", id);
+        return root.findViewById(id);
+        //return (JComponent) application.resources.findById("id", id);
     }
 
     public Color findColorById(int id){

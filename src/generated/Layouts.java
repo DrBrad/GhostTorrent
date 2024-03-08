@@ -6,4 +6,5 @@ package generated;
 public class Layouts {
 
     public int main_activity = 606502613;
+    public int torrent_item = 1559807202;
 }

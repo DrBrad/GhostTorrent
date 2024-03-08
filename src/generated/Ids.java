@@ -39,4 +39,10 @@ public class Ids {
     public int filterbar_show = -2020966623;
     public int content = 951530617;
     public int filterbar_test = -2020939594;
+    public int torrent_item_icon = -84611658;
+    public int torrent_item_content = -207249892;
+    public int torrent_item_title = 1682348219;
+    public int torrent_item_description = -37723105;
+    public int torrent_item_progress = 1731431658;
+    public int torrent_item_details = 398941157;
 }
