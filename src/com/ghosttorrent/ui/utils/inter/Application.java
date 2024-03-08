@@ -1,10 +1,9 @@
 package com.ghosttorrent.ui.utils.inter;
 
+import com.ghosttorrent.R;
 import com.ghosttorrent.ui.res.loader.Resources;
-import com.ghosttorrent.ui.res.views.Menu;
 import com.ghosttorrent.ui.res.views.MenuBar;
 import com.ghosttorrent.ui.utils.Intent;
-import generated.R;
 
 import javax.swing.*;
 import java.awt.*;

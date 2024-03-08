@@ -1,8 +1,8 @@
 package com.ghosttorrent.ui.res.loader;
 
+import com.ghosttorrent.R;
 import com.ghosttorrent.ui.res.loader.assets.*;
 import com.ghosttorrent.ui.res.views.View;
-import generated.R;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -16,7 +16,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;

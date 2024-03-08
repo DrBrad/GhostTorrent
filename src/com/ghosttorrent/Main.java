@@ -3,15 +3,8 @@ package com.ghosttorrent;
 import com.ghosttorrent.ui.GhostApplication;
 import com.ghosttorrent.ui.res.build.Builder;
 import com.ghosttorrent.ui.utils.inter.Application;
-import generated.R;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class Main {
 
@@ -21,6 +14,8 @@ public class Main {
 
     public static void main(String[] args)throws Exception {
         System.setProperty("sun.java2d.opengl", "true");
+
+        //System.out.println(Main.class.getPackage());
         //new Builder();
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         Application application = new GhostApplication();

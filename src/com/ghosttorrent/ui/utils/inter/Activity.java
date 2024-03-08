@@ -1,9 +1,8 @@
 package com.ghosttorrent.ui.utils.inter;
 
-import com.ghosttorrent.ui.res.loader.Resources;
+import com.ghosttorrent.R;
 import com.ghosttorrent.ui.res.views.View;
 import com.ghosttorrent.ui.utils.Bundle;
-import generated.R;
 import com.ghosttorrent.ui.res.views.Panel;
 
 import javax.swing.*;
