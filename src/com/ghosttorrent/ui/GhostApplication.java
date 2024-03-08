@@ -17,8 +17,8 @@ public class GhostApplication extends Application {
         super.onCreate();
         setToolbar(R.menu.toolbar);
 
-        frame.setSize(500, 750);
-        frame.setMinimumSize(new Dimension(500, 750));
+        frame.setSize(500, 800);
+        frame.setMinimumSize(new Dimension(500, 800));
         //menu.setBorder(new EmptyBorder(0, 0, 0, 0));
         //menu.setBackground(R.colors.background_shimmer);
 
