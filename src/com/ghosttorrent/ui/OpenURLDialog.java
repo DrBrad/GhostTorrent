@@ -23,8 +23,10 @@ public class OpenURLDialog extends Dialog {
 
         getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
 
-        //((JLabel) findViewById(R.id.dialog_title)).setHorizontalAlignment(SwingConstants.LEFT);
-        //.setFont(UIManager.getFont(""));
+
+        JLabel title = (JLabel) findViewById(R.id.dialog_title);
+        //System.out.println(title);
+        //title.setFont(title.getFont().deriveFont(Font.BOLD));
 
         //findViewById(R.id.dialog_url_parent).setMaximumSize(new Dimension(480, 60));
         GridBagLayout urlLayout = (GridBagLayout) findViewById(R.id.dialog_url_parent).getLayout();
@@ -39,13 +41,14 @@ public class OpenURLDialog extends Dialog {
 
         urlLayout.setConstraints(findViewById(R.id.dialog_url_text), constraints);
 
-        //findViewById(R.id.dialog_url).setMinimumSize(new Dimension(300, 80));
+        JTextField field = (JTextField) findViewById(R.id.dialog_url);
+        field.setPreferredSize(new Dimension(300, 36));
         constraints.insets = new Insets(0, 0, 0, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
         constraints.gridx = 1;
         constraints.gridheight = 2;
-        urlLayout.setConstraints(findViewById(R.id.dialog_url), constraints);
+        urlLayout.setConstraints(field, constraints);
 
         ((FlowLayout) findViewById(R.id.dialog_buttons).getLayout()).setAlignment(FlowLayout.RIGHT);
         //getRoot().setBackground(Color.RED);
