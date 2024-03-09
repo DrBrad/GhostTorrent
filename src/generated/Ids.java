@@ -30,8 +30,10 @@ public class Ids {
     public int menu_item_donate = 941628987;
     public int menu_item_about = 719955521;
     public int menu_help = -1527122399;
+    public int dialog_url = -1384706568;
     public int dialog_cancel = 836644177;
     public int dialog_open = 23588577;
+    public int dialog_buttons = -142697590;
     public int statusbar_open = -1012484888;
     public int statusbar_play = -1012459054;
     public int statusbar_remove = 2035570594;
