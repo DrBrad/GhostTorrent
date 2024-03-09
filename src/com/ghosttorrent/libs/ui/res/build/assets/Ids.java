@@ -4,10 +4,13 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.IOException;
 
 public class Ids extends Assets {
 
@@ -17,16 +20,16 @@ public class Ids extends Assets {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(file);
 
-            recursive(doc.getDocumentElement(), 0);
+            recursive(doc.getDocumentElement());
 
-        }catch(Exception e){
+        }catch(ParserConfigurationException | SAXException | IOException e){
             e.printStackTrace();
         }
     }
 
-    private int recursive(Element root, int x){
+    private void recursive(Element root){
         if(!root.hasChildNodes()){
-            return x;
+            return;
         }
 
         NodeList nodeList = root.getChildNodes();
@@ -36,16 +39,15 @@ public class Ids extends Assets {
                 continue;
             }
             Element element = (Element) nodeList.item(i);
+            recursive(element);
+
             if(!element.hasAttribute("id")){
                 continue;
             }
 
             String name = element.getAttribute("id");
             variables.add(new Variable(name, name.hashCode(), "int"));
-            x++;
-            recursive(element, x);
         }
-        return x;
     }
 
     @Override
