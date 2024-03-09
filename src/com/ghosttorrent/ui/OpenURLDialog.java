@@ -20,6 +20,7 @@ public class OpenURLDialog extends Dialog {
 
         getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
 
+        //System.out.println(findViewById(R.id.));
 
     }
 }
