@@ -6,12 +6,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FilenameFilter;
 
 public class OpenTorrentListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e){
         FileDialog dialog = new FileDialog((Frame) null);
+        //dialog.setFilenameFilter(new FilenameFilter().accept(null, ""));
+        dialog.setMultipleMode(true);
         dialog.setVisible(true);
 
         if(dialog.getDirectory() == null ||
