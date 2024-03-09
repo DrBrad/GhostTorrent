@@ -16,11 +16,13 @@ public class OpenURLDialog extends Dialog {
         setContentView(R.layout.open_url_dialog);
 
         frame.setTitle("Open URL");
-        frame.setSize(500, 300);
-        frame.setMinimumSize(new Dimension(500, 300));
+        frame.setSize(480, 160);
+        frame.setMinimumSize(new Dimension(480, 160));
 
 
         getRoot().setLayout(new BoxLayout(getRoot(), BoxLayout.Y_AXIS));
+
+        ((FlowLayout) findViewById(R.id.dialog_buttons).getLayout()).setAlignment(FlowLayout.RIGHT);
         //getRoot().setBackground(Color.RED);
 
         /*
