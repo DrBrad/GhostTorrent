@@ -1,6 +1,6 @@
 package com.ghosttorrent;
 
-import com.ghosttorrent.libs.ui.res.build.Builder;
+import com.ghosttorrent.libs.ui.res.build.AssetBuilder;
 import com.ghosttorrent.ui.GhostApplication;
 import com.ghosttorrent.libs.ui.utils.inter.Application;
 
@@ -30,7 +30,7 @@ public class Main {
         //String home = System.getProperty("user.home");
         //System.out.println(home);
 
-        new Builder();
+        //new AssetBuilder();
 
         if(gui){
             System.setProperty("sun.java2d.opengl", "true");

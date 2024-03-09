@@ -1,6 +1,6 @@
 package com.ghosttorrent.libs.ui.res.build.assets;
 
-import com.ghosttorrent.libs.ui.res.build.Builder;
+import com.ghosttorrent.libs.ui.res.build.AssetBuilder;
 
 import java.io.File;
 
@@ -8,7 +8,7 @@ public class ViewAsset extends Assets {
 
     protected String res;
 
-    public ViewAsset(Builder builder, String res){
+    public ViewAsset(AssetBuilder builder, String res){
         File dir = new File(getClass().getResource("/"+res).getFile());
 
         for(File file : dir.listFiles()){

@@ -1,10 +1,10 @@
 package com.ghosttorrent.libs.ui.res.build.assets;
 
-import com.ghosttorrent.libs.ui.res.build.Builder;
+import com.ghosttorrent.libs.ui.res.build.AssetBuilder;
 
 public class Menus extends ViewAsset {
 
-    public Menus(Builder builder){
+    public Menus(AssetBuilder builder){
         super(builder, "menu");
     }
 

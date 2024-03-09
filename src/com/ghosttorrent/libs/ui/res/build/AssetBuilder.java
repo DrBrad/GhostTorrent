@@ -6,11 +6,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Builder {
+public class AssetBuilder {
 
     public Ids ids;
 
-    public Builder(){
+    public AssetBuilder(){
         ids = new Ids();
         Assets[] assets = new Assets[]{
                 new Res(),

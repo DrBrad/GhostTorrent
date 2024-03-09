@@ -43,10 +43,10 @@ public abstract class Dialog {
     public void setContentView(int id){
         try{
             root = (Panel) application.resources.inflate("layout", id);
+            frame.setContentPane(root);
         }catch(Exception e){
             e.printStackTrace();
         }
-        application.frame.setContentPane(root);
     }
 
     public View inflateLayout(int id){

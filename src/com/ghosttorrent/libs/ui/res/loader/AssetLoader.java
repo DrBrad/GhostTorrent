@@ -47,24 +47,29 @@ public class AssetLoader {
 
         File file = new File(getClass().getResource("/"+asset+"/"+name+".xml").getFile());
 
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document doc = builder.parse(file);
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(file);
 
-            return (View) inflateLayout(null, doc.getDocumentElement());
+        return (View) inflateLayout(null, doc.getDocumentElement());
     }
 
     private JComponent inflateLayout(View parent, Element root)throws ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         Class<?> c = Class.forName(root.getTagName());
         JComponent component = (JComponent) c.getDeclaredConstructor().newInstance();
 
-
         if(parent != null){
-            try{
-                int id = (int) R.id.getClass().getField(root.getAttribute("id")).get(R.id);
-                parent.addView(id, component);
-                //((Ids) assets.get("id")).add(id, component);
-            }catch(NoSuchFieldException e){
+            if(root.hasAttribute("id")){
+                try{
+                    int id = (int) R.id.getClass().getField(root.getAttribute("id")).get(R.id);
+                    parent.addView(id, component);
+
+                }catch(NoSuchFieldException e){
+                    ((JPanel) parent).add(component);
+                }
+
+            }else{
+                ((JPanel) parent).add(component);
             }
         }
 
@@ -104,6 +109,7 @@ public class AssetLoader {
                 name = "set"+(name.charAt(0)+"").toUpperCase()+name.substring(1);
                 Method method = component.getClass().getMethod(name, param);
                 method.invoke(component, value);
+
             }catch(Exception e){
                 e.printStackTrace();
             }
@@ -116,7 +122,11 @@ public class AssetLoader {
                 if(nodeList.item(i).getNodeType() != Node.ELEMENT_NODE){
                     continue;
                 }
-                inflateLayout((View) component, (Element) nodeList.item(i));
+                try{
+                    inflateLayout((View) component, (Element) nodeList.item(i));
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
             }
         }
 
