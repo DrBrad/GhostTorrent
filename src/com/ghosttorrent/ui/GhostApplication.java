@@ -2,7 +2,7 @@ package com.ghosttorrent.ui;
 
 import com.ghosttorrent.torrent.Torrent;
 import com.ghosttorrent.ui.listeners.OpenTorrentListener;
-import com.ghosttorrent.ui.utils.inter.Application;
+import com.ghosttorrent.libs.ui.utils.inter.Application;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,12 +33,7 @@ public class GhostApplication extends Application {
             }
         });
 
-
-        try{
-            startActivity(new MainActivity());
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        startActivity(new MainActivity());
     }
 
     @Override

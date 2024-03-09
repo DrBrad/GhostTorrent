@@ -1,7 +1,8 @@
 package com.ghosttorrent;
 
+import com.ghosttorrent.libs.ui.res.build.Builder;
 import com.ghosttorrent.ui.GhostApplication;
-import com.ghosttorrent.ui.utils.inter.Application;
+import com.ghosttorrent.libs.ui.utils.inter.Application;
 
 import javax.swing.*;
 

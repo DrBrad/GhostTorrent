@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<com.ghosttorrent.ui.res.views.Panel
-        layout="com.ghosttorrent.ui.utils.layouts.RelativeLayout">
+<com.ghosttorrent.libs.ui.res.views.Panel
+        layout="com.ghosttorrent.libs.ui.utils.layouts.RelativeLayout">
 
     <javax.swing.JLabel
             id="torrent_item_icon"
             icon="@image/ic_folder" />
 
-    <com.ghosttorrent.ui.res.views.Panel
+    <com.ghosttorrent.libs.ui.res.views.Panel
             id="torrent_item_content"
             layout="java.awt.GridBagLayout">
 
@@ -22,5 +22,5 @@
         <javax.swing.JLabel
                 id="torrent_item_details" />
 
-    </com.ghosttorrent.ui.res.views.Panel>
-</com.ghosttorrent.ui.res.views.Panel>
+    </com.ghosttorrent.libs.ui.res.views.Panel>
+</com.ghosttorrent.libs.ui.res.views.Panel>

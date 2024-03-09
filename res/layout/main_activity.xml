@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<com.ghosttorrent.ui.res.views.Panel>
-    <com.ghosttorrent.ui.res.views.Panel
+<com.ghosttorrent.libs.ui.res.views.Panel>
+    <com.ghosttorrent.libs.ui.res.views.Panel
             id="statusbar"
             layout="java.awt.FlowLayout">
 
@@ -20,8 +20,8 @@
                 id="statusbar_settings"
                 icon="@image/ic_settings" />
 
-    </com.ghosttorrent.ui.res.views.Panel>
-    <com.ghosttorrent.ui.res.views.Panel
+    </com.ghosttorrent.libs.ui.res.views.Panel>
+    <com.ghosttorrent.libs.ui.res.views.Panel
             id="filterbar"
             layout="java.awt.FlowLayout">
 
@@ -29,11 +29,11 @@
                 id="filterbar_show"
                 text="Show" />
 
-    </com.ghosttorrent.ui.res.views.Panel>
-    <com.ghosttorrent.ui.res.views.Panel
+    </com.ghosttorrent.libs.ui.res.views.Panel>
+    <com.ghosttorrent.libs.ui.res.views.Panel
             id="content"
             layout="java.awt.BorderLayout" />
-    <com.ghosttorrent.ui.res.views.Panel
+    <com.ghosttorrent.libs.ui.res.views.Panel
             id="bottombar"
             layout="java.awt.FlowLayout">
 
@@ -41,5 +41,5 @@
                 id="bottombar_ratio"
                 text="Ratio 0.0" />
 
-    </com.ghosttorrent.ui.res.views.Panel>
-</com.ghosttorrent.ui.res.views.Panel>
+    </com.ghosttorrent.libs.ui.res.views.Panel>
+</com.ghosttorrent.libs.ui.res.views.Panel>

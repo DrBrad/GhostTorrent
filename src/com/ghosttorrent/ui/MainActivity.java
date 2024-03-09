@@ -2,11 +2,11 @@ package com.ghosttorrent.ui;
 
 import com.ghosttorrent.torrent.Torrentz;
 import com.ghosttorrent.ui.listeners.OpenTorrentListener;
-import com.ghosttorrent.ui.utils.Bundle;
-import com.ghosttorrent.ui.utils.inter.Activity;
-import com.ghosttorrent.ui.res.views.Panel;
-import com.ghosttorrent.ui.utils.layouts.RelativeConstraints;
-import com.ghosttorrent.ui.utils.layouts.RelativeLayout;
+import com.ghosttorrent.libs.ui.utils.Bundle;
+import com.ghosttorrent.libs.ui.utils.inter.Activity;
+import com.ghosttorrent.libs.ui.res.views.Panel;
+import com.ghosttorrent.libs.ui.utils.layouts.RelativeConstraints;
+import com.ghosttorrent.libs.ui.utils.layouts.RelativeLayout;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
@@ -29,6 +29,13 @@ public class MainActivity extends Activity {
         ((FlowLayout) findViewById(R.id.bottombar).getLayout()).setAlignment(FlowLayout.LEFT);
 
         ((JButton) findViewById(R.id.statusbar_open)).addActionListener(new OpenTorrentListener());
+
+        ((JButton) findViewById(R.id.statusbar_play)).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                startDialog(new OpenURLDialog());
+            }
+        });
 
         JButton[] buttons = new JButton[]{
                 (JButton) findViewById(R.id.statusbar_play),
