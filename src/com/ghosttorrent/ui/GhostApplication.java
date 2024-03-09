@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class GhostApplication extends Application {
 
@@ -35,6 +38,33 @@ public class GhostApplication extends Application {
             @Override
             public void actionPerformed(ActionEvent e){
                 onDestroy();
+            }
+        });
+
+
+        ((JMenuItem) findViewById(R.id.menu_item_donate)).addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                if(Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+                    try{
+                        Desktop.getDesktop().browse(new URI("http://ghosttorrent.com/donate"));
+                    }catch(URISyntaxException | IOException ex){
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        ((JMenuItem) findViewById(R.id.menu_item_about)).addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                if(Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
+                    try{
+                        Desktop.getDesktop().browse(new URI("http://ghosttorrent.com"));
+                    }catch(URISyntaxException | IOException ex){
+                        ex.printStackTrace();
+                    }
+                }
             }
         });
 

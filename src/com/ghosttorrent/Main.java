@@ -30,7 +30,7 @@ public class Main {
         //String home = System.getProperty("user.home");
         //System.out.println(home);
 
-        new AssetBuilder();
+        //new AssetBuilder();
 
         if(gui){
             System.setProperty("sun.java2d.opengl", "true");

@@ -41,6 +41,8 @@ public abstract class Dialog {
         try{
             root = (Panel) application.resources.inflate("layout", id);
             frame.setContentPane(root);
+            frame.setLocation(application.frame.getLocation());
+            frame.setVisible(true);
         }catch(Exception e){
             e.printStackTrace();
         }

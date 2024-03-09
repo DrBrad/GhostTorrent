@@ -56,6 +56,7 @@ public abstract class Application {
             frame.setContentPane(root);
 
             activity.onCreate(intent.getBundle());
+
         }catch(NoSuchFieldException | IllegalAccessException e){
             e.printStackTrace();
         }
@@ -89,7 +90,6 @@ public abstract class Application {
             f.set(dialog, R);
 
             dialog.onCreate(bundle);
-            dialog.frame.setVisible(true);
 
         }catch(NoSuchFieldException | IllegalAccessException e){
             e.printStackTrace();

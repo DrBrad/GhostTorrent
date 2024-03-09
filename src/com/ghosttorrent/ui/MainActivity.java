@@ -44,13 +44,14 @@ public class MainActivity extends Activity {
             button.setBorder(null);
         }
 
-        findViewById(R.id.content).setBackground(UIManager.getColor("Panel.background").darker());
+        //findViewById(R.id.content).setBorder(new MatteBorder(1, 0, 1, 0, UIManager.getColor("Panel.background").darker()));
+        //findViewById(R.id.content).setBackground(UIManager.getColor("Panel.background").darker());
         findViewById(R.id.content).add(createList());
     }
 
     private JComponent createList(){
         JList list = new JList();
-        list.setBackground(UIManager.getColor("Panel.background").darker());
+        //list.setBackground(UIManager.getColor("Panel.background").darker());
 
         DefaultListModel model = new DefaultListModel();
 
@@ -81,7 +82,7 @@ public class MainActivity extends Activity {
         //scrollPane.setBorder(new MatteBorder(1, 0, 0, 0, findColorById(R.color.background_shimmer)));
         scrollPane.getViewport().putClientProperty("EnableWindowBlit", Boolean.TRUE);
         scrollPane.getViewport().setScrollMode(JViewport.BACKINGSTORE_SCROLL_MODE);
-        scrollPane.setBackground(UIManager.getColor("Panel.background").darker());
+        //scrollPane.setBackground(UIManager.getColor("Panel.background").darker());
 
         /*
         list.addMouseMotionListener(new MouseMotionListener(){
@@ -201,9 +202,9 @@ public class MainActivity extends Activity {
                 pane.setBackground(UIManager.getColor("MenuItem.selectionBackground"));
                 content.setBackground(UIManager.getColor("MenuItem.selectionBackground"));
 
-            }else{
-                pane.setBackground(UIManager.getColor("Panel.background").darker());
-                content.setBackground(UIManager.getColor("Panel.background").darker());
+            //}else{
+                //pane.setBackground(UIManager.getColor("Panel.background").darker());
+                //content.setBackground(UIManager.getColor("Panel.background").darker());
             }
 
 
