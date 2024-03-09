@@ -30,13 +30,6 @@ public class MainActivity extends Activity {
 
         ((JButton) findViewById(R.id.statusbar_open)).addActionListener(new OpenTorrentListener());
 
-        ((JButton) findViewById(R.id.statusbar_play)).addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                startDialog(new OpenURLDialog());
-            }
-        });
-
         JButton[] buttons = new JButton[]{
                 (JButton) findViewById(R.id.statusbar_play),
                 (JButton) findViewById(R.id.statusbar_remove),

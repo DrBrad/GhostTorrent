@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <com.ghosttorrent.libs.ui.res.views.Panel>
     <javax.swing.JLabel
+            id="dialog_title"
             text="Open torrent from URL" />
 
     <com.ghosttorrent.libs.ui.res.views.Panel
-            id="dialog_url"
-            layout="java.awt.FlowLayout">
+            id="dialog_url_parent"
+            layout="java.awt.GridBagLayout">
 
         <javax.swing.JLabel
+                id="dialog_url_text"
                 text="URL" />
+
+        <javax.swing.JTextField
+                id="dialog_url" />
 
     </com.ghosttorrent.libs.ui.res.views.Panel>
 

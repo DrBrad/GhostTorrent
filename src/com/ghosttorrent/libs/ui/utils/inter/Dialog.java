@@ -22,14 +22,11 @@ public abstract class Dialog {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    public void close(){
-        frame.dispose();
-    }
-
     public void onCreate(Bundle bundle){
     }
 
     public void onDestroy(){
+        frame.dispose();
     }
 
     public JFrame getFrame(){

@@ -35,6 +35,7 @@ public abstract class Application {
     }
 
     public void onDestroy(){
+        System.exit(0);
     }
 
     public void startActivity(Activity activity){
