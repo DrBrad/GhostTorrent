@@ -36,6 +36,10 @@ public abstract class Dialog {
         return frame;
     }
 
+    public Panel getRoot(){
+        return root;
+    }
+
     public void setContentView(int id){
         try{
             root = (Panel) application.resources.inflate("layout", id);
