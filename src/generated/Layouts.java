@@ -5,6 +5,7 @@ package generated;
 /*********************************/
 public class Layouts {
 
+    public int preferences_dialog = 20763759;
     public int new_torrent_dialog = 1973706710;
     public int open_url_dialog = 1092831021;
     public int main_activity = 606502613;

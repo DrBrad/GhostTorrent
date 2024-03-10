@@ -68,6 +68,22 @@ public class GhostApplication extends Application {
         });
 
 
+
+
+        ((JMenuItem) findViewById(R.id.menu_item_preferences)).addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                Dialog dialog = new PreferencesDialog();
+                dialog.addCloseListener(new DialogCloseListener(){
+                    @Override
+                    public void onClose(Bundle bundle){
+                    }
+                });
+                startDialog(dialog);
+            }
+        });
+
+
         ((JMenuItem) findViewById(R.id.menu_item_donate)).addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
