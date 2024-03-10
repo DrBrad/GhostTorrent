@@ -4,6 +4,7 @@ import com.ghosttorrent.libs.ui.utils.inter.Dialog;
 import com.ghosttorrent.libs.ui.utils.Bundle;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,8 +26,8 @@ public class OpenURLDialog extends Dialog {
 
 
         JLabel title = (JLabel) findViewById(R.id.dialog_title);
-        //System.out.println(title);
-        //title.setFont(title.getFont().deriveFont(Font.BOLD));
+        title.setBorder(new EmptyBorder(5, 5, 0, 5));
+        title.setFont(title.getFont().deriveFont(Font.BOLD));
 
         //findViewById(R.id.dialog_url_parent).setMaximumSize(new Dimension(480, 60));
         GridBagLayout urlLayout = (GridBagLayout) findViewById(R.id.dialog_url_parent).getLayout();

@@ -65,11 +65,11 @@ public class AssetLoader {
                     parent.addView(id, component);
 
                 }catch(NoSuchFieldException e){
-                    ((JPanel) parent).add(component);
+                    parent.addView(component.hashCode(), component);
                 }
 
             }else{
-                ((JPanel) parent).add(component);
+                parent.addView(component.hashCode(), component);
             }
         }
 
