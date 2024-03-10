@@ -43,6 +43,7 @@ public class OpenURLDialog extends Dialog {
         urlLayout.setConstraints(findViewById(R.id.dialog_url_text), constraints);
 
         JTextField field = (JTextField) findViewById(R.id.dialog_url);
+        field.setCaretColor(UIManager.getColor("TextField.foreground"));
         field.setPreferredSize(new Dimension(300, 36));
         constraints.insets = new Insets(0, 0, 0, 5);
         constraints.fill = GridBagConstraints.HORIZONTAL;
