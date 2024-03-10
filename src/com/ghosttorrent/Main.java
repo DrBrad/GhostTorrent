@@ -1,10 +1,16 @@
 package com.ghosttorrent;
 
 import com.ghosttorrent.libs.ui.res.build.AssetBuilder;
+import com.ghosttorrent.torrent.messages.AnnounceRequest;
+import com.ghosttorrent.torrent.messages.AnnounceResponse;
+import com.ghosttorrent.torrent.messages.GetPeersRequest;
+import com.ghosttorrent.torrent.messages.GetPeersResponse;
 import com.ghosttorrent.ui.GhostApplication;
 import com.ghosttorrent.libs.ui.utils.inter.Application;
+import unet.kad4.Kademlia;
 
 import javax.swing.*;
+import java.net.InetAddress;
 
 public class Main {
 
@@ -39,5 +45,14 @@ public class Main {
             Application application = new GhostApplication();
             application.launch();
         }
+
+        Kademlia kad = new Kademlia();
+        kad.registerMessage(AnnounceRequest.class);
+        kad.registerMessage(AnnounceResponse.class);
+
+        kad.registerMessage(GetPeersRequest.class);
+        kad.registerMessage(GetPeersResponse.class);
+
+        kad.join(6881, InetAddress.getByName("router.bittorrent.com"), 6881);
     }
 }
