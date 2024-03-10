@@ -14,10 +14,10 @@ public class OpenURLDialog extends Dialog {
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
+        frame.setSize(480, 160);
         setContentView(R.layout.open_url_dialog);
 
         frame.setTitle("Open URL");
-        frame.setSize(480, 160);
         frame.setMinimumSize(new Dimension(480, 160));
         frame.setMaximumSize(new Dimension(480, 160));
 

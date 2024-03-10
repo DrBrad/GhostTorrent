@@ -41,7 +41,23 @@ public abstract class Dialog {
         try{
             root = (Panel) application.resources.inflate("layout", id);
             frame.setContentPane(root);
-            frame.setLocation(application.frame.getLocation());
+
+            int x;
+            if(application.frame.getSize().width > frame.getSize().width){
+                x = application.frame.getLocation().x+((application.frame.getSize().width-frame.getSize().width)/2);
+            }else{
+                x = application.frame.getLocation().x+((frame.getSize().width-application.frame.getSize().width)/2);
+            }
+
+            int y;
+            if(application.frame.getSize().height > frame.getSize().height){
+                y = application.frame.getLocation().y+((application.frame.getSize().height-frame.getSize().height)/2);
+            }else{
+                y = application.frame.getLocation().y+((frame.getSize().height-application.frame.getSize().height)/2);
+            }
+
+            frame.setLocation(x, y);
+
             frame.setVisible(true);
         }catch(Exception e){
             e.printStackTrace();
