@@ -8,6 +8,8 @@ import com.ghosttorrent.libs.ui.utils.Bundle;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Dialog {
 
@@ -15,8 +17,10 @@ public abstract class Dialog {
     protected R R;
     protected JFrame frame;
     protected Panel root;
+    protected List<DialogCloseListener> listeners;
 
     public Dialog(){
+        listeners = new ArrayList<>();
         frame = new JFrame();
         //frame.setTitle(findStringById(R.string.app_name));
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -29,12 +33,34 @@ public abstract class Dialog {
         frame.dispose();
     }
 
+    public void close(){
+        onDestroy();
+    }
+
+    public void closeWithIntent(Bundle bundle){
+        onDestroy();
+
+        if(!listeners.isEmpty()){
+            for(DialogCloseListener listener : listeners){
+                listener.onClose(bundle);
+            }
+        }
+    }
+
     public JFrame getFrame(){
         return frame;
     }
 
     public Panel getRoot(){
         return root;
+    }
+
+    public void addCloseListener(DialogCloseListener listener){
+        listeners.add(listener);
+    }
+
+    public void removeCloseListener(DialogCloseListener listener){
+        listeners.remove(listener);
     }
 
     public void setContentView(int id){

@@ -154,6 +154,7 @@ public class MainActivity extends Activity {
             pane.setPreferredSize(new Dimension(480, 120));
 
             JLabel icon = (JLabel) pane.findViewById(R.id.torrent_item_icon);
+            icon.setIcon(UIManager.getIcon("FileView.directoryIcon"));
             ((RelativeLayout) pane.getLayout()).setConstraints(icon, new RelativeConstraints().setWidth(48).setHeight(48).centerVertically().setMargins(new Insets(10, 10, 10, 10)));
 
             Panel content = (Panel) pane.findViewById(R.id.torrent_item_content);

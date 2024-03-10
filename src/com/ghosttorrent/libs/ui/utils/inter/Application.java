@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Field;
+import java.util.List;
 
 public abstract class Application {
 
@@ -17,6 +18,8 @@ public abstract class Application {
     protected R R;
     protected MenuBar menu;
     protected AssetLoader resources;
+    protected List<ApplicationCloseListener> listeners;
+    protected Activity activity;
 
     public Application(){
         R = new R();
@@ -38,6 +41,16 @@ public abstract class Application {
         System.exit(0);
     }
 
+    public void close(){
+        if(!listeners.isEmpty()){
+            for(ApplicationCloseListener listener : listeners){
+                listener.onClose();
+            }
+        }
+
+        onDestroy();
+    }
+
     public void startActivity(Activity activity){
         startActivity(activity, new Intent());
     }
@@ -52,9 +65,10 @@ public abstract class Application {
             f.setAccessible(true);
             f.set(activity, R);
 
-            JPanel root = new JPanel();
-            frame.setContentPane(root);
+            //JPanel root = new JPanel();
+            //frame.setContentPane(root);
 
+            this.activity = activity;
             activity.onCreate(intent.getBundle());
 
         }catch(NoSuchFieldException | IllegalAccessException e){
@@ -62,8 +76,20 @@ public abstract class Application {
         }
     }
 
+    public Activity getActivity(){
+        return activity;
+    }
+
     public JFrame getFrame(){
         return frame;
+    }
+
+    public void addCloseListener(ApplicationCloseListener listener){
+        listeners.add(listener);
+    }
+
+    public void removeCloseListener(ApplicationCloseListener listener){
+        listeners.remove(listener);
     }
 
     public void setToolbar(int id){

@@ -52,16 +52,19 @@ public class OpenURLDialog extends Dialog {
         urlLayout.setConstraints(field, constraints);
 
         ((FlowLayout) findViewById(R.id.dialog_buttons).getLayout()).setAlignment(FlowLayout.RIGHT);
-        //getRoot().setBackground(Color.RED);
 
         ((JButton) findViewById(R.id.dialog_cancel)).addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                onDestroy();
+                close();
             }
         });
 
-        //System.out.println(findViewById(R.id.));
-
+        ((JButton) findViewById(R.id.dialog_open)).addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                closeWithIntent(null);
+            }
+        });
     }
 }
