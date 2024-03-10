@@ -5,10 +5,10 @@ import unet.kad4.messages.inter.Message;
 import unet.kad4.messages.inter.MessageType;
 import unet.kad4.messages.inter.MethodMessageBase;
 
-@Message(method = "announce", type = MessageType.RSP_MSG)
-public class AnnounceResponse extends MethodMessageBase {
+@Message(method = "announce_peer", type = MessageType.RSP_MSG)
+public class AnnouncePeerResponse extends MethodMessageBase {
 
-    public AnnounceResponse(byte[] tid){
+    public AnnouncePeerResponse(byte[] tid){
         super(tid);
     }
 

@@ -1,10 +1,6 @@
 package com.ghosttorrent;
 
-import com.ghosttorrent.libs.ui.res.build.AssetBuilder;
-import com.ghosttorrent.torrent.messages.AnnounceRequest;
-import com.ghosttorrent.torrent.messages.AnnounceResponse;
-import com.ghosttorrent.torrent.messages.GetPeersRequest;
-import com.ghosttorrent.torrent.messages.GetPeersResponse;
+import com.ghosttorrent.torrent.messages.*;
 import com.ghosttorrent.ui.GhostApplication;
 import com.ghosttorrent.libs.ui.utils.inter.Application;
 import unet.kad4.Kademlia;
@@ -47,11 +43,20 @@ public class Main {
         }
 
         Kademlia kad = new Kademlia();
-        kad.registerMessage(AnnounceRequest.class);
-        kad.registerMessage(AnnounceResponse.class);
+        kad.registerMessage(AnnouncePeerRequest.class);
+        kad.registerMessage(AnnouncePeerResponse.class);
+
+        kad.registerMessage(GetRequest.class);
+        kad.registerMessage(GetResponse.class);
+
+        kad.registerMessage(PutRequest.class);
+        kad.registerMessage(PutResponse.class);
 
         kad.registerMessage(GetPeersRequest.class);
         kad.registerMessage(GetPeersResponse.class);
+
+        kad.registerMessage(SampleHashRequest.class);
+        kad.registerMessage(SampleHashResponse.class);
 
         kad.join(6881, InetAddress.getByName("router.bittorrent.com"), 6881);
     }

@@ -5,10 +5,10 @@ import unet.kad4.messages.inter.Message;
 import unet.kad4.messages.inter.MessageType;
 import unet.kad4.messages.inter.MethodMessageBase;
 
-@Message(method = "sample_infohashes", type = MessageType.REQ_MSG)
-public class SampleHashRequest extends MethodMessageBase {
+@Message(method = "put", type = MessageType.RSP_MSG)
+public class PutResponse extends MethodMessageBase {
 
-    public SampleHashRequest(byte[] tid){
+    public PutResponse(byte[] tid){
         super(tid);
     }
 

@@ -5,10 +5,10 @@ import unet.kad4.messages.inter.Message;
 import unet.kad4.messages.inter.MessageType;
 import unet.kad4.messages.inter.MethodMessageBase;
 
-@Message(method = "sample_infohashes", type = MessageType.REQ_MSG)
-public class SampleHashRequest extends MethodMessageBase {
+@Message(method = "announce_peer", type = MessageType.REQ_MSG)
+public class AnnouncePeerRequest extends MethodMessageBase {
 
-    public SampleHashRequest(byte[] tid){
+    public AnnouncePeerRequest(byte[] tid){
         super(tid);
     }
 

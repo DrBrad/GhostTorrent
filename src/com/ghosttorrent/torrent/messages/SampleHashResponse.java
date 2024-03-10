@@ -5,7 +5,7 @@ import unet.kad4.messages.inter.Message;
 import unet.kad4.messages.inter.MessageType;
 import unet.kad4.messages.inter.MethodMessageBase;
 
-@Message(method = "sample_hash", type = MessageType.RSP_MSG)
+@Message(method = "sample_infohashes", type = MessageType.RSP_MSG)
 public class SampleHashResponse extends MethodMessageBase {
 
     public SampleHashResponse(byte[] tid){
