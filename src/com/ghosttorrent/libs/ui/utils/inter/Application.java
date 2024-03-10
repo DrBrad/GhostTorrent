@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Application {
@@ -21,6 +22,7 @@ public abstract class Application {
     protected List<ApplicationCloseListener> listeners;
 
     public Application(){
+        listeners = new ArrayList<>();
         R = new R();
         resources = new AssetLoader(R);
         frame = new JFrame();
