@@ -59,5 +59,10 @@ public class Main {
         kad.registerMessage(SampleHashResponse.class);
 
         kad.join(6881, InetAddress.getByName("router.bittorrent.com"), 6881);
+
+        while(true){
+            Thread.sleep(10000);
+            System.out.println(kad.getRoutingTable().getDerivedUID()+"  "+kad.getRoutingTable().getConsensusExternalAddress().getHostAddress());
+        }
     }
 }
