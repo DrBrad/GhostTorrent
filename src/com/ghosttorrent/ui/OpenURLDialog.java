@@ -63,7 +63,9 @@ public class OpenURLDialog extends Dialog {
         ((JButton) findViewById(R.id.dialog_open)).addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                closeWithIntent(null);
+                Bundle bundle = new Bundle();
+                bundle.put("url", field.getText().toString().trim());
+                closeWithIntent(bundle);
             }
         });
     }

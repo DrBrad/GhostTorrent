@@ -19,7 +19,6 @@ public abstract class Application {
     protected MenuBar menu;
     protected AssetLoader resources;
     protected List<ApplicationCloseListener> listeners;
-    protected Activity activity;
 
     public Application(){
         R = new R();
@@ -68,16 +67,11 @@ public abstract class Application {
             //JPanel root = new JPanel();
             //frame.setContentPane(root);
 
-            this.activity = activity;
             activity.onCreate(intent.getBundle());
 
         }catch(NoSuchFieldException | IllegalAccessException e){
             e.printStackTrace();
         }
-    }
-
-    public Activity getActivity(){
-        return activity;
     }
 
     public JFrame getFrame(){

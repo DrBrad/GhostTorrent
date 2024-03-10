@@ -51,7 +51,9 @@ public class GhostApplication extends Application {
                 dialog.addCloseListener(new DialogCloseListener(){
                     @Override
                     public void onClose(Bundle bundle){
-                        System.out.println("CLOSED");
+                        if(bundle.containsKey("url")){
+                            System.out.println(bundle.getString("url"));
+                        }
                     }
                 });
                 startDialog(dialog);
