@@ -84,13 +84,13 @@ public class GhostApplication extends Application {
         ((JMenuItem) findViewById(R.id.menu_item_about)).addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                if(Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)){
-                    try{
-                        Desktop.getDesktop().browse(new URI("http://ghosttorrent.com"));
-                    }catch(URISyntaxException | IOException ex){
-                        ex.printStackTrace();
+                Dialog dialog = new AboutDialog();
+                dialog.addCloseListener(new DialogCloseListener(){
+                    @Override
+                    public void onClose(Bundle bundle){
                     }
-                }
+                });
+                startDialog(dialog);
             }
         });
 

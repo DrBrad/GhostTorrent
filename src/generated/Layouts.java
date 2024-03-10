@@ -9,4 +9,5 @@ public class Layouts {
     public int open_url_dialog = 1092831021;
     public int main_activity = 606502613;
     public int torrent_item = 1559807202;
+    public int about_dialog = -49467846;
 }
