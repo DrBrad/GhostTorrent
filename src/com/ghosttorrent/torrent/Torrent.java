@@ -44,6 +44,8 @@ public class Torrent {
                 creationDate = ben.getLong("creation date");
             }
 
+            System.out.println(ben);
+
             if(ben.containsKey("info")){
                 ben = ben.getBencodeObject("info");
 
@@ -63,8 +65,6 @@ public class Torrent {
                     }
                 }
             }
-
-            //System.out.println(ben);
 
         }catch(IOException ex){
             ex.printStackTrace();
