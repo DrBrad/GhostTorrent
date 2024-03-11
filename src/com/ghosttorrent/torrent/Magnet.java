@@ -14,6 +14,10 @@ public class Magnet {
     SAMPLE_HASH: xt < REMOVE urn:btih > SAMPLE_HASH
     FILE_NAME: dn
     TRACKER: tr
+
+    - GET ANNOUNCE LIST
+    - TAKE CONNECTION-ID FROM ANNOUNCE AND SAVE FOR 30 MINUTE ANNOUNCE
+    - DO A GET_PEERS????
     */
 
     public Magnet(String link)throws URISyntaxException {
