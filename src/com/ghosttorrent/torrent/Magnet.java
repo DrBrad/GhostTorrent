@@ -1,9 +1,7 @@
 package com.ghosttorrent.torrent;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,6 +31,9 @@ public class Magnet {
                 System.out.println(key+" = "+value);
             }
         }
+
+        //BEP 3 - NO REQUIREMENTS TO TRACKERS
+        //BEP 48 - MUST CONTAIN /announce IN URI
     }
 
     private Map<String, List<String>> getParams(URI uri){
