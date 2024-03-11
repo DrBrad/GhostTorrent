@@ -4,37 +4,55 @@ import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Magnet {
 
-    public Magnet()throws URISyntaxException {
+    /*
+    PROTOCOL: magnet
+    SAMPLE_HASH: xt < REMOVE urn:btih > SAMPLE_HASH
+    FILE_NAME: dn
+    TRACKER: tr
+    */
+
+    public Magnet(String link)throws URISyntaxException {
         //BEP 9
-        URI uri = new URI("magnet:?xt=urn:btih:4f836d43e43e8682ff6d2e197e32d7e4f4fb6af4&dn=Ubuntu+Linux+20.04+LTS+Desktop+64-bit&tr=http%3A%2F%2Ftorrent.ubuntu.com%3A6969%2Fannounce");
-        //URL url = new URL("magnet:?xt=urn:btih:4f836d43e43e8682ff6d2e197e32d7e4f4fb6af4&dn=Ubuntu+Linux+20.04+LTS+Desktop+64-bit&tr=http%3A%2F%2Ftorrent.ubuntu.com%3A6969%2Fannounce");
+        URI uri = new URI(link);
 
         if(!uri.getScheme().equals("magnet")){
-            System.err.println("NOT MAGNET");
+            throw new IllegalArgumentException("Link is not magnet");
         }
 
-        System.out.println(uri.getSchemeSpecificPart());
+        Map<String, List<String>> queries = getParams(uri);
 
-        if(uri.getQuery().length() > 0){
-            Map<String, String> queries = splitQuery(uri.getQuery());
-
-            for(String key : queries.keySet()){
-                System.out.println(key+" = "+queries.get(key));
+        for(String key : queries.keySet()){
+            for(String value : queries.get(key)){
+                System.out.println(key+" = "+value);
             }
         }
     }
 
-    public static Map<String, String> splitQuery(String query)throws UnsupportedEncodingException {
-        Map<String, String> r = new HashMap<>();
-        for(String pair : query.split("&")){
-            int idx = pair.indexOf("=");
-            r.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"), URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
+    private Map<String, List<String>> getParams(URI uri){
+        Map<String, List<String>> r = new HashMap<>();
+
+        // magnet:?param1=value1...
+        // uri.getSchemeSpecificPart() will start with the question mark and contain all name-value pairs
+        String[] params = uri.getSchemeSpecificPart().substring(1).split("&");
+        for(String param : params){
+            String[] parts = param.split("=");
+            String name = parts[0];
+            String value = parts[1];
+
+            if(!r.containsKey(name)){
+                r.put(name, new ArrayList<>());
+            }
+
+            r.get(name).add(value);
         }
+
         return r;
     }
 }
