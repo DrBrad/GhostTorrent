@@ -1,6 +1,6 @@
 package com.ghosttorrent.torrent.messages;
 
-import unet.kad4.libs.bencode.variables.BencodeObject;
+import unet.bencode.variables.BencodeObject;
 import unet.kad4.messages.inter.Message;
 import unet.kad4.messages.inter.MessageType;
 import unet.kad4.messages.inter.MethodMessageBase;

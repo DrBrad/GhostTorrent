@@ -1,11 +1,11 @@
 package com.ghosttorrent.torrent;
 
-import unet.kad4.libs.bencode.variables.BencodeObject;
+import unet.bencode.io.BencodeReader;
+import unet.bencode.variables.BencodeObject;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,11 +18,8 @@ public class Torrent {
 
     public Torrent(File file){
         try{
-            InputStream in = new FileInputStream(file);
-            byte[] buf = new byte[(int) file.length()];
-            in.read(buf);
-
-            BencodeObject ben = new BencodeObject(buf);
+            BencodeReader reader = new BencodeReader(new FileInputStream(file));
+            BencodeObject ben = (BencodeObject) reader.read();
 
             if(ben.containsKey("announce")){
                 announce = ben.getString("announce");
