@@ -7,8 +7,6 @@ import unet.kad4.Kademlia;
 
 import javax.swing.*;
 import java.net.InetAddress;
-import java.net.URLDecoder;
-import java.util.Map;
 
 public class Main {
 
@@ -65,39 +63,11 @@ public class Main {
         kad.registerMessage(SampleHashRequest.class);
         kad.registerMessage(SampleHashResponse.class);
 
-        //kad.join(6881, InetAddress.getByName("router.bittorrent.com"), 6881);
+        kad.join(6881, InetAddress.getByName("router.bittorrent.com"), 6881);
 
-        /*
         while(true){
             Thread.sleep(10000);
             System.out.println(kad.getRoutingTable().getDerivedUID()+"  "+kad.getRoutingTable().getConsensusExternalAddress().getHostAddress());
         }
-        */
-
-
-        /*
-        String magnetLink = "magnet:?
-        xt=urn:btih:4f836d43e43e8682ff6d2e197e32d7e4f4fb6af4&
-        dn=Ubuntu+Linux+20.04+LTS+Desktop+64-bit&
-        tr=http%3A%2F%2Ftorrent.ubuntu.com%3A6969%2Fannounce";
-
-        // Decode magnet link
-        String decodedLink = URLDecoder.decode(magnetLink, "UTF-8");
-
-        // Parse magnet link parameters
-        Map<String, String> params = parseMagnetLink(decodedLink);
-
-        // Extract Info Hash
-        String infoHash = params.get("xt").substring(9); // Remove "urn:btih:"
-
-        // Extract File Name
-        String fileName = params.get("dn");
-
-        // Extract Trackers
-        String[] trackers = params.get("tr").split("&");
-
-
-        System.out.println();
-        */
     }
 }
