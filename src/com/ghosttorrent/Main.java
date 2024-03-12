@@ -70,7 +70,7 @@ public class Main {
 
         while(true){
             Thread.sleep(10000);
-            System.out.println(kad.getRoutingTable().getDerivedUID()+"  "+kad.getRoutingTable().getConsensusExternalAddress().getHostAddress());
+            System.out.println(kad.getRoutingTable().getDerivedUID()+"  "+kad.getRoutingTable().getConsensusExternalAddress().getHostAddress()+"  "+kad.getRoutingTable().getAllNodes().size());
         }
 
         /*
