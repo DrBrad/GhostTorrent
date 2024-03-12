@@ -30,4 +30,12 @@ public class GetPeersRequest extends MethodMessageBase {
 
         infoHash = ben.getBencodeObject(type.innerKey()).getBytes("info_hash");
     }
+
+    public void setInfoHash(byte[] infoHash){
+        this.infoHash = infoHash;
+    }
+
+    public byte[] getInfoHash(){
+        return infoHash;
+    }
 }
