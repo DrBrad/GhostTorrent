@@ -20,6 +20,7 @@ public class Torrent {
         try{
             BencodeReader reader = new BencodeReader(new FileInputStream(file));
             BencodeObject ben = (BencodeObject) reader.read();
+            reader.close();
 
             if(ben.containsKey("announce")){
                 announce = ben.getString("announce");

@@ -43,8 +43,6 @@ public class Magnet {
     private Map<String, List<String>> getParams(URI uri){
         Map<String, List<String>> r = new HashMap<>();
 
-        // magnet:?param1=value1...
-        // uri.getSchemeSpecificPart() will start with the question mark and contain all name-value pairs
         String[] params = uri.getSchemeSpecificPart().substring(1).split("&");
         for(String param : params){
             String[] parts = param.split("=");

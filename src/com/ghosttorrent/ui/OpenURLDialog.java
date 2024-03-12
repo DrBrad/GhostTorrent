@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class OpenURLDialog extends Dialog {
 
@@ -53,6 +55,20 @@ public class OpenURLDialog extends Dialog {
         urlLayout.setConstraints(field, constraints);
 
         ((FlowLayout) findViewById(R.id.dialog_buttons).getLayout()).setAlignment(FlowLayout.RIGHT);
+
+        field.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyPressed(KeyEvent e){
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    Bundle bundle = new Bundle();
+                    bundle.put("url", field.getText().toString().trim());
+                    closeWithIntent(bundle);
+                    return;
+                }
+
+                super.keyPressed(e);
+            }
+        });
 
         ((JButton) findViewById(R.id.dialog_cancel)).addActionListener(new ActionListener(){
             @Override

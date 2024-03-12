@@ -14,8 +14,12 @@ public class Bundle {
         return variables.containsKey(key);
     }
 
-    public Object getString(String key){
-        return variables.get(key);
+    public String getString(String key){
+        return (String) variables.get(key);
+    }
+
+    public int getInt(String key){
+        return (int) variables.get(key);
     }
 
     public void put(String key, Object value){
