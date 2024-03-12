@@ -1,12 +1,13 @@
 package com.ghosttorrent.ui.listeners;
 
 import com.ghosttorrent.torrent.Torrent;
+import com.ghosttorrent.torrent.trackers.DHTTracker;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FilenameFilter;
+import java.security.NoSuchAlgorithmException;
 
 public class OpenTorrentListener implements ActionListener {
 
@@ -28,5 +29,14 @@ public class OpenTorrentListener implements ActionListener {
         System.out.println(torrent.getComment());
         System.out.println(torrent.getCreatedBy());
         System.out.println(torrent.getFiles().get(0).getPath().get(0));
+
+        StringBuilder builder = new StringBuilder();
+        for(byte b : torrent.getInfoHash()){
+            builder.append(String.format("%02x", b));
+        }
+
+        System.out.println(builder);
+
+        new DHTTracker(torrent.getInfoHash());
     }
 }

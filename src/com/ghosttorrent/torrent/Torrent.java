@@ -6,6 +6,8 @@ import unet.bencode.variables.BencodeObject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +17,8 @@ public class Torrent {
     private List<String> announceList;
     private List<TorrentFile> files;
     private long creationDate, pieceLength;
+
+    private byte[] infoHash;
 
     public Torrent(File file){
         try{
@@ -48,26 +52,27 @@ public class Torrent {
             System.out.println(ben);
 
             if(ben.containsKey("info")){
-                ben = ben.getBencodeObject("info");
-
-                if(ben.containsKey("name")){
-                    name = ben.getString("name");
+                if(ben.getBencodeObject("info").containsKey("name")){
+                    name = ben.getBencodeObject("info").getString("name");
                 }
 
-                if(ben.containsKey("piece length")){
-                    pieceLength = ben.getLong("piece length");
+                if(ben.getBencodeObject("info").containsKey("piece length")){
+                    pieceLength = ben.getBencodeObject("info").getLong("piece length");
                 }
 
-                if(ben.containsKey("files")){
+                if(ben.getBencodeObject("info").containsKey("files")){
                     files = new ArrayList<>();
 
-                    for(int i = 0; i < ben.getBencodeArray("files").size(); i++){
-                        files.add(new TorrentFile(ben.getBencodeArray("files").getBencodeObject(i)));
+                    for(int i = 0; i < ben.getBencodeObject("info").getBencodeArray("files").size(); i++){
+                        files.add(new TorrentFile(ben.getBencodeObject("info").getBencodeArray("files").getBencodeObject(i)));
                     }
                 }
+
+                MessageDigest digest = MessageDigest.getInstance("SHA-1");
+                infoHash = digest.digest(ben.getBencodeObject("info").encode());
             }
 
-        }catch(IOException ex){
+        }catch(IOException | NoSuchAlgorithmException ex){
             ex.printStackTrace();
         }
     }
@@ -102,6 +107,10 @@ public class Torrent {
 
     public List<TorrentFile> getFiles(){
         return files;
+    }
+
+    public byte[] getInfoHash(){
+        return infoHash;
     }
 
     public class TorrentFile {

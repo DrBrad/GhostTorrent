@@ -14,6 +14,8 @@ public class Main {
     //HONESTLY WE COULD JUST MAKE OUR OWN COMPONENTS AND FILL WITH REFLECT - TODO
     //TORRENT I/O STREAM SHOULD BE MADE...
 
+    public static Kademlia kad;
+
     public static void main(String[] args)throws Exception {
         boolean gui = true;
 
@@ -43,7 +45,7 @@ public class Main {
             application.launch();
         }
 
-        Kademlia kad = new Kademlia();
+        kad = new Kademlia();
         //BEP 5
         kad.registerMessage(AnnouncePeerRequest.class);
         kad.registerMessage(AnnouncePeerResponse.class);
@@ -64,7 +66,6 @@ public class Main {
         kad.registerMessage(SampleHashRequest.class);
         kad.registerMessage(SampleHashResponse.class);
 
-        /*
         kad.join(6881, InetAddress.getByName("router.bittorrent.com"), 6881);
 
         while(true){

@@ -49,8 +49,11 @@ public class GetPeersResponse extends MethodMessageBase {
     @Override
     public void decode(BencodeObject ben){
         super.decode(ben);
+
+        System.out.println(ben);
         if(!ben.getBencodeObject(type.innerKey()).containsKey("token")){
-            System.out.println("MISSING INFO_HASH");
+            System.out.println("MISSING TOKEN");
+            return;
         }
 
         token = ben.getBencodeObject(type.innerKey()).getBytes("token");
