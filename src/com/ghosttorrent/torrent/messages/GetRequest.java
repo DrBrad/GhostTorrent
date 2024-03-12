@@ -8,6 +8,9 @@ import unet.kad4.messages.inter.MethodMessageBase;
 @Message(method = "get", type = MessageType.REQ_MSG)
 public class GetRequest extends MethodMessageBase {
 
+    public GetRequest(){
+    }
+
     public GetRequest(byte[] tid){
         super(tid);
     }

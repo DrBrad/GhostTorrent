@@ -8,6 +8,9 @@ import unet.kad4.messages.inter.MethodMessageBase;
 @Message(method = "put", type = MessageType.REQ_MSG)
 public class PutRequest extends MethodMessageBase {
 
+    public PutRequest(){
+    }
+
     public PutRequest(byte[] tid){
         super(tid);
     }

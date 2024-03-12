@@ -10,6 +10,9 @@ public class GetPeersRequest extends MethodMessageBase {
 
     private byte[] infoHash;
 
+    public GetPeersRequest(){
+    }
+
     public GetPeersRequest(byte[] tid){
         super(tid);
     }
