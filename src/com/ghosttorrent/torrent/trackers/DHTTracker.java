@@ -42,8 +42,12 @@ public class DHTTracker {
                     @Override
                     public void onResponse(ResponseEvent event){
                         GetPeersResponse response = (GetPeersResponse) event.getMessage();
+                        if(response.getToken() == null){
+                            return;
+                        }
+                        System.out.println(response);
                         if(response.hasNodes()){
-                            if(attempts > 4){
+                            if(attempts > 2){
                                 return;
                             }
                             getPeers(response.getAllNodes(), attempts+1);

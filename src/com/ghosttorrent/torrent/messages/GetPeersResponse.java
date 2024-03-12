@@ -89,6 +89,7 @@ public class GetPeersResponse extends MethodMessageBase {
             if(!ben.getBencodeObject(type.innerKey()).containsKey("nodes") &&
                     !ben.getBencodeObject(type.innerKey()).containsKey("nodes6")){
                 //throw new MessageException("Response to "+FIND_NODE+" did not contain 'node' or 'node6'", ErrorMessage.ErrorType.PROTOCOL);
+                return;
             }
 
             if(ben.getBencodeObject(type.innerKey()).containsKey("nodes")){
