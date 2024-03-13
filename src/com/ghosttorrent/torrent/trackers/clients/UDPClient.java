@@ -5,6 +5,8 @@ import unet.kad4.utils.ByteWrapper;
 
 import java.io.IOException;
 import java.net.*;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,19 +14,34 @@ public class UDPClient {
 
     //BEP 15
     public static final byte[] PROTOCAL_ID = { 0x41, 0x72, 0x71, 0x01, (byte) 0x98, 0x00 };//0x41727101980;
-    private Map<ByteWrapper, Call> calls;
+    public static final int TID_LENGTH = 4;
+
     //ACTION_ID
     //TRANSACTION_ID
 
     //private InetSocketAddress address;
+    private SecureRandom random;
+    private ResponseTracker tracker;
     private DatagramSocket socket;
 
-    public UDPClient(String link)throws URISyntaxException, IOException {
+    public UDPClient(){
         //URI uri = new URI(link);
         //address = new InetSocketAddress(InetAddress.getByName(uri.getHost()), uri.getPort());
-        calls = new HashMap();
+        tracker = new ResponseTracker();
 
-        socket = new DatagramSocket(6969);
+        try{
+            random = SecureRandom.getInstance("SHA1PRNG");
+        }catch(NoSuchAlgorithmException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void start(int port)throws SocketException {
+        if(isRunning()){
+            throw new IllegalArgumentException("Server has already started.");
+        }
+
+        socket = new DatagramSocket(port);
 
         new Thread(new Runnable(){
             @Override
@@ -43,14 +60,19 @@ public class UDPClient {
                 }
             }
         }).start();
+    }
 
-        /*
-        AWAIT RESPONSES...
-        */
+    public boolean isRunning(){
+        return (socket != null && !socket.isClosed());
+    }
+
+    public int getPort(){
+        return (socket != null) ? socket.getLocalPort() : 0;
     }
 
     private void receive(DatagramPacket packet){
         byte[] buf = packet.getData();
+        System.out.println("RECEIVED");
 
         /*
         Offset  Size            Name            Value
@@ -65,7 +87,7 @@ public class UDPClient {
         byte[] tid = new byte[4];
         System.arraycopy(buf, 4, tid, 0, tid.length);
 
-        if(!calls.containsKey(new ByteWrapper(tid))){
+        if(!tracker.contains(new ByteWrapper(tid))){
             return;
         }
 
@@ -92,15 +114,15 @@ public class UDPClient {
                 return;
         }
 
+        response.decode(buf);
         response.setOrigin(packet.getAddress(), packet.getPort());
-
-        calls.get(new ByteWrapper(tid)).getCallback().onResponse(response);
+        tracker.get(new ByteWrapper(tid)).getCallback().onResponse(response);
     }
 
+    /*
     public void connect(InetSocketAddress address)throws IOException {
         ConnectRequest request = new ConnectRequest();
         request.setDestination(address);
-        request.setTransactionID(/* GENERATE RANDOM TID */);
     }
 
     public void announce()throws SocketException, UnknownHostException {
@@ -108,9 +130,20 @@ public class UDPClient {
         byte[] buf = null;
 
     }
+    */
 
-    private void send(MessageBase message, ResponseCallback callback)throws IOException {
+    public void send(MessageBase message, ResponseCallback callback)throws IOException {
+        byte[] tid = generateTransactionID();
+        message.setTransactionID(tid);
+        tracker.add(new ByteWrapper(tid), new Call(message, callback));
+
         byte[] data = message.encode();
         socket.send(new DatagramPacket(data, 0, data.length, message.getDestination()));
+    }
+
+    private byte[] generateTransactionID(){
+        byte[] tid = new byte[TID_LENGTH];
+        random.nextBytes(tid);
+        return tid;
     }
 }

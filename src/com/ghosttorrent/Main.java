@@ -66,12 +66,14 @@ public class Main {
         kad.registerMessage(SampleHashRequest.class);
         kad.registerMessage(SampleHashResponse.class);
 
+        /*
         kad.join(6881, InetAddress.getByName("router.bittorrent.com"), 6881);
 
         while(true){
             Thread.sleep(10000);
             System.out.println(kad.getRoutingTable().getDerivedUID()+"  "+kad.getRoutingTable().getConsensusExternalAddress().getHostAddress()+"  "+kad.getRoutingTable().getAllNodes().size());
         }
+        */
 
         /*
         String magnet = "magnet:?xt=urn:btih:4f836d43e43e8682ff6d2e197e32d7e4f4fb6af4&dn=Ubuntu+Linux+20.04+LTS+Desktop+64-bit&tr=http%3A%2F%2Ftorrent.ubuntu.com%3A6969%2Fannounce";

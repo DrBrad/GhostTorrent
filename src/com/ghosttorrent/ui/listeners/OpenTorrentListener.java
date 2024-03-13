@@ -2,11 +2,21 @@ package com.ghosttorrent.ui.listeners;
 
 import com.ghosttorrent.torrent.Torrent;
 import com.ghosttorrent.torrent.trackers.DHTTracker;
+import com.ghosttorrent.torrent.trackers.clients.UDPClient;
+import com.ghosttorrent.torrent.trackers.servers.UDPTracker;
+import com.ghosttorrent.torrent.trackers.udp.ConnectRequest;
+import com.ghosttorrent.torrent.trackers.udp.ConnectResponse;
+import com.ghosttorrent.torrent.trackers.udp.MessageBase;
+import com.ghosttorrent.torrent.trackers.udp.ResponseCallback;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
 
 public class OpenTorrentListener implements ActionListener {
@@ -37,6 +47,34 @@ public class OpenTorrentListener implements ActionListener {
 
         System.out.println(builder);
 
-        new DHTTracker(torrent.getInfoHash());
+        //new DHTTracker(torrent.getInfoHash());
+
+        UDPClient client = new UDPClient();
+        try{
+            client.start(6969);
+
+            for(String announce : torrent.getAnnounceList()){
+                try{
+                    URI uri = new URI(announce);
+                    System.out.println("UDP SENDING:  "+InetAddress.getByName(uri.getHost()).getHostAddress()+"  "+uri.getPort());
+
+                    ConnectRequest request = new ConnectRequest();
+                    request.setDestination(InetAddress.getByName(uri.getHost()), uri.getPort());
+                    client.send(request, new ResponseCallback(){
+                        @Override
+                        public void onResponse(MessageBase message){
+                            ConnectResponse response = (ConnectResponse) message;
+                            System.out.println(new String(response.getConnectionID()));
+                        }
+                    });
+                }catch(URISyntaxException ex){
+                    ex.printStackTrace();
+                }
+            }
+
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+
     }
 }
