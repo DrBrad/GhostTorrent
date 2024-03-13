@@ -158,14 +158,12 @@ public class UDPClient {
         tracker.add(new ByteWrapper(tid), new Call(message, callback));
 
         byte[] data = message.encode();
-        System.out.println(bytesToHex(data));
         socket.send(new DatagramPacket(data, 0, data.length, message.getDestination()));
     }
 
     protected void retry(Call call)throws IOException {
         byte[] data = call.getMessage().encode();
         call.setAttempted();
-        System.out.println(bytesToHex(data));
         socket.send(new DatagramPacket(data, 0, data.length, call.getMessage().getDestination()));
     }
 
