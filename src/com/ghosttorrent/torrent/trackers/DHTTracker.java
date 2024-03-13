@@ -25,7 +25,6 @@ public class DHTTracker {
 
     public DHTTracker(byte[] infoHash){
         this.infoHash = infoHash;
-        connected = new ArrayList<>();
 
         connected = kad.getRoutingTable().findClosest(new UID(infoHash), KBucket.MAX_BUCKET_SIZE);
         getPeers(connected, 0);
@@ -59,7 +58,9 @@ public class DHTTracker {
                             List<Node> nodes = response.getAllNodes();
 
                             for(int i = nodes.size()-1; i > -1; i--){
-                                nodes.remove(node);
+                                if(connected.contains(node)){
+                                    nodes.remove(node);
+                                }
                             }
 
                             connected.addAll(nodes);
