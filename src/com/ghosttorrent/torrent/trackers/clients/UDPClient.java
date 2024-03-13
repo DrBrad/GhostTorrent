@@ -43,6 +43,8 @@ public class UDPClient {
 
         socket = new DatagramSocket(port);
 
+        System.out.println("Started UDP Tracker Client");
+
         new Thread(new Runnable(){
             @Override
             public void run(){
@@ -50,6 +52,8 @@ public class UDPClient {
                     try{
                         DatagramPacket packet = new DatagramPacket(new byte[65535], 65535);
                         socket.receive(packet);
+
+                        System.out.println("RECEIVED- 1");
 
                         if(packet != null){
                             receive(packet);
