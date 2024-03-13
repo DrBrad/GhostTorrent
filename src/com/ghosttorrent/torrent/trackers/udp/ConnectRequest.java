@@ -25,6 +25,7 @@ public class ConnectRequest extends MessageBase {
         buf[11] = ((byte) (0xff & action.getCode()));
         System.arraycopy(tid, 0, buf, 12, tid.length);
 
+        System.out.println(new String(buf));
         return buf;
     }
 

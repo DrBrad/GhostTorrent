@@ -13,7 +13,6 @@ import java.util.Map;
 public class UDPClient {
 
     //BEP 15
-    public static final byte[] PROTOCAL_ID = { 0x41, 0x72, 0x71, 0x01, (byte) 0x98, 0x00 };//0x41727101980;
     public static final int TID_LENGTH = 4;
 
     //ACTION_ID
