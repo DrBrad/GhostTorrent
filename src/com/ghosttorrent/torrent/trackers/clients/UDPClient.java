@@ -52,8 +52,6 @@ public class UDPClient {
                         DatagramPacket packet = new DatagramPacket(new byte[65508], 65508);
                         socket.receive(packet);
 
-                        System.out.println("RECEIVED- 1");
-
                         if(packet != null){
                             receive(packet);
                         }
@@ -91,7 +89,6 @@ public class UDPClient {
 
     private void receive(DatagramPacket packet){
         byte[] buf = packet.getData();
-        System.out.println("RECEIVED");
 
         /*
         Offset  Size            Name            Value
