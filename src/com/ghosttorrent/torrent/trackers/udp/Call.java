@@ -1,12 +1,11 @@
 package com.ghosttorrent.torrent.trackers.udp;
 
-import static unet.kad4.rpc.ResponseTracker.STALLED_TIME;
-
 public class Call {
 
     private MessageBase message;
     private ResponseCallback callback;
     protected long sentTime;
+    protected int attempts = 0;
 
     public Call(MessageBase message, ResponseCallback callback){
         this.message = message;
@@ -31,6 +30,18 @@ public class Call {
     }
 
     public boolean isStalled(long now){
-        return (now-sentTime > STALLED_TIME);
+        return (now-sentTime > 15*Math.pow(2, attempts)*1000);//(30^attempts)*1000);
+    }
+
+    public boolean hasMaxedAttempts(){
+        return (attempts > 7);
+    }
+
+    public void setAttempted(){
+        attempts++;
+    }
+
+    public int getAttempts(){
+        return attempts;
     }
 }

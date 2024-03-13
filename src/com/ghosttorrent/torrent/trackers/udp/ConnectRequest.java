@@ -3,7 +3,10 @@ package com.ghosttorrent.torrent.trackers.udp;
 public class ConnectRequest extends MessageBase {
 
     //BEP 15
-    public static final byte[] PROTOCAL_ID = { 0x41, 0x72, 0x71, 0x01, (byte) 0x98, 0x00 };//0x41727101980;
+    //                                         00 00 04 27 10 19 80
+
+    //0x00 00 04 17 27 10 19 80
+    public static final byte[] PROTOCAL_ID = { 0x00, 0x00, 0x04, 0x17, 0x27, 0x10, 0x19, (byte) 0x80 };//{ 0x00, 0x00, 0x41, 0x72, 0x71, 0x01, (byte) 0x98, 0x00, 0x00, 0x00 };//0x41727101980;
 
     public ConnectRequest(){
         action = MessageAction.CONNECT;

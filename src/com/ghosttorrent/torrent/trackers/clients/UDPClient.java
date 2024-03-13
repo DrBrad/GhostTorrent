@@ -26,7 +26,7 @@ public class UDPClient {
     public UDPClient(){
         //URI uri = new URI(link);
         //address = new InetSocketAddress(InetAddress.getByName(uri.getHost()), uri.getPort());
-        tracker = new ResponseTracker();
+        tracker = new ResponseTracker(this);
 
         try{
             random = SecureRandom.getInstance("SHA1PRNG");
@@ -49,7 +49,7 @@ public class UDPClient {
             public void run(){
                 while(!socket.isClosed()){
                     try{
-                        DatagramPacket packet = new DatagramPacket(new byte[65535], 65535);
+                        DatagramPacket packet = new DatagramPacket(new byte[65508], 65508);
                         socket.receive(packet);
 
                         System.out.println("RECEIVED- 1");
@@ -63,6 +63,22 @@ public class UDPClient {
                 }
             }
         }).start();
+
+        new Thread(new Runnable(){
+            @Override
+            public void run(){
+                while(!socket.isClosed()){
+                    tracker.removeStalled();
+                }
+            }
+        }).start();
+    }
+
+    public void stop(){
+        if(!isRunning()){
+            throw new IllegalArgumentException("Server is not currently running.");
+        }
+        socket.close();
     }
 
     public boolean isRunning(){
@@ -136,17 +152,40 @@ public class UDPClient {
     */
 
     public void send(MessageBase message, ResponseCallback callback)throws IOException {
+        if(message.getDestination() == null){
+            throw new IllegalArgumentException("Message destination set to null");
+        }
+
         byte[] tid = generateTransactionID();
         message.setTransactionID(tid);
         tracker.add(new ByteWrapper(tid), new Call(message, callback));
 
         byte[] data = message.encode();
+        System.out.println(bytesToHex(data));
         socket.send(new DatagramPacket(data, 0, data.length, message.getDestination()));
+    }
+
+    protected void retry(Call call)throws IOException {
+        byte[] data = call.getMessage().encode();
+        call.setAttempted();
+        System.out.println(bytesToHex(data));
+        socket.send(new DatagramPacket(data, 0, data.length, call.getMessage().getDestination()));
     }
 
     private byte[] generateTransactionID(){
         byte[] tid = new byte[TID_LENGTH];
         random.nextBytes(tid);
         return tid;
+    }
+
+    private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
+    public static String bytesToHex(byte[] bytes) {
+        char[] hexChars = new char[bytes.length * 2];
+        for (int j = 0; j < bytes.length; j++) {
+            int v = bytes[j] & 0xFF;
+            hexChars[j * 2] = HEX_ARRAY[v >>> 4];
+            hexChars[j * 2 + 1] = HEX_ARRAY[v & 0x0F];
+        }
+        return new String(hexChars);
     }
 }

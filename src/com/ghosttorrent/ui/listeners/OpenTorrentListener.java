@@ -49,6 +49,7 @@ public class OpenTorrentListener implements ActionListener {
 
         //new DHTTracker(torrent.getInfoHash());
 
+        /*
         UDPClient client = new UDPClient();
         try{
             client.start(6969);
@@ -58,6 +59,7 @@ public class OpenTorrentListener implements ActionListener {
                     URI uri = new URI(announce);
                     System.out.println("UDP SENDING:  "+InetAddress.getByName(uri.getHost()).getHostAddress()+"  "+uri.getPort());
 
+                    //for(int i = 0; i < 6; i++){
                     ConnectRequest request = new ConnectRequest();
                     request.setDestination(InetAddress.getByName(uri.getHost()), uri.getPort());
                     client.send(request, new ResponseCallback(){
@@ -67,14 +69,16 @@ public class OpenTorrentListener implements ActionListener {
                             System.out.println(new String(response.getConnectionID()));
                         }
                     });
+                    //}
                 }catch(URISyntaxException ex){
                     ex.printStackTrace();
                 }
             }
+            */
 
-        }catch(IOException ex){
-            ex.printStackTrace();
-        }
+        //}catch(IOException ex){
+        //    ex.printStackTrace();
+        //}
 
     }
 }

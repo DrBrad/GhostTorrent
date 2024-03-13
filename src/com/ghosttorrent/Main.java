@@ -2,12 +2,18 @@ package com.ghosttorrent;
 
 import com.ghosttorrent.torrent.Magnet;
 import com.ghosttorrent.torrent.messages.*;
+import com.ghosttorrent.torrent.trackers.clients.UDPClient;
+import com.ghosttorrent.torrent.trackers.udp.ConnectRequest;
+import com.ghosttorrent.torrent.trackers.udp.ConnectResponse;
+import com.ghosttorrent.torrent.trackers.udp.MessageBase;
+import com.ghosttorrent.torrent.trackers.udp.ResponseCallback;
 import com.ghosttorrent.ui.GhostApplication;
 import com.ghosttorrent.libs.ui.utils.inter.Application;
 import unet.kad4.Kademlia;
 
 import javax.swing.*;
 import java.net.InetAddress;
+import java.net.URI;
 
 public class Main {
 
@@ -84,6 +90,24 @@ public class Main {
         magnet = "magnet:?xt=urn:btih:1061709FB638C2CE8728B185846EC5974BEE370F&dn=Wish+%282023%29+%5B1080p%5D+%5BYTS.MX%5D&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.tracker.cl%3A1337%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fipv4.tracker.harry.lu%3A80%2Fannounce&tr=https%3A%2F%2Fopentracker.i2p.rocks%3A443%2Fannounce";
         new Magnet(magnet);
         */
+
+        UDPClient client = new UDPClient();
+        client.start(6969);
+
+        //URI uri = new URI("udp://tracker.leechers-paradise.org:6969");
+        //System.out.println("UDP SENDING:  "+InetAddress.getByName(uri.getHost()).getHostAddress()+"  "+InetAddress.getByName(uri.getHost()).getHostName()+"  "+uri.getPort());
+
+        //for(int i = 0; i < 6; i++){
+        ConnectRequest request = new ConnectRequest();
+        request.setDestination(InetAddress.getByName("93.158.213.92"), 1337);
+        //request.setDestination(InetAddress.getByName(uri.getHost()), uri.getPort());
+        client.send(request, new ResponseCallback(){
+            @Override
+            public void onResponse(MessageBase message){
+                ConnectResponse response = (ConnectResponse) message;
+                System.out.println(new String(response.getConnectionID()));
+            }
+        });
 
     }
 }
