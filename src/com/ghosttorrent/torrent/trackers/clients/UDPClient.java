@@ -103,7 +103,9 @@ public class UDPClient {
         byte[] tid = new byte[4];
         System.arraycopy(buf, 4, tid, 0, tid.length);
 
-        if(!tracker.contains(new ByteWrapper(tid))){
+        Call call = tracker.poll(new ByteWrapper(tid));
+
+        if(call == null){
             return;
         }
 
@@ -132,7 +134,7 @@ public class UDPClient {
 
         response.decode(buf);
         response.setOrigin(packet.getAddress(), packet.getPort());
-        tracker.get(new ByteWrapper(tid)).getCallback().onResponse(response);
+        call.getCallback().onResponse(response);
     }
 
     /*
