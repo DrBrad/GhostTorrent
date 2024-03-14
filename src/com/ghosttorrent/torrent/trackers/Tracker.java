@@ -9,6 +9,8 @@ public class Tracker {
     private TrackerType type;
     private InetAddress address;
     private int port;
+    private boolean connected;
+    private byte[] connectionID;
 
     public Tracker(URI uri)throws UnknownHostException {
         type = TrackerType.getFromScheme(uri.getScheme());

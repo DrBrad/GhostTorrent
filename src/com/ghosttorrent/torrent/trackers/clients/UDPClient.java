@@ -35,6 +35,10 @@ public class UDPClient {
         }
     }
 
+    public void start()throws SocketException {
+        start(0);
+    }
+
     public void start(int port)throws SocketException {
         if(isRunning()){
             throw new IllegalArgumentException("Server has already started.");
