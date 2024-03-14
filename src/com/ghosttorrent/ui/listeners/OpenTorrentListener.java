@@ -68,7 +68,7 @@ public class OpenTorrentListener implements ActionListener {
                         @Override
                         public void onResponse(MessageBase message){
                             ConnectResponse response = (ConnectResponse) message;
-                            System.out.println(new String(response.getConnectionID()));
+                            System.out.println("RESPONSE: "+response.getConnectionID());
                         }
                     });
                 }catch(URISyntaxException ex){
