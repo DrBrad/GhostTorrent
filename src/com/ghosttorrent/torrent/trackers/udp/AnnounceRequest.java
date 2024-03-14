@@ -23,7 +23,16 @@ public class AnnounceRequest extends MessageBase {
     public byte[] encode(){
         byte[] buf = new byte[16];
         //System.arraycopy(connectionID, 0, buf, 0, connectionID.length);
-        //buf[8] = 0;
+
+        buf[0] = ((byte) connectionID);
+        buf[1] = ((byte) (connectionID >>  8));
+        buf[2] = ((byte) (connectionID >> 16));
+        buf[3] = ((byte) (connectionID >> 24));
+        buf[4] = ((byte) (connectionID >> 32));
+        buf[5] = ((byte) (connectionID >> 40));
+        buf[6] = ((byte) (connectionID >> 48));
+        buf[7] = ((byte) (connectionID >> 56));
+
         buf[8] = ((byte) (0xff & action.getCode()));
         buf[9] = ((byte) (0xff & (action.getCode() >> 8)));
         buf[10] = ((byte) (0xff & (action.getCode() >> 16)));

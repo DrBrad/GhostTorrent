@@ -24,8 +24,6 @@ public class ConnectResponse extends MessageBase {
                 ((long)(buf[5] & 0xff) << 40) |
                 ((long)(buf[6] & 0xff) << 48) |
                 ((long)(buf[7] & 0xff) << 56));
-        //connectionID = new byte[8];
-        //System.arraycopy(buf, 8, connectionID, 0, connectionID.length);
     }
 
     public long getConnectionID(){
