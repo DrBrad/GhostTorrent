@@ -79,11 +79,11 @@ public class AnnounceRequest extends MessageBase {
         buf[53] = ((byte) (event.getCode() >> 16));
         buf[54] = ((byte) (event.getCode() >> 24));
 
-        //ADDRESS
+        //ADDRESS ( 0 for using packet origin - specify for different return )
 
-        //KEY
+        //KEY ( RANDOMLY GENERATED - PER REQUEST )
 
-        //NUM WANT
+        //NUM WANT ( NUMBER OF PEERS WE WANT - DEFAULT -1)
 
         //PORT
 
