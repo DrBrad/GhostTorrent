@@ -212,11 +212,11 @@ public class AnnounceRequest extends MessageBase {
         });
     }
 
-    public void generateKey(){
-        //GENERATE KEY...?
+    public void setKey(int key){
+        this.key = key;
     }
 
-    public int getKey(){
+    public int getKey({
         return key;
     }
 
