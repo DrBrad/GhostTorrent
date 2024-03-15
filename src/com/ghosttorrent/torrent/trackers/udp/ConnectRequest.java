@@ -3,7 +3,13 @@ package com.ghosttorrent.torrent.trackers.udp;
 public class ConnectRequest extends MessageBase {
 
     //BEP 15
-    //0x41727101980 (BIG ENDIAN)
+    /*
+    Offset  Size            Name            Value
+    0       64-bit integer  protocol_id     0x41727101980 // magic constant
+    8       32-bit integer  action          0 // connect
+    12      32-bit integer  transaction_id
+    16
+    */
     public static final long PROTOCOL_ID = -9216317402361102336l;
 
     public ConnectRequest(){
