@@ -2,6 +2,7 @@ package com.ghosttorrent.torrent.trackers.udp;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class AnnounceRequest extends MessageBase {
 
@@ -125,14 +126,70 @@ public class AnnounceRequest extends MessageBase {
 
     @Override
     public void decode(byte[] buf){
-        downloaded = (((long)(buf [0] & 0xff) << 56) |
-                ((long)(buf [1] & 0xff) << 48) |
-                ((long)(buf [2] & 0xff) << 40) |
-                ((long)(buf [3] & 0xff) << 32) |
-                ((long)(buf [4] & 0xff) << 24) |
-                ((long)(buf [5] & 0xff) << 16) |
-                ((long)(buf [6] & 0xff) <<  8) |
-                ((long)(buf [7] & 0xff)));
+        downloaded = (((long)(buf[0] & 0xff) << 56) |
+                ((long)(buf[1] & 0xff) << 48) |
+                ((long)(buf[2] & 0xff) << 40) |
+                ((long)(buf[3] & 0xff) << 32) |
+                ((long)(buf[4] & 0xff) << 24) |
+                ((long)(buf[5] & 0xff) << 16) |
+                ((long)(buf[6] & 0xff) <<  8) |
+                ((long)(buf[7] & 0xff)));
+    }
+
+    public void setInfoHash(byte[] infoHash){
+        this.infoHash = infoHash;
+    }
+
+    public byte[] getInfoHash(){
+        return infoHash;
+    }
+
+    public void setPeerID(byte[] peerID){
+        this.peerID = peerID;
+    }
+
+    public byte[] getPeerID(){
+        return peerID;
+    }
+
+    public void setConnectionID(long connectionID){
+        this.connectionID = connectionID;
+    }
+
+    public long getConnectionID(){
+        return connectionID;
+    }
+
+    public void setDownloaded(long downloaded){
+        this.downloaded = downloaded;
+    }
+
+    public long getDownloaded(){
+        return downloaded;
+    }
+
+    public void setLeft(long left){
+        this.left = left;
+    }
+
+    public long getLeft(){
+        return left;
+    }
+
+    public void setUploaded(long uploaded){
+        this.uploaded = uploaded;
+    }
+
+    public long getUploaded(){
+        return uploaded;
+    }
+
+    public void setEvent(AnnounceEvent event){
+        this.event = event;
+    }
+
+    public AnnounceEvent getEvent(){
+        return event;
     }
 
     public void setAddress(Inet4Address address){
@@ -140,5 +197,34 @@ public class AnnounceRequest extends MessageBase {
         for(byte b : address.getAddress()){
             this.address = (this.address << 8) | (b & 0xFF);
         }
+    }
+
+    public InetAddress getAddress()throws UnknownHostException {
+        return InetAddress.getByAddress(new byte[]{
+            ((byte) key),
+            ((byte) (key >> 8)),
+            ((byte) (key >> 16)),
+            ((byte) (key >> 24))
+        });
+    }
+
+    public int getKey(){
+        return key;
+    }
+
+    public void setNumWant(int numWant){
+        this.numWant = numWant;
+    }
+
+    public int getNumWant(){
+        return numWant;
+    }
+
+    public void setPort(int port){
+        this.port = port;
+    }
+
+    public int getPort(){
+        return port;
     }
 }
