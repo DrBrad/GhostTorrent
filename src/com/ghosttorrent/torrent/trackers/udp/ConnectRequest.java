@@ -28,10 +28,10 @@ public class ConnectRequest extends MessageBase {
         buf[6] = ((byte) (PROTOCOL_ID >> 48));
         buf[7] = ((byte) (PROTOCOL_ID >> 56));
 
-        buf[8] = ((byte) (0xff & action.getCode()));
-        buf[9] = ((byte) (0xff & (action.getCode() >> 8)));
-        buf[10] = ((byte) (0xff & (action.getCode() >> 16)));
-        buf[11] = ((byte) (0xff & (action.getCode() >> 24)));
+        buf[8] = ((byte) action.getCode());
+        buf[9] = ((byte) (action.getCode() >> 8));
+        buf[10] = ((byte) (action.getCode() >> 16));
+        buf[11] = ((byte) (action.getCode() >> 24));
         System.arraycopy(tid, 0, buf, 12, tid.length);
         return buf;
     }
