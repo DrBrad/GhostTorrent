@@ -208,6 +208,10 @@ public class AnnounceRequest extends MessageBase {
         });
     }
 
+    public void generateKey(){
+        //GENERATE KEY...?
+    }
+
     public int getKey(){
         return key;
     }
