@@ -24,6 +24,10 @@ public class AnnounceRequest extends MessageBase {
     98
     */
 
+    //USE THE SAME KEY FOR IPv4 AND IPv6 IF WE RESOLVE FOR BOTH THEN SEND IE:
+    // blanktracker.com = 1.1.1.1 & 10:ff:ff:ff:ff:etc..
+    // USE SAME KEY FOR BOTH IPs
+
     private byte[] infoHash, peerID;
     private long connectionID, downloaded, left, uploaded;
     private AnnounceEvent event;
