@@ -1,6 +1,4 @@
-package com.ghosttorrent.torrent.trackers.udp;
-
-import unet.kad4.messages.inter.MessageType;
+package com.ghosttorrent.torrent.trackers.udp.messages.inter;
 
 public enum MessageAction {
 

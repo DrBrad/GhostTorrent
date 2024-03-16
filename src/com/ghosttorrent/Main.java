@@ -1,19 +1,11 @@
 package com.ghosttorrent;
 
-import com.ghosttorrent.torrent.Magnet;
 import com.ghosttorrent.torrent.messages.*;
-import com.ghosttorrent.torrent.trackers.clients.UDPClient;
-import com.ghosttorrent.torrent.trackers.udp.ConnectRequest;
-import com.ghosttorrent.torrent.trackers.udp.ConnectResponse;
-import com.ghosttorrent.torrent.trackers.udp.MessageBase;
-import com.ghosttorrent.torrent.trackers.udp.ResponseCallback;
 import com.ghosttorrent.ui.GhostApplication;
 import com.ghosttorrent.libs.ui.utils.inter.Application;
 import unet.kad4.Kademlia;
 
 import javax.swing.*;
-import java.net.InetAddress;
-import java.net.URI;
 
 public class Main {
 

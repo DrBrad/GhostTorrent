@@ -1,4 +1,7 @@
-package com.ghosttorrent.torrent.trackers.udp;
+package com.ghosttorrent.torrent.trackers.udp.messages;
+
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageAction;
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
 
 public class ConnectRequest extends MessageBase {
 

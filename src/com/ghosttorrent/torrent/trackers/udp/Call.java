@@ -1,5 +1,7 @@
 package com.ghosttorrent.torrent.trackers.udp;
 
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
+
 public class Call {
 
     private MessageBase message;

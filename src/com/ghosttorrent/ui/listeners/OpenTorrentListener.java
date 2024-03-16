@@ -1,12 +1,10 @@
 package com.ghosttorrent.ui.listeners;
 
 import com.ghosttorrent.torrent.Torrent;
-import com.ghosttorrent.torrent.trackers.DHTTracker;
 import com.ghosttorrent.torrent.trackers.clients.UDPClient;
-import com.ghosttorrent.torrent.trackers.servers.UDPTracker;
-import com.ghosttorrent.torrent.trackers.udp.ConnectRequest;
-import com.ghosttorrent.torrent.trackers.udp.ConnectResponse;
-import com.ghosttorrent.torrent.trackers.udp.MessageBase;
+import com.ghosttorrent.torrent.trackers.udp.messages.ConnectRequest;
+import com.ghosttorrent.torrent.trackers.udp.messages.ConnectResponse;
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
 import com.ghosttorrent.torrent.trackers.udp.ResponseCallback;
 
 import java.awt.*;
@@ -17,7 +15,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.security.NoSuchAlgorithmException;
 
 public class OpenTorrentListener implements ActionListener {
 

@@ -1,4 +1,4 @@
-package com.ghosttorrent.torrent.trackers.udp;
+package com.ghosttorrent.torrent.trackers.udp.messages.inter;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;

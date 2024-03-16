@@ -1,14 +1,15 @@
 package com.ghosttorrent.torrent.trackers.clients;
 
 import com.ghosttorrent.torrent.trackers.udp.*;
+import com.ghosttorrent.torrent.trackers.udp.messages.ConnectResponse;
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageAction;
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
 import unet.kad4.utils.ByteWrapper;
 
 import java.io.IOException;
 import java.net.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.HashMap;
-import java.util.Map;
 
 public class UDPClient {
 

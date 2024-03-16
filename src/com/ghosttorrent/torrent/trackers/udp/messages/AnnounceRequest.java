@@ -1,4 +1,8 @@
-package com.ghosttorrent.torrent.trackers.udp;
+package com.ghosttorrent.torrent.trackers.udp.messages;
+
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.AnnounceEvent;
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageAction;
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
 
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -216,7 +220,7 @@ public class AnnounceRequest extends MessageBase {
         this.key = key;
     }
 
-    public int getKey({
+    public int getKey(){
         return key;
     }
 
