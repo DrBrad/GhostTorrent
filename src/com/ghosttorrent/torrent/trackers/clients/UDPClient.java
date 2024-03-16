@@ -5,6 +5,7 @@ import com.ghosttorrent.torrent.trackers.udp.messages.ConnectResponse;
 import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageAction;
 import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
 import unet.kad4.utils.ByteWrapper;
+import unet.kad4.utils.net.AddressUtils;
 
 import java.io.IOException;
 import java.net.*;
@@ -93,6 +94,10 @@ public class UDPClient {
     }
 
     private void receive(DatagramPacket packet){
+        if(AddressUtils.isBogon(packet.getAddress(), packet.getPort())){
+            return;
+        }
+
         byte[] buf = packet.getData();
 
         /*
@@ -158,6 +163,10 @@ public class UDPClient {
     public void send(MessageBase message, ResponseCallback callback)throws IOException {
         if(message.getDestination() == null){
             throw new IllegalArgumentException("Message destination set to null");
+        }
+
+        if(AddressUtils.isBogon(message.getDestination())){
+            return;
         }
 
         byte[] tid = generateTransactionID();
