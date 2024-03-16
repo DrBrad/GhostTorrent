@@ -18,8 +18,8 @@ public class ErrorResponse extends MessageBase {
     }
 
     @Override
-    public void decode(byte[] buf){
-        message = new String(buf, 8, buf.length-8);
+    public void decode(byte[] buf, int off, int len){
+        message = new String(buf, off+8, len-9);
         System.out.println(message);
     }
 

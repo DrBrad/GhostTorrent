@@ -145,7 +145,7 @@ public class UDPClient {
                 return;
         }
 
-        response.decode(buf);
+        response.decode(buf, packet.getOffset(), packet.getLength());
         response.setOrigin(packet.getAddress(), packet.getPort());
         call.getCallback().onResponse(response);
     }

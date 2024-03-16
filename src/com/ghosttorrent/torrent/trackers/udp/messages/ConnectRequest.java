@@ -46,6 +46,6 @@ public class ConnectRequest extends MessageBase {
     }
 
     @Override
-    public void decode(byte[] buf){
+    public void decode(byte[] buf, int off, int len){
     }
 }

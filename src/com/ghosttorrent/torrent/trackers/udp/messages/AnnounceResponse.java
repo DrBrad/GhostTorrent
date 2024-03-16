@@ -18,21 +18,21 @@ public class AnnounceResponse extends MessageBase {
     }
 
     @Override
-    public void decode(byte[] buf){
-        interval = (buf[8] & 0xff) |
-                ((buf[9] & 0xff) << 8) |
-                ((buf[10] & 0xff) << 16) |
-                (((buf[11] & 0xff) << 24));
+    public void decode(byte[] buf, int off, int len){
+        interval = (buf[off+8] & 0xff) |
+                ((buf[off+9] & 0xff) << 8) |
+                ((buf[off+10] & 0xff) << 16) |
+                (((buf[off+11] & 0xff) << 24));
 
-        leachers = (buf[12] & 0xff) |
-                ((buf[13] & 0xff) << 8) |
-                ((buf[14] & 0xff) << 16) |
-                (((buf[15] & 0xff) << 24));
+        leachers = (buf[off+12] & 0xff) |
+                ((buf[off+13] & 0xff) << 8) |
+                ((buf[off+14] & 0xff) << 16) |
+                (((buf[off+15] & 0xff) << 24));
 
-        seeders = (buf[16] & 0xff) |
-                ((buf[17] & 0xff) << 8) |
-                ((buf[18] & 0xff) << 16) |
-                (((buf[19] & 0xff) << 24));
+        seeders = (buf[off+16] & 0xff) |
+                ((buf[off+17] & 0xff) << 8) |
+                ((buf[off+18] & 0xff) << 16) |
+                (((buf[off+19] & 0xff) << 24));
 
         //HOW DO WE KNOW IF THIS IS IPv6....?
     }

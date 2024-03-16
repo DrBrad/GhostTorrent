@@ -30,7 +30,7 @@ public abstract class MessageBase {
 
     public abstract byte[] encode();
 
-    public abstract void decode(byte[] buf);
+    public abstract void decode(byte[] buf, int off, int len);
 
     public InetSocketAddress getDestination(){
         return destination;

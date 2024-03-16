@@ -133,7 +133,7 @@ public class AnnounceRequest extends MessageBase {
     }
 
     @Override
-    public void decode(byte[] buf){
+    public void decode(byte[] buf, int off, int len){
         downloaded = (((long)(buf[0] & 0xff) << 56) |
                 ((long)(buf[1] & 0xff) << 48) |
                 ((long)(buf[2] & 0xff) << 40) |
