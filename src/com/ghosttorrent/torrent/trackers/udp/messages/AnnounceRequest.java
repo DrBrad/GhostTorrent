@@ -34,7 +34,7 @@ public class AnnounceRequest extends MessageBase {
 
     private byte[] infoHash, peerID;
     private long connectionID, downloaded, left, uploaded;
-    private AnnounceEvent event;
+    private AnnounceEvent event = AnnounceEvent.NONE;
     private int address = 0; //HOW SHALL WE DO THIS...?
     private int key, numWant = -1, port;
 

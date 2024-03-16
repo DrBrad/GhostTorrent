@@ -2,6 +2,8 @@ package com.ghosttorrent.ui.listeners;
 
 import com.ghosttorrent.torrent.Torrent;
 import com.ghosttorrent.torrent.trackers.clients.UDPClient;
+import com.ghosttorrent.torrent.trackers.udp.messages.AnnounceRequest;
+import com.ghosttorrent.torrent.trackers.udp.messages.AnnounceResponse;
 import com.ghosttorrent.torrent.trackers.udp.messages.ConnectRequest;
 import com.ghosttorrent.torrent.trackers.udp.messages.ConnectResponse;
 import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
@@ -66,6 +68,30 @@ public class OpenTorrentListener implements ActionListener {
                         public void onResponse(MessageBase message){
                             ConnectResponse response = (ConnectResponse) message;
                             System.out.println("RESPONSE: "+response.getConnectionID());
+
+                            //DO THE REQUESTS BETTER...?
+                            AnnounceRequest request = new AnnounceRequest();
+                            request.setInfoHash(torrent.getInfoHash());
+                            //request.setPeerID();
+                            request.setDownloaded(0);
+                            request.setLeft(0); //MUST CALC THE AMMOUNT WE NEED...
+                            request.setUploaded(0);
+                            //request.setKey();
+                            request.setPort(8080); //TCP PORT
+
+                            try{
+                                client.send(request, new ResponseCallback(){
+                                    @Override
+                                    public void onResponse(MessageBase message){
+                                        AnnounceResponse response = (AnnounceResponse) message;
+
+                                        System.out.println(response.getInterval()+"  "+response.getLeachers()+"  "+response.getSeeders());
+                                    }
+                                });
+                            }catch(IOException ex){
+                                ex.printStackTrace();
+                            }
+
                         }
                     });
                 }catch(URISyntaxException ex){
