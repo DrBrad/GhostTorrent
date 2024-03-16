@@ -71,8 +71,9 @@ public class OpenTorrentListener implements ActionListener {
 
                             //DO THE REQUESTS BETTER...?
                             AnnounceRequest request = new AnnounceRequest();
+                            request.setDestination(response.getOrigin());
                             request.setInfoHash(torrent.getInfoHash());
-                            //request.setPeerID();
+                            request.setPeerID(new byte[20]);
                             request.setDownloaded(0);
                             request.setLeft(0); //MUST CALC THE AMMOUNT WE NEED...
                             request.setUploaded(0);

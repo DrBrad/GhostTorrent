@@ -49,7 +49,7 @@ public class AnnounceRequest extends MessageBase {
 
     @Override
     public byte[] encode(){
-        byte[] buf = new byte[16];
+        byte[] buf = new byte[98];
         //System.arraycopy(connectionID, 0, buf, 0, connectionID.length);
 
         buf[0] = ((byte) connectionID);

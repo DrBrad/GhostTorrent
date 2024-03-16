@@ -1,6 +1,7 @@
 package com.ghosttorrent.torrent.trackers.clients;
 
 import com.ghosttorrent.torrent.trackers.udp.*;
+import com.ghosttorrent.torrent.trackers.udp.messages.AnnounceResponse;
 import com.ghosttorrent.torrent.trackers.udp.messages.ConnectResponse;
 import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageAction;
 import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
@@ -127,16 +128,18 @@ public class UDPClient {
                 break;
 
             case ANNOUNCE:
-                response = null;
+                response = new AnnounceResponse(tid);
                 break;
 
             case SCRAPE:
                 response = null;
-                break;
+                System.out.println("SCRAPE");
+                return;
 
             case ERROR:
                 response = null;
-                break;
+                System.out.println("ERROR");
+                return;
 
             default:
                 return;
