@@ -3,6 +3,7 @@ package com.ghosttorrent.torrent.trackers.clients;
 import com.ghosttorrent.torrent.trackers.udp.*;
 import com.ghosttorrent.torrent.trackers.udp.messages.AnnounceResponse;
 import com.ghosttorrent.torrent.trackers.udp.messages.ConnectResponse;
+import com.ghosttorrent.torrent.trackers.udp.messages.ErrorResponse;
 import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageAction;
 import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
 import unet.kad4.utils.ByteWrapper;
@@ -137,9 +138,8 @@ public class UDPClient {
                 return;
 
             case ERROR:
-                response = null;
-                System.out.println("ERROR");
-                return;
+                response = new ErrorResponse(tid);
+                break;
 
             default:
                 return;
