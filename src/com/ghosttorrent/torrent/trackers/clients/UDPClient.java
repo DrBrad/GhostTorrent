@@ -107,10 +107,17 @@ public class UDPClient {
         0       32-bit integer  action          0 // connect
         4       32-bit integer  transaction_id
         */
-        MessageAction action = MessageAction.fromCode((((buf[0] & 0xff) << 24) |
+        MessageAction action = MessageAction.fromCode(
+                /*
+                (buf[0] & 0xff) |
+                ((buf[1] & 0xff) << 8) |
+                ((buf[2] & 0xff) << 16) |
+                ((buf[3] & 0xff) << 24)
+                */
+                ((buf[0] & 0xff) << 24) |
                 ((buf[1] & 0xff) << 16) |
                 ((buf[2] & 0xff) << 8) |
-                (buf[3] & 0xff)));
+                (buf[3] & 0xff));
 
         System.out.println(action);
 
