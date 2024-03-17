@@ -52,19 +52,19 @@ public class AnnounceRequest extends MessageBase {
         byte[] buf = new byte[98];
         //System.arraycopy(connectionID, 0, buf, 0, connectionID.length);
 
-        buf[0] = ((byte) connectionID);
-        buf[1] = ((byte) (connectionID >>  8));
-        buf[2] = ((byte) (connectionID >> 16));
-        buf[3] = ((byte) (connectionID >> 24));
-        buf[4] = ((byte) (connectionID >> 32));
-        buf[5] = ((byte) (connectionID >> 40));
-        buf[6] = ((byte) (connectionID >> 48));
-        buf[7] = ((byte) (connectionID >> 56));
+        buf[0] = ((byte) (connectionID >> 56));
+        buf[1] = ((byte) (connectionID >> 48));
+        buf[2] = ((byte) (connectionID >> 40));
+        buf[3] = ((byte) (connectionID >> 32));
+        buf[4] = ((byte) (connectionID >> 24));
+        buf[5] = ((byte) (connectionID >> 16));
+        buf[6] = ((byte) (connectionID >>  8));
+        buf[7] = ((byte) connectionID);
 
-        buf[8] = ((byte) action.getCode());
-        buf[9] = ((byte) (action.getCode() >> 8));
-        buf[10] = ((byte) (action.getCode() >> 16));
-        buf[11] = ((byte) (action.getCode() >> 24));
+        buf[8] = ((byte) (action.getCode() >> 24));
+        buf[9] = ((byte) (action.getCode() >> 16));
+        buf[10] = ((byte) (action.getCode() >> 8));
+        buf[11] = ((byte) action.getCode());
 
         System.arraycopy(tid, 0, buf, 12, tid.length);
 
@@ -72,62 +72,54 @@ public class AnnounceRequest extends MessageBase {
         System.arraycopy(peerID, 0, buf, 36, peerID.length);
 
         //DOWNLOADED
-        buf[56] = ((byte) downloaded);
-        buf[57] = ((byte) (downloaded >>  8));
-        buf[58] = ((byte) (downloaded >> 16));
-        buf[59] = ((byte) (downloaded >> 24));
-        buf[60] = ((byte) (downloaded >> 32));
-        buf[61] = ((byte) (downloaded >> 40));
-        buf[62] = ((byte) (downloaded >> 48));
-        buf[63] = ((byte) (downloaded >> 56));
+        buf[56] = ((byte) (downloaded >> 56));
+        buf[57] = ((byte) (downloaded >> 48));
+        buf[58] = ((byte) (downloaded >> 40));
+        buf[59] = ((byte) (downloaded >> 32));
+        buf[60] = ((byte) (downloaded >> 24));
+        buf[61] = ((byte) (downloaded >> 16));
+        buf[62] = ((byte) (downloaded >>  8));
+        buf[63] = ((byte) downloaded);
 
         //LEFT
-        buf[64] = ((byte) left);
-        buf[65] = ((byte) (left >>  8));
-        buf[66] = ((byte) (left >> 16));
-        buf[67] = ((byte) (left >> 24));
-        buf[68] = ((byte) (left >> 32));
-        buf[69] = ((byte) (left >> 40));
-        buf[70] = ((byte) (left >> 48));
-        buf[71] = ((byte) (left >> 56));
 
         //UPLOADED
-        buf[72] = ((byte) uploaded);
-        buf[73] = ((byte) (uploaded >>  8));
-        buf[74] = ((byte) (uploaded >> 16));
-        buf[75] = ((byte) (uploaded >> 24));
-        buf[76] = ((byte) (uploaded >> 32));
-        buf[77] = ((byte) (uploaded >> 40));
-        buf[78] = ((byte) (uploaded >> 48));
-        buf[79] = ((byte) (uploaded >> 56));
+        buf[72] = ((byte) (uploaded >> 56));
+        buf[73] = ((byte) (uploaded >> 48));
+        buf[74] = ((byte) (uploaded >> 40));
+        buf[75] = ((byte) (uploaded >> 32));
+        buf[76] = ((byte) (uploaded >> 24));
+        buf[77] = ((byte) (uploaded >> 16));
+        buf[78] = ((byte) (uploaded >>  8));
+        buf[79] = ((byte) uploaded);
 
         //EVENT
-        buf[80] = ((byte) event.getCode());
-        buf[81] = ((byte) (event.getCode() >> 8));
-        buf[82] = ((byte) (event.getCode() >> 16));
-        buf[83] = ((byte) (event.getCode() >> 24));
+        buf[80] = ((byte) (event.getCode() >> 24));
+        buf[81] = ((byte) (event.getCode() >> 16));
+        buf[82] = ((byte) (event.getCode() >> 8));
+        buf[83] = ((byte) event.getCode());
 
         //ADDRESS ( 0 for using packet origin - specify for different return )
-        buf[84] = ((byte) address);
-        buf[85] = ((byte) (address >> 8));
-        buf[86] = ((byte) (address >> 16));
-        buf[87] = ((byte) (address >> 24));
+        buf[84] = ((byte) (address >> 24));
+        buf[85] = ((byte) (address >> 16));
+        buf[86] = ((byte) (address >> 8));
+        buf[87] = ((byte) address);
 
         //KEY ( RANDOMLY GENERATED - PER REQUEST )
-        buf[88] = ((byte) key);
-        buf[89] = ((byte) (key >> 8));
-        buf[90] = ((byte) (key >> 16));
-        buf[91] = ((byte) (key >> 24));
+        buf[88] = ((byte) (key >> 24));
+        buf[89] = ((byte) (key >> 16));
+        buf[90] = ((byte) (key >> 8));
+        buf[91] = ((byte) key);
 
         //NUM WANT ( NUMBER OF PEERS WE WANT - DEFAULT -1)
-        buf[92] = ((byte) numWant);
-        buf[93] = ((byte) (numWant >> 8));
-        buf[94] = ((byte) (numWant >> 16));
-        buf[95] = ((byte) (numWant >> 24));
+        buf[92] = ((byte) (numWant >> 24));
+        buf[93] = ((byte) (numWant >> 16));
+        buf[94] = ((byte) (numWant >> 8));
+        buf[95] = ((byte) numWant);
 
         //PORT
-        buf[96] = (byte) (port & 0xff);
-        buf[97] = (byte) ((port & 0xff00) >> 8);
+        buf[96] = (byte) ((port & 0xff00) >> 8);
+        buf[97] = (byte) (port & 0xff);
 
         return buf;
     }

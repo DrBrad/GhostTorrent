@@ -37,7 +37,6 @@ public class ConnectResponse extends MessageBase {
                 ((long) (buf[off+6] & 0xff) << 48) |
                 ((long) (buf[off+7] & 0xff) << 56));
         */
-
         connectionID = (((long) (buf[off] & 0xff) << 56) |
                 ((long) (buf[off+1] & 0xff) << 48) |
                 ((long) (buf[off+2] & 0xff) << 40) |

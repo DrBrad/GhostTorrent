@@ -13,7 +13,8 @@ public class ConnectRequest extends MessageBase {
     12      32-bit integer  transaction_id
     16
     */
-    public static final long PROTOCOL_ID = -9216317402361102336l;
+    //0x0000   00 00 04 17 27 10 19 80
+    public static final byte[] PROTOCOL_ID = { 0x00, 0x00, 0x04, 0x17, 0x27, 0x10, 0x19, (byte) 0x80 };//-9216317402361102336l;
 
     public ConnectRequest(){
         action = MessageAction.CONNECT;
@@ -28,6 +29,7 @@ public class ConnectRequest extends MessageBase {
     public byte[] encode(){
         byte[] buf = new byte[16];
 
+        /*
         buf[0] = ((byte) PROTOCOL_ID);
         buf[1] = ((byte) (PROTOCOL_ID >>  8));
         buf[2] = ((byte) (PROTOCOL_ID >> 16));
@@ -36,6 +38,8 @@ public class ConnectRequest extends MessageBase {
         buf[5] = ((byte) (PROTOCOL_ID >> 40));
         buf[6] = ((byte) (PROTOCOL_ID >> 48));
         buf[7] = ((byte) (PROTOCOL_ID >> 56));
+        */
+        System.arraycopy(PROTOCOL_ID, 0, buf, 0, PROTOCOL_ID.length);
 
         buf[8] = ((byte) action.getCode());
         buf[9] = ((byte) (action.getCode() >> 8));

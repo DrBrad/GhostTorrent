@@ -6,6 +6,7 @@ import com.ghosttorrent.torrent.trackers.udp.messages.AnnounceRequest;
 import com.ghosttorrent.torrent.trackers.udp.messages.AnnounceResponse;
 import com.ghosttorrent.torrent.trackers.udp.messages.ConnectRequest;
 import com.ghosttorrent.torrent.trackers.udp.messages.ConnectResponse;
+import com.ghosttorrent.torrent.trackers.udp.messages.inter.AnnounceEvent;
 import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
 import com.ghosttorrent.torrent.trackers.udp.ResponseCallback;
 
@@ -73,12 +74,14 @@ public class OpenTorrentListener implements ActionListener {
                             AnnounceRequest request1 = new AnnounceRequest();
                             request1.setDestination(request.getDestination());
                             request1.setConnectionID(response.getConnectionID());
-                            request1.setInfoHash(torrent.getInfoHash());
-                            request1.setPeerID(new byte[20]);
+                            request1.setEvent(AnnounceEvent.STARTED);
+                            request1.setInfoHash(torrent.getInfoHash()); //9e8cb640823822be312c1278089c96cafacc8627
+                            request1.setPeerID(stringToHex("2d5452333030302d326f71727270786231303232"));
                             request1.setDownloaded(0);
-                            request1.setLeft(0); //MUST CALC THE AMMOUNT WE NEED...
+                            request1.setLeft(1880132108); //MUST CALC THE AMMOUNT WE NEED...
                             request1.setUploaded(0);
-                            //request.setKey();
+                            request1.setNumWant(80);
+                            request1.setKey(330182370);
                             request1.setPort(8080); //TCP PORT
 
                             try{
@@ -105,5 +108,14 @@ public class OpenTorrentListener implements ActionListener {
             ex.printStackTrace();
         }
 
+    }
+
+    private byte[] stringToHex(String s){
+        byte[] b = new byte[s.length()/2];
+        for(int i = 0; i < b.length; i += 2){
+            b[i/2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)+Character.digit(s.charAt(i+1), 16));
+        }
+
+        return b;
     }
 }

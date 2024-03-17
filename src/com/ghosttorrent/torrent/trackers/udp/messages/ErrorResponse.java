@@ -31,7 +31,7 @@ public class ErrorResponse extends MessageBase {
 
     @Override
     public void decode(byte[] buf, int off, int len){
-        message = new String(buf, off+8, len-9);
+        message = new String(buf, off, len);
         System.out.println(message);
     }
 

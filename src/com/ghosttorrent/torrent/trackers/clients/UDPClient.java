@@ -107,14 +107,7 @@ public class UDPClient {
         0       32-bit integer  action          0 // connect
         4       32-bit integer  transaction_id
         */
-        MessageAction action = MessageAction.fromCode(
-                /*
-                (buf[0] & 0xff) |
-                ((buf[1] & 0xff) << 8) |
-                ((buf[2] & 0xff) << 16) |
-                ((buf[3] & 0xff) << 24)
-                */
-                ((buf[0] & 0xff) << 24) |
+        MessageAction action = MessageAction.fromCode(((buf[0] & 0xff) << 24) |
                 ((buf[1] & 0xff) << 16) |
                 ((buf[2] & 0xff) << 8) |
                 (buf[3] & 0xff));
@@ -150,14 +143,14 @@ public class UDPClient {
             case ERROR:
                 System.out.println("ERROR");
                 response = new ErrorResponse(tid);
-                break;
+                return;
 
             default:
                 System.out.println("UNKNOWN");
                 return;
         }
 
-        response.decode(buf, packet.getOffset(), packet.getLength());
+        response.decode(buf, packet.getOffset()+8, packet.getLength()-9);
         response.setOrigin(packet.getAddress(), packet.getPort());
         call.getCallback().onResponse(response);
     }
