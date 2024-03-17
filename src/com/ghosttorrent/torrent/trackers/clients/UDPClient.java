@@ -112,6 +112,8 @@ public class UDPClient {
                 ((buf[2] & 0xff) << 8) |
                 (buf[3] & 0xff)));
 
+        System.out.println(action);
+
         byte[] tid = new byte[4];
         System.arraycopy(buf, 4, tid, 0, tid.length);
 
@@ -129,19 +131,22 @@ public class UDPClient {
                 break;
 
             case ANNOUNCE:
+                System.out.println("ANNOUNCE");
                 response = new AnnounceResponse(tid);
                 break;
 
             case SCRAPE:
-                response = null;
                 System.out.println("SCRAPE");
+                response = null;
                 return;
 
             case ERROR:
+                System.out.println("ERROR");
                 response = new ErrorResponse(tid);
                 break;
 
             default:
+                System.out.println("UNKNOWN");
                 return;
         }
 

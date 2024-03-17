@@ -70,18 +70,19 @@ public class OpenTorrentListener implements ActionListener {
                             System.out.println("RESPONSE: "+response.getConnectionID());
 
                             //DO THE REQUESTS BETTER...?
-                            AnnounceRequest request = new AnnounceRequest();
-                            request.setDestination(response.getOrigin());
-                            request.setInfoHash(torrent.getInfoHash());
-                            request.setPeerID(new byte[20]);
-                            request.setDownloaded(0);
-                            request.setLeft(0); //MUST CALC THE AMMOUNT WE NEED...
-                            request.setUploaded(0);
+                            AnnounceRequest request1 = new AnnounceRequest();
+                            request1.setDestination(request.getDestination());
+                            //request1.setConnectionID(response.getConnectionID());
+                            request1.setInfoHash(torrent.getInfoHash());
+                            request1.setPeerID(new byte[20]);
+                            request1.setDownloaded(0);
+                            request1.setLeft(0); //MUST CALC THE AMMOUNT WE NEED...
+                            request1.setUploaded(0);
                             //request.setKey();
-                            request.setPort(8080); //TCP PORT
+                            request1.setPort(8080); //TCP PORT
 
                             try{
-                                client.send(request, new ResponseCallback(){
+                                client.send(request1, new ResponseCallback(){
                                     @Override
                                     public void onResponse(MessageBase message){
                                         AnnounceResponse response = (AnnounceResponse) message;
