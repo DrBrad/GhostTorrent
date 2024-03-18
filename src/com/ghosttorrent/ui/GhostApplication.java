@@ -3,7 +3,7 @@ package com.ghosttorrent.ui;
 import com.ghosttorrent.libs.ui.utils.Bundle;
 import com.ghosttorrent.libs.ui.utils.inter.Dialog;
 import com.ghosttorrent.libs.ui.utils.inter.DialogCloseListener;
-import com.ghosttorrent.torrent.Magnet;
+import unet.torrent.Magnet;
 import com.ghosttorrent.ui.listeners.OpenTorrentListener;
 import com.ghosttorrent.libs.ui.utils.inter.Application;
 

@@ -1,6 +1,6 @@
 package com.ghosttorrent;
 
-import com.ghosttorrent.torrent.messages.*;
+import unet.torrent.messages.*;
 import com.ghosttorrent.ui.GhostApplication;
 import com.ghosttorrent.libs.ui.utils.inter.Application;
 import unet.kad4.Kademlia;

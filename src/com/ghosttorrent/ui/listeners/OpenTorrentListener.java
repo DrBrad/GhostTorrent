@@ -1,14 +1,14 @@
 package com.ghosttorrent.ui.listeners;
 
-import com.ghosttorrent.torrent.Torrent;
-import com.ghosttorrent.torrent.trackers.clients.UDPClient;
-import com.ghosttorrent.torrent.trackers.udp.messages.AnnounceRequest;
-import com.ghosttorrent.torrent.trackers.udp.messages.AnnounceResponse;
-import com.ghosttorrent.torrent.trackers.udp.messages.ConnectRequest;
-import com.ghosttorrent.torrent.trackers.udp.messages.ConnectResponse;
-import com.ghosttorrent.torrent.trackers.udp.messages.inter.AnnounceEvent;
-import com.ghosttorrent.torrent.trackers.udp.messages.inter.MessageBase;
-import com.ghosttorrent.torrent.trackers.udp.ResponseCallback;
+import unet.torrent.Torrent;
+import unet.torrent.trackers.clients.UDPClient;
+import unet.torrent.trackers.udp.messages.AnnounceRequest;
+import unet.torrent.trackers.udp.messages.AnnounceResponse;
+import unet.torrent.trackers.udp.messages.ConnectRequest;
+import unet.torrent.trackers.udp.messages.ConnectResponse;
+import unet.torrent.trackers.udp.messages.inter.AnnounceEvent;
+import unet.torrent.trackers.udp.messages.inter.MessageBase;
+import unet.torrent.trackers.udp.ResponseCallback;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -38,14 +38,22 @@ public class OpenTorrentListener implements ActionListener {
         System.out.println(torrent.getAnnounce());
         System.out.println(torrent.getComment());
         System.out.println(torrent.getCreatedBy());
-        System.out.println(torrent.getFiles().get(0).getPath().get(0));
+        System.out.println(torrent.getInfo().getFiles().get(0).getPath().get(0));
 
         StringBuilder builder = new StringBuilder();
-        for(byte b : torrent.getInfoHash()){
+        for(byte b : torrent.getInfo().getHash()){
             builder.append(String.format("%02x", b));
         }
 
         System.out.println(builder);
+
+        //WE NEED LEFT TO CALC TO: 1880132108
+        //WE NEED NUM-WANT TO BE 80
+
+
+        return;
+
+        /*
 
         //new DHTTracker(torrent.getInfoHash());
 
@@ -75,7 +83,7 @@ public class OpenTorrentListener implements ActionListener {
                             request1.setDestination(request.getDestination());
                             request1.setConnectionID(response.getConnectionID());
                             request1.setEvent(AnnounceEvent.STARTED);
-                            request1.setInfoHash(torrent.getInfoHash()); //9e8cb640823822be312c1278089c96cafacc8627
+                            request1.setInfoHash(torrent.getInfo().getHash()); //9e8cb640823822be312c1278089c96cafacc8627
                             request1.setPeerID(stringToHex("2d5452333030302d326f71727270786231303232"));
                             request1.setDownloaded(0);
                             request1.setLeft(1880132108); //MUST CALC THE AMMOUNT WE NEED...
@@ -107,6 +115,7 @@ public class OpenTorrentListener implements ActionListener {
         }catch(IOException ex){
             ex.printStackTrace();
         }
+        */
 
     }
 
