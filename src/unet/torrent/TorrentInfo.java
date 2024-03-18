@@ -9,9 +9,12 @@ import java.util.List;
 
 public class TorrentInfo {
 
+    public static final int PIECE_LENGTH = 20;
+
     private String name;
     private long pieceLength;
     private byte[] infoHash;
+    private List<byte[]> pieces;
     private List<TorrentFile> files;
 
     public TorrentInfo(BencodeObject ben)throws NoSuchAlgorithmException  {
@@ -21,6 +24,16 @@ public class TorrentInfo {
 
         if(ben.containsKey("piece length")){
             pieceLength = ben.getLong("piece length");
+        }
+
+        if(ben.containsKey("pieces")){
+            pieces = new ArrayList<>();
+
+            for(int i = 0; i < ben.getBytes("pieces").length/PIECE_LENGTH; i++){
+                byte[] buf = new byte[20];
+                System.arraycopy(ben.getBytes("pieces"), i*20, buf, 0, PIECE_LENGTH);
+                pieces.add(buf);
+            }
         }
 
         if(ben.containsKey("files")){
@@ -41,6 +54,10 @@ public class TorrentInfo {
 
     public long getPieceLength(){
         return pieceLength;
+    }
+
+    public List<byte[]> getPieces(){
+        return pieces;
     }
 
     public List<TorrentFile> getFiles(){
